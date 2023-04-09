@@ -1,0 +1,54 @@
+@import '../../sass/variables.scss';
+
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: $background-content;
+  border: 2px solid $background-content;
+  background-image: none;
+  cursor: pointer;
+
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:focus {
+    border: 2px solid $active;
+  }
+}
+
+/* Custom Select wrapper */
+.wrapper {
+  position: relative;
+  display: flex;
+  width: 15rem;
+  height: 3em;
+  border-radius: 0.25em;
+  overflow: hidden;
+
+  /* Arrow */
+  &::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    transition: 0.25s all ease;
+    pointer-events: none;
+  }
+
+  /* Transition */
+  &:hover::after {
+    color: $active;
+  }
+}

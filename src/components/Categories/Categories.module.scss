@@ -1,0 +1,31 @@
+@import '../../sass/variables.scss';
+
+.list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  min-width: 4rem;
+
+  cursor: pointer;
+  background-color: $background-interactive;
+  color: $font-interactive;
+  border-radius: 7px;
+  padding: 5px;
+  font-weight: bold;
+
+  &.active {
+    background-color: $background-active;
+    color: $font-active;
+  }
+
+  &:hover {
+    opacity: $opacity-active;
+  }
+}

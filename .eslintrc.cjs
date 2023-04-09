@@ -1,8 +1,9 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
+  ignorePatterns: ['vite.config.ts'],
   extends: [
     'airbnb',
     'airbnb/hooks',
@@ -11,17 +12,17 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
   overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json'
+    project: './tsconfig.json',
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'simple-import-sort'],
   rules: {
@@ -31,14 +32,14 @@ module.exports = {
     '@typescript-eslint/no-shadow': 0,
     '@typescript-eslint/consistent-type-imports': [
       'error',
-      { prefer: 'type-imports', disallowTypeAnnotations: false }
+      { prefer: 'type-imports', disallowTypeAnnotations: false },
     ],
     'react/function-component-definition': [
       2,
       {
         namedComponents: 'arrow-function',
-        unnamedComponents: 'arrow-function'
-      }
+        unnamedComponents: 'arrow-function',
+      },
     ],
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
@@ -48,8 +49,8 @@ module.exports = {
     'react/no-unstable-nested-components': [
       2,
       {
-        allowAsProps: true
-      }
+        allowAsProps: true,
+      },
     ],
     'react/no-array-index-key': 0,
     'no-param-reassign': 0,
@@ -59,6 +60,6 @@ module.exports = {
     'import/extensions': 0,
     'import/no-extraneous-dependencies': 0,
     'import/prefer-default-export': 0,
-    'import/export': 0
-  }
+    'import/export': 0,
+  },
 };

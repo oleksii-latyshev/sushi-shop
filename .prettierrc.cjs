@@ -5,6 +5,6 @@ module.exports = {
   arrowParens: 'always',
   useTabs: false,
   printWidth: 95,
-  trailingComma: 'none',
+  trailingComma: 'es5',
   semi: true
 };
