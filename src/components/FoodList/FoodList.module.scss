@@ -29,4 +29,30 @@
     width: 100%;
     object-fit: cover;
   }
+
+  .choices {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    // background: $background-content;
+
+    button {
+      cursor: pointer;
+      background: $background-interactive;
+      padding: 5px;
+      flex: 1;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1rem;
+
+      &.active {
+        background: $background-active;
+      }
+
+      &:hover {
+        opacity: $opacity-active;
+      }
+    }
+  }
 }
