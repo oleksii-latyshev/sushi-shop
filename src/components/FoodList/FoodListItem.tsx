@@ -19,16 +19,19 @@ const food = {
 
 const FoodListItem = ({ id, title, price, counts }: FoodListItemInstance) => {
   const [cartCount, setCartCount] = useState(0);
+  const [selectSize, setSelectSize] = useState(counts[0]);
 
   const choicesElements = counts.map((countFood) => (
-    <button key={countFood}>{countFood} шт</button>
+    <li key={countFood} className={selectSize === countFood ? styles.active : ''}>
+      <button onClick={() => setSelectSize(countFood)}>{countFood} шт</button>
+    </li>
   ));
 
   return (
     <li className={styles.item}>
       <img src={food.img} alt={food.name} />
       <h3>{title}</h3>
-      <div className={styles.choices}>{choicesElements}</div>
+      <ul className={styles.choices}>{choicesElements}</ul>
       <div className={styles.footer}>
         <p>{price} грн</p>
         <button onClick={() => setCartCount((prev) => prev + 1)}>

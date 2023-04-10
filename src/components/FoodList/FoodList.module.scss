@@ -42,22 +42,27 @@
     gap: 5px;
     // background: $background-content;
 
-    button {
-      cursor: pointer;
-      background: $background-interactive;
-      padding: 5px;
+    li {
       flex: 1;
-      border: none;
+      background: $background-interactive;
       border-radius: 5px;
-      font-weight: bold;
-      font-size: 1rem;
-
-      &.active {
-        background: $background-active;
-      }
 
       &:hover {
         opacity: $opacity-active;
+      }
+
+      &.active {
+        background-color: $background-active;
+      }
+
+      button {
+        cursor: pointer;
+        background: initial;
+        padding: 5px;
+        width: 100%;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
       }
     }
   }
