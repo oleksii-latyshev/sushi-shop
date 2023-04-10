@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  grid-column-gap: 11px;
+  gap: 15px 11px;
 
   @media (max-width: 1400px) {
     grid-template-columns: repeat(3, 1fr);
@@ -20,9 +20,15 @@
 }
 
 .item {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
-  flex: 1;
+
+  h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
 
   img {
     max-width: 100%;
@@ -52,6 +58,40 @@
 
       &:hover {
         opacity: $opacity-active;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    p {
+      font-weight: bold;
+      margin: auto 0;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 7px;
+      padding: 10px;
+      background: $background-active;
+
+      &:hover {
+        opacity: $opacity-active;
+      }
+
+      span {
+        display: inline-block;
+        background: $background-content;
+        border-radius: 50%;
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px 10px;
       }
     }
   }
