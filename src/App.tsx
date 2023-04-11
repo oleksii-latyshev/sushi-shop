@@ -1,5 +1,5 @@
 import styles from './App.module.scss';
-import FoodLIst from './components/FoodList/FoodLIst';
+import ContentFood from './layouts/ContentFood/ContentFood';
 import Header from './layouts/Header/Header';
 import Options from './layouts/Options/Options';
 
@@ -8,9 +8,7 @@ const App = () => {
     <div className={styles.wrapper}>
       <Header />
       <Options />
-      <div className={styles.content}>
-        <FoodLIst />
-      </div>
+      <ContentFood />
     </div>
   );
 };

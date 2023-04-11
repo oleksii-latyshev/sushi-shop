@@ -13,10 +13,10 @@ const foods: FoodListItemInstance[] = [
   { id: 2, title: 'test2', price: 2, counts: [15, 20, 50] },
 ];
 
-const FoodLIst = () => {
+const FoodList = () => {
   const foodListItemElements = foods.map((food) => <FoodListItem key={food.id} {...food} />);
 
   return <ul className={styles.list}>{foodListItemElements}</ul>;
 };
 
-export default FoodLIst;
+export default FoodList;

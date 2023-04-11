@@ -11,6 +11,8 @@ const Menu = ({ className }: MenuInstance) => {
 
   return (
     <div className={conditionalClass}>
+      {/* <i className='fa-solid fa-moon' /> */}
+      <i className='fa-solid fa-sun' />
       <i className='fa-solid fa-heart' />
       <i className='fa-solid fa-user' />
     </div>

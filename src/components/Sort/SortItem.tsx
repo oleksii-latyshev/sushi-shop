@@ -1,12 +1,17 @@
 import React from 'react';
 
 interface SortItemInstance {
-  value: number;
   title: string;
+  className: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const SortItem = ({ value, title }: SortItemInstance) => {
-  return <option value={value}>{title}</option>;
+const SortItem = ({ title, className, onClick }: SortItemInstance) => {
+  return (
+    <li className={className}>
+      <button onClick={onClick}>{title}</button>
+    </li>
+  );
 };
 
 export default SortItem;

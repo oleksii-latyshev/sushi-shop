@@ -78,6 +78,9 @@
     }
 
     button {
+      position: relative;
+      min-height: 55px;
+      min-width: 130px;
       cursor: pointer;
       border: none;
       font-size: 1rem;
@@ -91,6 +94,8 @@
       }
 
       span {
+        position: absolute;
+        top: 0;
         display: inline-block;
         background: $background-content;
         border-radius: 50%;

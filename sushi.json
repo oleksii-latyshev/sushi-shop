@@ -1,84 +1,102 @@
-{
-  "sushi": [
-    {
-      "id": 1,
-      "name": "Love ua",
-      "price": 649,
-      "count": 44,
-      "weight": 1115,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/love-ua.jpeg"
-    },
-    {
-      "id": 2,
-      "name": "Сан сет",
-      "price": 899,
-      "count": 32,
-      "weight": 1230,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/san-set.jpeg"
-    },
-    {
-      "id": 3,
-      "name": "Супер Фила XL",
-      "price": 599,
-      "count": 44,
-      "weight": 1230,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/super-fila-xl_166391961194.jpeg"
-    },
-    {
-      "id": 4,
-      "name": "Супер Фила XXL",
-      "price": 699,
-      "count": 52,
-      "weight": 1370,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/super-fila-xxl_1663919041348.jpeg"
-    },
-    {
-      "id": 5,
-      "name": "Драгон XXL",
-      "price": 949,
-      "count": 60,
-      "weight": 1650,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/dragon-xxl.jpeg"
-    },
-    {
-      "id": 6,
-      "name": "Биг Фиш XXL",
-      "price": 669,
-      "count": 48,
-      "weight": 1435,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/_1623396196635.jpeg"
-    },
-    {
-      "id": 7,
-      "name": "Лосось&Лосось XL",
-      "price": 799,
-      "count": 44,
-      "weight": 1180,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/lososlosos-l.jpeg"
-    },
-    {
-      "id": 8,
-      "name": "Атлантик сет",
-      "price": 729,
-      "count": 46,
-      "weight": 1250,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/atlantik-set.jpeg"
-    },
-    {
-      "id": 9,
-      "name": "Темпура-ролл с лососем",
-      "price": 229,
-      "count": 8,
-      "weight": 290,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/_1670842082364.jpeg"
-    },
-    {
-      "id": 10,
-      "name": "Капа маки",
-      "price": 55,
-      "count": 6,
-      "weight": 110,
-      "img": "https://mafia.ua/storage/editor/fotos/450x450/maki-s-ogurcom.jpeg"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "Love ua",
+    "price": 649,
+    "counts": [10, 15, 20],
+    "weight": 11,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/love-ua.jpeg",
+    "category": 5,
+    "rating": 7
+  },
+  {
+    "id": 2,
+    "name": "Сан сет",
+    "price": 899,
+    "counts": [15, 20, 50],
+    "weight": 12,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/san-set.jpeg",
+    "category": 5,
+    "rating": 10
+  },
+  {
+    "id": 3,
+    "name": "Супер Фила XL",
+    "price": 599,
+    "counts": [20, 30, 40],
+    "weight": 12,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/super-fila-xl_166391961194.jpeg",
+    "category": 4,
+    "rating": 10
+  },
+  {
+    "id": 4,
+    "name": "Супер Фила XXL",
+    "price": 699,
+    "counts": [20, 50],
+    "weight": 13,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/super-fila-xxl_1663919041348.jpeg",
+    "category": 1,
+    "rating": 9
+  },
+  {
+    "id": 5,
+    "name": "Драгон XXL",
+    "price": 949,
+    "counts": [15],
+    "weight": 16,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/dragon-xxl.jpeg",
+    "category": 2,
+    "rating": 2
+  },
+  {
+    "id": 6,
+    "name": "Биг Фиш XXL",
+    "price": 669,
+    "counts": [15, 20, 50],
+    "weight": 14,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/_1623396196635.jpeg",
+    "category": 3,
+    "rating": 8
+  },
+  {
+    "id": 7,
+    "name": "Лосось&Лосось XL",
+    "price": 799,
+    "counts": [15, 20, 50],
+    "weight": 11,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/lososlosos-l.jpeg",
+    "category": 2,
+    "rating": 2
+  },
+  {
+    "id": 8,
+    "name": "Атлантик сет",
+    "price": 729,
+    "counts": [15, 20, 50],
+    "weight": 12,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/atlantik-set.jpeg",
+    "category": 1,
+    "rating": 4
+  },
+  {
+    "id": 9,
+    "name": "Темпура-ролл с лососем",
+    "price": 229,
+    "counts": [15, 20, 50],
+    "weight": 29,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/_1670842082364.jpeg",
+    "category": 0,
+    "rating": 6
+  },
+  {
+    "id": 10,
+    "name": "Капа маки",
+    "price": 55,
+    "counts": [15, 20, 50],
+    "weight": 11,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/maki-s-ogurcom.jpeg",
+    "category": 0,
+    "rating": 4
+  }
+]

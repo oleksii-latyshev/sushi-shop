@@ -19,7 +19,7 @@ const food = {
 
 const FoodListItem = ({ id, title, price, counts }: FoodListItemInstance) => {
   const [cartCount, setCartCount] = useState(0);
-  const [selectSize, setSelectSize] = useState(counts[0]);
+  const [selectSize, setSelectSize] = useState(counts[0]); // TODO проверить на ререндер массив, мб useMemo нужно будет заюзать
 
   const choicesElements = counts.map((countFood) => (
     <li key={countFood} className={selectSize === countFood ? styles.active : ''}>
@@ -35,7 +35,7 @@ const FoodListItem = ({ id, title, price, counts }: FoodListItemInstance) => {
       <div className={styles.footer}>
         <p>{price} грн</p>
         <button onClick={() => setCartCount((prev) => prev + 1)}>
-          Добавить <span>{cartCount}</span>
+          Добавить {cartCount > 0 ? <span>{cartCount}</span> : null}
         </button>
       </div>
     </li>
