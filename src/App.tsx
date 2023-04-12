@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import styles from './App.module.scss';
 import Header from './layouts/Header/Header';
-import { Cart, Home, NotFound, Product } from './pages';
+import { Cart, Home, NotFound, Sushi } from './pages';
 
 const App = () => {
   return (
@@ -10,8 +10,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/product/:id' element={<Product />} />
+        <Route path='cart' element={<Cart />} />
+        <Route path='sushi/:id' element={<Sushi />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

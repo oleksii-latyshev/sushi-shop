@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Menu from '../../components/Menu/Menu';
 import Search from '../../components/Search/Search';
@@ -7,9 +8,9 @@ import styles from './Header.module.scss';
 const Header = () => {
   return (
     <div className={styles.wrapper}>
-      <a className={styles.logo} href='#!'>
+      <Link className={styles.logo} to='/'>
         sushi
-      </a>
+      </Link>
       <Search className={styles.search} placeholder='enter the name of the sushi...' />
       <Menu />
     </div>
