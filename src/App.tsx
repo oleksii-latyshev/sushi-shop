@@ -1,14 +1,19 @@
+import { Route, Routes } from 'react-router-dom';
+
 import styles from './App.module.scss';
-import ContentFood from './layouts/ContentFood/ContentFood';
 import Header from './layouts/Header/Header';
-import Options from './layouts/Options/Options';
+import { Cart, Home, NotFound, Product } from './pages';
 
 const App = () => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      <Options />
-      <ContentFood />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/product/:id' element={<Product />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
     </div>
   );
 };

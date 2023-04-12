@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+// import { FoodService } from '../../services/food.service';
+import type { Food } from '../../types';
+import { isArrayFoods } from '../../types';
 import styles from './FoodList.module.scss';
-import type { FoodListItemInstance } from './FoodListItem';
 import FoodListItem from './FoodListItem';
-
-const foods: FoodListItemInstance[] = [
-  { id: 1, title: 'test1', price: 1, counts: [15, 20, 50] },
-  { id: 2, title: 'test2', price: 2, counts: [15, 20] },
-  { id: 2, title: 'test2', price: 2, counts: [15, 20] },
-  { id: 2, title: 'test2', price: 2, counts: [15, 20, 50] },
-  { id: 2, title: 'test2', price: 2, counts: [15, 20, 50] },
-  { id: 2, title: 'test2', price: 2, counts: [15, 20, 50] },
-];
+import FoodListItemSkeleton from './FoodListItemSkeleton';
 
 const FoodList = () => {
-  const foodListItemElements = foods.map((food) => <FoodListItem key={food.id} {...food} />);
+  const [foods, setFoods] = useState<Food[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:5173/sushi.json')
+      .then((response) => response.json())
+      .then((json) => {
+        if (isArrayFoods(json)) setFoods(json);
+      })
+      .catch((error: string) => {
+        throw new Error(error);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  const foodListItemElements = isLoading
+    ? [...new Array(6)].map((_, i) => <FoodListItemSkeleton key={i} />)
+    : foods.map((food) => <FoodListItem key={food.id} {...food} />);
 
   return <ul className={styles.list}>{foodListItemElements}</ul>;
 };
