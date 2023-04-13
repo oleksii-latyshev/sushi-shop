@@ -1,0 +1,253 @@
+@import '../../sass/variables.scss';
+
+$fixMe: #fff;
+
+.cart {
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 32px;
+
+    svg {
+      position: relative;
+      top: -2px;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      path {
+        stroke: $fixMe;
+        stroke-width: 1.9;
+      }
+    }
+  }
+
+  .clearBtn {
+    button {
+      background: $background-content;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      color: $font-color;
+      font-size: 1.2rem;
+
+      i {
+        padding-right: 10px;
+        color: $font-active;
+      }
+
+      &:hover,
+      &:active {
+        background-color: darken($color: $font-color, $amount: 90);
+        border-color: darken($color: $font-color, $amount: 90);
+      }
+    }
+  }
+
+  .list {
+    display: flex;
+    padding: 20px 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .item {
+    display: flex;
+    gap: 20px;
+
+    .circleButton {
+      cursor: pointer;
+      border: none;
+      width: 2rem;
+      line-height: 2rem;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 1rem;
+      background: $background-active;
+
+      &:disabled {
+        background-color: $background-content;
+        color: $font-color;
+      }
+
+      &:hover {
+        opacity: $opacity-active;
+      }
+    }
+
+    .img {
+      width: 10%;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40%;
+
+      h3 {
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        opacity: 0.8;
+      }
+    }
+
+    .count {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      b {
+        font-size: 1.2rem;
+      }
+    }
+
+    .price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 33%;
+      font-weight: bold;
+      font-size: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .remove {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 4%;
+
+      .button {
+        svg {
+          width: 11.5px;
+          height: 11.5px;
+          position: relative;
+        }
+        &:hover,
+        &:active {
+          border-color: darken($color: $fixMe, $amount: 80);
+          background-color: darken($color: $fixMe, $amount: 80);
+        }
+      }
+    }
+  }
+
+  .bottom {
+    .details {
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        font-size: 1.5rem;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+
+      .button {
+        width: 210px;
+        padding: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+
+        span {
+          color: $font-color;
+          font-weight: 600;
+        }
+      }
+
+      .go-back-btn {
+        background: $background-content;
+
+        span {
+          color: darken($color: $font-color, $amount: 20);
+        }
+
+        svg {
+          margin-right: 12px;
+          path {
+            fill: transparent;
+            stroke-width: 2;
+          }
+        }
+
+        &:hover,
+        &:active {
+          background-color: darken($color: $font-color, $amount: 90);
+          border-color: darken($color: $font-color, $amount: 90);
+        }
+      }
+
+      .pay-btn {
+        background: $background-active;
+
+        &:hover,
+        &:active {
+          opacity: $opacity-active;
+        }
+      }
+    }
+  }
+
+  &--empty {
+    margin: 80px auto;
+    width: 620px;
+    text-align: center;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 145.4%;
+      letter-spacing: 0.01em;
+      color: #777777;
+    }
+
+    icon {
+      position: relative;
+      top: 2px;
+    }
+
+    img {
+      display: block;
+      width: 300px;
+      margin: 45px auto 60px;
+    }
+
+    .button--black {
+      padding: 12px 0 14px;
+      width: 230px;
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+}

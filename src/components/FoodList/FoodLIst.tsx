@@ -21,6 +21,7 @@ const FoodList = () => {
         throw new Error(error);
       })
       .finally(() => setIsLoading(false));
+    window.scrollTo(0, 0);
   }, []);
 
   const foodListItemElements = isLoading

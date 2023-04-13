@@ -1,7 +1,9 @@
 import React from 'react';
 
+import CartBlock from '../layouts/CartBlock/CartBlock';
+
 const Cart = () => {
-  return <div>Cart</div>;
+  return <CartBlock />;
 };
 
 export default Cart;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import FoodList from '../../components/FoodList/FoodList';
 
-const ContentFood = () => {
+const Catalog = () => {
   return (
     <div>
       <FoodList />
@@ -10,4 +10,4 @@ const ContentFood = () => {
   );
 };
 
-export default ContentFood;
+export default Catalog;

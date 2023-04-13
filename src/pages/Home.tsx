@@ -1,13 +1,13 @@
 import React from 'react';
 
-import ContentFood from '../layouts/ContentFood/ContentFood';
+import Catalog from '../layouts/Catalog/Catalog';
 import Options from '../layouts/Options/Options';
 
 const Home = () => {
   return (
     <>
       <Options />
-      <ContentFood />
+      <Catalog />
     </>
   );
 };
