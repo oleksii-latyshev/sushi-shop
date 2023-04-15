@@ -5,7 +5,11 @@ import Catalog from '../layouts/Catalog/Catalog';
 import Options from '../layouts/Options/Options';
 import type { ICategory, Sushi } from '../types';
 
-const Home = () => {
+export interface HomeProps {
+  searchValue: string;
+}
+
+const Home = ({ searchValue }: HomeProps) => {
   const [activeCategory, setActiveCategory] = useState<ICategory>({
     id: 0,
     name: 'все',
@@ -16,6 +20,7 @@ const Home = () => {
   });
   const [sushi, setSushi] = useState<Sushi[]>([]);
   const [categories, setCategories] = useState<ICategory[]>([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   return (
     <>
@@ -28,6 +33,9 @@ const Home = () => {
         onClickCategory={setActiveCategory}
       />
       <Catalog
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        searchValue={searchValue}
         sushi={sushi}
         setSushi={setSushi}
         activeCategory={activeCategory}

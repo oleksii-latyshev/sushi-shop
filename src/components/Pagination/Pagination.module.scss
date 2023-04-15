@@ -1,0 +1,45 @@
+@import '../../sass/variables.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  li {
+    cursor: pointer;
+
+    a {
+      background: $background-interactive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: $font-interactive;
+    }
+
+    &:hover {
+      opacity: $opacity-active;
+    }
+  }
+
+  // global для кастомных классов
+  :global {
+    .selected {
+      a {
+        background: $background-active;
+      }
+    }
+
+    .disabled {
+      a {
+        color: $font-color;
+        background: $background-content;
+      }
+    }
+  }
+}

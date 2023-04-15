@@ -2,25 +2,45 @@
 
 .wrapper {
   flex: 1;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   background-color: $background-content;
-  color: $font-color;
-  border: none;
   border: 2px solid $background-content;
   border-radius: 10px;
   padding: 10px 15px;
-  font-size: 1rem;
 
   &:hover {
     border: 2px solid $font-color;
   }
 
-  &:placeholder {
-    color: $font-color;
-    opacity: 0.8;
+  &:focus-within {
+    border: 2px solid $active;
   }
 
-  &:focus {
-    border: 2px solid $active;
+  .input {
+    width: 100%;
+    font-size: 1rem;
+
+    margin-left: 10px;
+    color: $font-color;
+    border: none;
+    background: initial;
+
+    &::placeholder {
+    }
+  }
+
+  .clearIcon {
+    cursor: pointer;
+    font-size: 1rem;
+    color: $font-color;
+    background: initial;
+    border: none;
+    z-index: 2;
+
+    &:hover {
+      color: $active;
+    }
   }
 }
