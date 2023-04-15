@@ -1,4 +1,4 @@
-export interface Food {
+export interface Sushi {
   id: number;
   name: string;
   price: number;
@@ -7,4 +7,9 @@ export interface Food {
   img: string;
   category: number;
   rating: number;
+}
+
+export interface ICategory {
+  id: number;
+  name: string;
 }

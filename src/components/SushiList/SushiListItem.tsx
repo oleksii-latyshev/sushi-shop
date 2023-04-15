@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { Food } from 'src/types/types';
 
-import styles from './FoodList.module.scss';
+import type { Sushi } from '../../types';
+import styles from './SushiList.module.scss';
 
-type FoodListItemProps = Food;
+type SushiListItemProps = Sushi;
 
 const FoodListItem = ({
   id,
@@ -15,7 +15,7 @@ const FoodListItem = ({
   counts,
   rating,
   weight,
-}: FoodListItemProps) => {
+}: SushiListItemProps) => {
   const [cartCount, setCartCount] = useState(0);
   const [selectSize, setSelectSize] = useState(counts[0]); // TODO проверить на ререндер массив, мб useMemo нужно будет заюзать
 

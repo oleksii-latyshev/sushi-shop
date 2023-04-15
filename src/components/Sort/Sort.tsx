@@ -3,34 +3,37 @@ import React, { useState } from 'react';
 import styles from './Sort.module.scss';
 import SortItem from './SortItem';
 
-interface SortOption {
-  title: string;
+export interface SortProps {
+  selectedSort: SortOption;
+  onSelectSort: React.Dispatch<React.SetStateAction<SortOption>>;
+}
+
+export interface SortOption {
+  name: string;
+  byProperty: string; // TODO через pick к типу sushi
 }
 
 const sortOptions: SortOption[] = [
-  { title: 'популярности' },
-  { title: 'новизне' },
-  { title: 'убыванию цены' },
-  { title: 'возрастанию цены' },
+  { name: 'рейтингу', byProperty: 'rating' },
+  { name: 'алфавиту', byProperty: 'name' },
+  { name: 'убыванию цены', byProperty: '-price' },
+  { name: 'возрастанию цены', byProperty: 'price' },
 ];
 
-const Sort = () => {
+const Sort = ({ selectedSort, onSelectSort }: SortProps) => {
   const [open, setOpen] = useState(false);
-  const [selectedSort, setSelectedSort] = useState(0);
 
-  const sortName = sortOptions[selectedSort].title;
-
-  const onClickSortItem = (i: number) => {
-    setSelectedSort(i);
+  const onClickSortItem = (sortOption: SortOption) => {
+    onSelectSort(sortOption);
     setOpen(false);
   };
 
-  const sortItemsElements = sortOptions.map(({ title }, i) => (
+  const sortItemsElements = sortOptions.map(({ name, byProperty }) => (
     <SortItem
-      key={i}
-      title={title}
-      onClick={() => onClickSortItem(i)}
-      className={selectedSort === i ? styles.active : ''}
+      key={name}
+      name={name}
+      onClick={() => onClickSortItem({ name, byProperty })}
+      className={selectedSort.byProperty === byProperty ? styles.active : ''}
     />
   ));
 
@@ -51,7 +54,7 @@ const Sort = () => {
             />
           </svg>
           <b>Сортировка по:</b>
-          <span>{sortName}</span>
+          <span>{selectedSort.name}</span>
         </button>
       </div>
       {open && (

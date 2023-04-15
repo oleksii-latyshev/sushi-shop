@@ -1,11 +1,25 @@
 import React from 'react';
 
-import FoodList from '../../components/FoodList/FoodList';
+import type { SortOption } from '../../components/Sort/Sort';
+import SushiList from '../../components/SushiList/SushiList';
+import type { ICategory, Sushi } from '../../types';
 
-const Catalog = () => {
+interface CatalogProps {
+  sushi: Sushi[];
+  setSushi: React.Dispatch<React.SetStateAction<Sushi[]>>;
+  activeCategory: ICategory;
+  selectedSort: SortOption;
+}
+
+const Catalog = ({ sushi, setSushi, activeCategory, selectedSort }: CatalogProps) => {
   return (
     <div>
-      <FoodList />
+      <SushiList
+        sushi={sushi}
+        setSushi={setSushi}
+        activeCategory={activeCategory}
+        selectedSort={selectedSort}
+      />
     </div>
   );
 };

@@ -14,7 +14,16 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "./"
+    "baseUrl": "/"
+    // "paths": {
+    //   // "@/*": ["/*"],
+    //   "@/components/*": ["/components/*"],
+    //   "@/layouts/*": ["/layouts/*"],
+    //   "@/services/*": ["/services/*"],
+    //   "@/store/*": ["/store/*"],
+    //   "@/sass/*": ["/sass/*"],
+    //   "@/assets/*": ["/assets/*"]
+    // }
     // "paths": {
     //   "@/assets/*": ["assets/*"],
     //   "@/components/*": ["src/components/*"],

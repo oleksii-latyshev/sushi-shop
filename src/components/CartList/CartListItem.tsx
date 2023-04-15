@@ -1,10 +1,9 @@
-// import styles from './CartList.module.scss';
-import './CartList.scss';
-
 import React from 'react';
-import type { Food } from 'src/types';
+import type { Sushi } from 'types';
 
-export interface CartListItemProps extends Food {
+import styles from './CartList.module.scss';
+
+export interface CartListItemProps extends Sushi {
   inCart: number;
 }
 
@@ -24,26 +23,30 @@ const CartListItem = ({
   const onClickDelete = () => {};
 
   return (
-    <li className='item'>
-      <div className='img'>
-        <img className='pizza-block__image' src={img} alt='Pizza' />
+    <li className={styles.item}>
+      <div className={styles.img}>
+        <img src={img} alt='Pizza' />
       </div>
-      <div className='info'>
+      <div className={styles.info}>
         <h3>{name}</h3>
         <p>{weight} г</p>
       </div>
-      <div className='count'>
-        <button disabled={inCart === 1} onClick={onClickRemove} className='circleButton'>
+      <div className={styles.count}>
+        <button
+          disabled={inCart === 1}
+          onClick={onClickRemove}
+          className={styles.circleButton}
+        >
           <i className='fa-solid fa-minus' />
         </button>
         <b>{inCart}</b>
-        <button onClick={onClickAdd} className='circleButton'>
+        <button onClick={onClickAdd} className={styles.circleButton}>
           <i className='fa-solid fa-plus' />
         </button>
       </div>
-      <b className='price'>{price * inCart} грн</b>
-      <div className='remove'>
-        <button onClick={onClickDelete} className='circleButton'>
+      <b className={styles.price}>{price * inCart} грн</b>
+      <div className={styles.remove}>
+        <button onClick={onClickDelete} className={styles.circleButton}>
           <i className='fa-solid fa-xmark' />
         </button>
       </div>

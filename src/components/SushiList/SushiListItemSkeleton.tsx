@@ -3,7 +3,7 @@ import '../../sass/variables.scss';
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 
-import styles from './FoodList.module.scss';
+import styles from './SushiList.module.scss';
 
 const FoodListItemSkeleton = () => (
   <ContentLoader

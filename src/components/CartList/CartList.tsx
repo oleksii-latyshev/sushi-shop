@@ -1,9 +1,7 @@
-// import styles from './CartList.module.scss';
-import './CartList.scss';
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import styles from './CartList.module.scss';
 import type { CartListItemProps } from './CartListItem';
 import CartListItem from './CartListItem';
 
@@ -41,13 +39,13 @@ const CartList = () => {
   const totalPrice = 0;
 
   return (
-    <div className='cart'>
-      <div className='top'>
-        <h1 className='title'>
+    <div className={styles.cart}>
+      <div className={styles.top}>
+        <h1 className={styles.title}>
           <i className='fa-solid fa-cart-shopping' />
           Корзина
         </h1>
-        <div className='clearBtn'>
+        <div className={styles.clearBtn}>
           <button onClick={onClickClear}>
             <i className='fa-solid fa-trash' />
             <span>Очистить корзину</span>
@@ -55,10 +53,10 @@ const CartList = () => {
         </div>
       </div>
 
-      <div className='list'>{CartElements}</div>
+      <div className={styles.list}>{CartElements}</div>
 
-      <div className='bottom'>
-        <div className='details'>
+      <div className={styles.bottom}>
+        <div className={styles.details}>
           <span>
             Всего заказано: <b>{totalCount} шт.</b>
           </span>
@@ -66,8 +64,8 @@ const CartList = () => {
             Сумма заказа: <b>{totalPrice} грн</b>
           </span>
         </div>
-        <div className='buttons'>
-          <Link to='/' className='button go-back-btn'>
+        <div className={styles.buttons}>
+          <Link to='/' className={`${styles.button} ${styles.goBackBtn}`}>
             <svg
               width='8'
               height='14'

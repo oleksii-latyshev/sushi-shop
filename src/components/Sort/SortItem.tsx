@@ -1,15 +1,15 @@
 import React from 'react';
 
 interface SortItemInstance {
-  title: string;
+  name: string;
   className: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const SortItem = ({ title, className, onClick }: SortItemInstance) => {
+const SortItem = ({ name, className, onClick }: SortItemInstance) => {
   return (
     <li className={className}>
-      <button onClick={onClick}>{title}</button>
+      <button onClick={onClick}>{name}</button>
     </li>
   );
 };

@@ -1,13 +1,38 @@
-import React from 'react';
+import { useState } from 'react';
 
+import type { SortOption } from '../components/Sort/Sort';
 import Catalog from '../layouts/Catalog/Catalog';
 import Options from '../layouts/Options/Options';
+import type { ICategory, Sushi } from '../types';
 
 const Home = () => {
+  const [activeCategory, setActiveCategory] = useState<ICategory>({
+    id: 0,
+    name: 'все',
+  });
+  const [selectedSort, setSelectedSort] = useState<SortOption>({
+    name: 'рейтингу',
+    byProperty: 'rating',
+  });
+  const [sushi, setSushi] = useState<Sushi[]>([]);
+  const [categories, setCategories] = useState<ICategory[]>([]);
+
   return (
     <>
-      <Options />
-      <Catalog />
+      <Options
+        categories={categories}
+        setCategories={setCategories}
+        selectedSort={selectedSort}
+        onSelectSort={setSelectedSort}
+        activeCategory={activeCategory}
+        onClickCategory={setActiveCategory}
+      />
+      <Catalog
+        sushi={sushi}
+        setSushi={setSushi}
+        activeCategory={activeCategory}
+        selectedSort={selectedSort}
+      />
     </>
   );
 };
