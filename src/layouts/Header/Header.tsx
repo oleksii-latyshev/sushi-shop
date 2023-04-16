@@ -6,20 +6,13 @@ import type { SearchProps } from '../../components/Search/Search';
 import Search from '../../components/Search/Search';
 import styles from './Header.module.scss';
 
-type HeaderProps = Pick<SearchProps, 'searchValue' | 'setSearchValue'>;
-
-const Header = ({ searchValue, setSearchValue }: HeaderProps) => {
+const Header = () => {
   return (
     <div className={styles.wrapper}>
       <Link className={styles.logo} to='/'>
         sushi
       </Link>
-      <Search
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        className={styles.search}
-        placeholder='enter the name of the sushi...'
-      />
+      <Search className={styles.search} placeholder='enter the name of the sushi...' />
       <Menu />
     </div>
   );

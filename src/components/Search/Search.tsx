@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { SearchContext } from '../../store/context';
 import styles from './Search.module.scss';
 
 export interface SearchProps {
   placeholder: string;
   className?: string;
-  searchValue: string;
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Search = ({ className, placeholder, searchValue, setSearchValue }: SearchProps) => {
+const Search = ({ className, placeholder }: SearchProps) => {
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
+
+  const { searchValue, setSearchValue } = useContext(SearchContext);
 
   return (
     <label htmlFor='search' className={conditionalClass}>

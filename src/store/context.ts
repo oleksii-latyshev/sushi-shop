@@ -7,3 +7,13 @@ const initialValue = {
 };
 
 export const context = createContext(initialValue);
+
+interface SearchContextInstance {
+  searchValue: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const SearchContext = createContext<SearchContextInstance>({
+  searchValue: '',
+  setSearchValue: () => {},
+});

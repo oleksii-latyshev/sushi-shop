@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import type { HomeProps } from '../../pages/Home';
+import { SearchContext } from '../../store/context';
 import type { ICategory, Sushi } from '../../types';
 import { isArraySushi } from '../../types';
 import type { SortOption } from '../Sort/Sort';
@@ -8,16 +8,13 @@ import styles from './SushiList.module.scss';
 import SushiListItem from './SushiListItem';
 import SushiListItemSkeleton from './SushiListItemSkeleton';
 
-interface SushiListProps extends Pick<HomeProps, 'searchValue'> {
+interface SushiListProps {
   sushi: Sushi[];
   setSushi: React.Dispatch<React.SetStateAction<Sushi[]>>;
   activeCategory: ICategory;
   selectedSort: SortOption;
   currentPage: number;
 }
-
-// ! http://localhost:3000/sushi
-// ! ?_sort=price&_order=asc
 
 const limitOnPage = 8;
 
@@ -26,21 +23,21 @@ const SushiList = ({
   setSushi,
   activeCategory,
   selectedSort,
-  searchValue,
   currentPage,
 }: SushiListProps) => {
   const [isLoading, setIsLoading] = useState(true);
+  const { searchValue } = useContext(SearchContext);
 
   useEffect(() => {
     setIsLoading(true);
 
-    const category = activeCategory.id > 0 ? `category=${activeCategory.id}` : '';
+    const category = activeCategory.id > 0 ? `&category=${activeCategory.id}` : '';
     const order = selectedSort.byProperty.includes('-') ? 'desc' : 'asc';
     const sort = selectedSort.byProperty.replace('-', '');
     const search = searchValue ? `&name_like=${searchValue}` : '';
 
     fetch(
-      `http://localhost:3000/sushi?_page=${currentPage}&_limit=${limitOnPage}&${category}&_sort=${sort}&_order=${order}${search}`
+      `http://localhost:3000/sushi?_page=${currentPage}&_limit=${limitOnPage}${category}&_sort=${sort}&_order=${order}${search}`
     )
       .then((response) => response.json())
       .then((json) => {
