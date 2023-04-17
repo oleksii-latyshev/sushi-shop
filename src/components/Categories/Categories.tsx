@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import type { ICategory } from '../../types';
@@ -23,10 +24,10 @@ const Categories = ({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/category')
-      .then((response) => response.json())
-      .then((json) => {
-        if (isArrayCategories(json)) setCategories(json);
+    axios
+      .get('http://localhost:3000/category')
+      .then((response) => {
+        if (isArrayCategories(response.data)) setCategories(response.data);
       })
       .catch((error: string) => {
         throw new Error(error);

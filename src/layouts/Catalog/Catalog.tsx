@@ -1,20 +1,26 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Pagination from '../../components/Pagination/Pagination';
 import SushiList from '../../components/SushiList/SushiList';
+import { setCurrentPage } from '../../store/slices/optionsSlice';
 import type { IState, Sushi } from '../../types';
 import styles from './Catalog.module.scss';
 
 interface CatalogProps {
   sushi: Sushi[];
   setSushi: React.Dispatch<React.SetStateAction<Sushi[]>>;
-  currentPage: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Catalog = ({ sushi, setSushi, currentPage, setCurrentPage }: CatalogProps) => {
-  const { activeCategory, activeSort } = useSelector((state: IState) => state.options);
+const Catalog = ({ sushi, setSushi }: CatalogProps) => {
+  const { activeCategory, activeSort, currentPage } = useSelector(
+    (state: IState) => state.options
+  );
+  const dispatch = useDispatch();
+
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page));
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -25,7 +31,7 @@ const Catalog = ({ sushi, setSushi, currentPage, setCurrentPage }: CatalogProps)
         activeCategory={activeCategory}
         selectedSort={activeSort}
       />
-      <Pagination onChangePage={(page: number) => setCurrentPage(page)} />
+      <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
 };

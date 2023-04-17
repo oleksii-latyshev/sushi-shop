@@ -5,6 +5,7 @@ import type { ICategory, ISort } from '../../types';
 export interface InitialStateOptions {
   activeCategory: ICategory;
   activeSort: ISort;
+  currentPage: number;
 }
 
 const initialState: InitialStateOptions = {
@@ -16,6 +17,7 @@ const initialState: InitialStateOptions = {
     name: 'рейтингу',
     byProperty: 'rating',
   },
+  currentPage: 1,
 };
 
 export const optionsSlice = createSlice({
@@ -28,9 +30,12 @@ export const optionsSlice = createSlice({
     setSort(state, action: { payload: ISort }) {
       state.activeSort = action.payload;
     },
+    setCurrentPage(state, action: { payload: number }) {
+      state.currentPage = action.payload;
+    },
   },
 });
 
-export const { setCategory, setSort } = optionsSlice.actions;
+export const { setCategory, setSort, setCurrentPage } = optionsSlice.actions;
 
 export default optionsSlice.reducer;

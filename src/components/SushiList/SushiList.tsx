@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 
 import { SearchContext } from '../../store/context';
@@ -35,12 +36,12 @@ const SushiList = ({
     const sort = selectedSort.byProperty.replace('-', '');
     const search = searchValue ? `&name_like=${searchValue}` : '';
 
-    fetch(
-      `http://localhost:3000/sushi?_page=${currentPage}&_limit=${limitOnPage}${category}&_sort=${sort}&_order=${order}${search}`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        if (isArraySushi(json)) setSushi(json);
+    axios
+      .get(
+        `http://localhost:3000/sushi?_page=${currentPage}&_limit=${limitOnPage}${category}&_sort=${sort}&_order=${order}${search}`
+      )
+      .then((response) => {
+        if (isArraySushi(response.data)) setSushi(response.data);
       })
       .catch((error: string) => {
         throw new Error(error);
