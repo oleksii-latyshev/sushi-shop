@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { SearchContext } from '../../store/context';
-import type { ICategory, Sushi } from '../../types';
+import type { ICategory, ISort, Sushi } from '../../types';
 import { isArraySushi } from '../../types';
-import type { SortOption } from '../Sort/Sort';
 import styles from './SushiList.module.scss';
 import SushiListItem from './SushiListItem';
 import SushiListItemSkeleton from './SushiListItemSkeleton';
@@ -12,7 +11,7 @@ interface SushiListProps {
   sushi: Sushi[];
   setSushi: React.Dispatch<React.SetStateAction<Sushi[]>>;
   activeCategory: ICategory;
-  selectedSort: SortOption;
+  selectedSort: ISort;
   currentPage: number;
 }
 

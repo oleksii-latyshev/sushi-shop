@@ -1,29 +1,19 @@
 import React, { useState } from 'react';
 
+import type { ISort } from '../../types';
 import styles from './Sort.module.scss';
 import SortItem from './SortItem';
 
 export interface SortProps {
-  selectedSort: SortOption;
-  onSelectSort: React.Dispatch<React.SetStateAction<SortOption>>;
+  sortOptions: ISort[];
+  selectedSort: ISort;
+  onSelectSort: (category: ISort) => void;
 }
 
-export interface SortOption {
-  name: string;
-  byProperty: string; // TODO через pick к типу sushi
-}
-
-const sortOptions: SortOption[] = [
-  { name: 'рейтингу', byProperty: 'rating' },
-  { name: 'алфавиту', byProperty: 'name' },
-  { name: 'убыванию цены', byProperty: '-price' },
-  { name: 'возрастанию цены', byProperty: 'price' },
-];
-
-const Sort = ({ selectedSort, onSelectSort }: SortProps) => {
+const Sort = ({ sortOptions, selectedSort, onSelectSort }: SortProps) => {
   const [open, setOpen] = useState(false);
 
-  const onClickSortItem = (sortOption: SortOption) => {
+  const onClickSortItem = (sortOption: ISort) => {
     onSelectSort(sortOption);
     setOpen(false);
   };

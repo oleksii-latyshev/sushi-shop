@@ -1,19 +1,33 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import type { CategoriesProps } from '../../components/Categories/Categories';
 import Categories from '../../components/Categories/Categories';
-import type { SortProps } from '../../components/Sort/Sort';
 import Sort from '../../components/Sort/Sort';
+import { setCategory, setSort } from '../../store/slices/optionsSlice';
+import type { ICategory, ISort, IState } from '../../types';
 import styles from './Options.module.scss';
 
-interface OptionsProps extends SortProps, CategoriesProps {}
+type OptionsProps = Pick<CategoriesProps, 'categories' | 'setCategories'>;
 
-const Options = ({
-  categories,
-  setCategories,
-  selectedSort,
-  onSelectSort,
-  activeCategory,
-  onClickCategory,
-}: OptionsProps) => {
+const sortOptions: ISort[] = [
+  { name: 'рейтингу', byProperty: 'rating' },
+  { name: 'алфавиту', byProperty: 'name' },
+  { name: 'убыванию цены', byProperty: '-price' },
+  { name: 'возрастанию цены', byProperty: 'price' },
+];
+
+const Options = ({ categories, setCategories }: OptionsProps) => {
+  const { activeCategory, activeSort } = useSelector((state: IState) => state.options);
+  const dispatch = useDispatch();
+
+  const onClickCategory = (category: ICategory) => {
+    dispatch(setCategory(category));
+  };
+
+  const onSelectSort = (sortOption: ISort) => {
+    dispatch(setSort(sortOption));
+  };
+
   return (
     <div className={styles.wrapper}>
       <Categories
@@ -22,7 +36,7 @@ const Options = ({
         activeCategory={activeCategory}
         onClickCategory={onClickCategory}
       />
-      <Sort selectedSort={selectedSort} onSelectSort={onSelectSort} />
+      <Sort sortOptions={sortOptions} selectedSort={activeSort} onSelectSort={onSelectSort} />
     </div>
   );
 };

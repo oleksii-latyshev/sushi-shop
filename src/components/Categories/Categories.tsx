@@ -8,7 +8,7 @@ import Category from './Category';
 export interface CategoriesProps {
   categories: ICategory[];
   activeCategory: ICategory;
-  onClickCategory: React.Dispatch<React.SetStateAction<ICategory>>;
+  onClickCategory: (category: ICategory) => void;
   setCategories: React.Dispatch<React.SetStateAction<ICategory[]>>;
 }
 
