@@ -24,3 +24,9 @@ export interface ISort {
 export interface IState {
   options: InitialStateOptions;
 }
+
+export interface QueryParams {
+  sortProperty: string;
+  categoryId: number;
+  page: number;
+}

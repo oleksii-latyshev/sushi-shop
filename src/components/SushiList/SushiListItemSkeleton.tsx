@@ -1,5 +1,3 @@
-import '../../sass/variables.scss';
-
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 

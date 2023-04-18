@@ -1,14 +1,19 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import type { IStringifyOptions } from 'qs';
+import qs from 'qs';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { SearchContext } from '../../store/context';
-import type { ICategory, ISort, Sushi } from '../../types';
+import { setOptions } from '../../store/slices/optionsSlice';
+import type { ICategory, ISort, QueryParams, Sushi } from '../../types';
 import { isArraySushi } from '../../types';
 import styles from './SushiList.module.scss';
 import SushiListItem from './SushiListItem';
 import SushiListItemSkeleton from './SushiListItemSkeleton';
 
 interface SushiListProps {
+  searchValue: string;
   sushi: Sushi[];
   setSushi: React.Dispatch<React.SetStateAction<Sushi[]>>;
   activeCategory: ICategory;
@@ -19,6 +24,7 @@ interface SushiListProps {
 const limitOnPage = 8;
 
 const SushiList = ({
+  searchValue,
   sushi,
   setSushi,
   activeCategory,
@@ -26,7 +32,19 @@ const SushiList = ({
   currentPage,
 }: SushiListProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const { searchValue } = useContext(SearchContext);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      // dispatch(
+      //   setOptions({
+      //     ...params,
+      //   })
+      // );
+    }
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -50,6 +68,18 @@ const SushiList = ({
 
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory.id, selectedSort.byProperty, searchValue, currentPage]);
+
+  useEffect(() => {
+    const queryParams: QueryParams = {
+      sortProperty: selectedSort.byProperty,
+      categoryId: activeCategory.id,
+      page: currentPage,
+    };
+    const options: IStringifyOptions = {};
+    const queryString: string = qs.stringify(queryParams, options);
+
+    navigate(`?${queryString}`);
   }, [activeCategory.id, selectedSort.byProperty, searchValue, currentPage]);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

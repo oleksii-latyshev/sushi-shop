@@ -1,7 +1,9 @@
 import debounce from 'lodash.debounce';
-import React, { useCallback, useContext, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { SearchContext } from '../../store/context';
+import { setSearchValue } from '../../store/slices/optionsSlice';
+import type { IState } from '../../types';
 import styles from './Search.module.scss';
 
 export interface SearchProps {
@@ -10,16 +12,17 @@ export interface SearchProps {
 }
 
 const Search = ({ className, placeholder }: SearchProps) => {
+  const searchValue = useSelector((state: IState) => state.options.searchValue);
+  const dispatch = useDispatch();
+
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
 
   const [value, setValue] = useState('');
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { searchValue, setSearchValue } = useContext(SearchContext);
-
   const onClickClose = () => {
-    setSearchValue('');
+    dispatch(setSearchValue(''));
     setValue('');
     inputRef.current?.focus();
   };
@@ -28,9 +31,10 @@ const Search = ({ className, placeholder }: SearchProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceUpdateSearchValue = useCallback(
     debounce((inputText: string) => {
-      setSearchValue(inputText);
+      dispatch(setSearchValue(inputText));
+      setValue(inputText);
     }, 200),
-    [setSearchValue]
+    []
   );
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,8 +1,6 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import type { ICategory } from '../../types';
-import { isArrayCategories } from '../../types';
 import styles from './Categories.module.scss';
 import Category from './Category';
 
@@ -10,30 +8,10 @@ export interface CategoriesProps {
   categories: ICategory[];
   activeCategory: ICategory;
   onClickCategory: (category: ICategory) => void;
-  setCategories: React.Dispatch<React.SetStateAction<ICategory[]>>;
 }
 
-// const categories: string[] = ['все', 'сеты', 'роллы'];
-
-const Categories = ({
-  categories,
-  setCategories,
-  activeCategory,
-  onClickCategory,
-}: CategoriesProps) => {
+const Categories = ({ categories, activeCategory, onClickCategory }: CategoriesProps) => {
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:3000/category')
-      .then((response) => {
-        if (isArrayCategories(response.data)) setCategories(response.data);
-      })
-      .catch((error: string) => {
-        throw new Error(error);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const categoriesElements = categories.map(({ id, name }) => (
     <Category

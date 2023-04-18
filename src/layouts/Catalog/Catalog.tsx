@@ -13,7 +13,7 @@ interface CatalogProps {
 }
 
 const Catalog = ({ sushi, setSushi }: CatalogProps) => {
-  const { activeCategory, activeSort, currentPage } = useSelector(
+  const { activeCategory, activeSort, currentPage, searchValue } = useSelector(
     (state: IState) => state.options
   );
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ const Catalog = ({ sushi, setSushi }: CatalogProps) => {
   return (
     <div className={styles.wrapper}>
       <SushiList
+        searchValue={searchValue}
         currentPage={currentPage}
         sushi={sushi}
         setSushi={setSushi}

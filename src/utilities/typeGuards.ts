@@ -1,4 +1,4 @@
-import type { ICategory, Sushi } from './types';
+import type { ICategory, Sushi } from '../types/types';
 
 export const isArraySushi = (arg: unknown): arg is Sushi[] => {
   if (!Array.isArray(arg)) {
