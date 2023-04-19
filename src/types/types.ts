@@ -1,3 +1,4 @@
+import type { InitialStateCart } from '../store/slices/cartSlice';
 import type { InitialStateOptions } from '../store/slices/optionsSlice';
 
 export interface Sushi {
@@ -9,6 +10,11 @@ export interface Sushi {
   img: string;
   category: number;
   rating: number;
+}
+
+export interface SushiCart extends Pick<Sushi, 'id' | 'name' | 'price' | 'img' | 'category'> {
+  count: number;
+  inCartCount: number;
 }
 
 export interface ICategory {
@@ -23,6 +29,7 @@ export interface ISort {
 
 export interface IState {
   options: InitialStateOptions;
+  cart: InitialStateCart;
 }
 
 export interface QueryParams {

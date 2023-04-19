@@ -1,4 +1,4 @@
-import type { ICategory, Sushi } from '../types/types';
+import type { ICategory, Sushi, SushiCart } from '../types/types';
 
 export const isArraySushi = (arg: unknown): arg is Sushi[] => {
   if (!Array.isArray(arg)) {
@@ -30,4 +30,11 @@ export const isArrayCategories = (arg: unknown): arg is ICategory[] => {
       typeof (item as ICategory).name === 'string'
     );
   });
+};
+
+export const isSushiCart = (arg: unknown): arg is SushiCart => {
+  if (arg && typeof arg === 'object') {
+    return 'id' in arg && 'count' in arg;
+  }
+  return false;
 };

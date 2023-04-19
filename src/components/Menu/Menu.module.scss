@@ -8,9 +8,31 @@
   i {
     font-size: 2rem;
     cursor: pointer;
+  }
 
+  .icon {
     &:hover {
       opacity: $opacity-active;
     }
+  }
+}
+
+.cart {
+  position: relative;
+
+  span {
+    font-weight: bold;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: $background-active;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    opacity: $opacity-active;
   }
 }

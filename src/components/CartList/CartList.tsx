@@ -1,42 +1,21 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { clearCart } from '../../store/slices/cartSlice';
+import type { IState } from '../../types';
 import styles from './CartList.module.scss';
-import type { CartListItemProps } from './CartListItem';
 import CartListItem from './CartListItem';
 
-const inCart: CartListItemProps[] = [
-  {
-    id: 1,
-    name: 'Love ua',
-    price: 649,
-    counts: [10, 15, 20],
-    weight: 11,
-    img: 'https://mafia.ua/storage/editor/fotos/450x450/love-ua.jpeg',
-    category: 5,
-    rating: 7,
-    inCart: 1,
-  },
-  {
-    id: 2,
-    name: 'Сан сет',
-    price: 899,
-    counts: [15, 20, 50],
-    weight: 12,
-    img: 'https://mafia.ua/storage/editor/fotos/450x450/san-set.jpeg',
-    category: 5,
-    rating: 10,
-    inCart: 3,
-  },
-];
-
 const CartList = () => {
-  const onClickClear = () => {};
+  const dispatch = useDispatch();
+  const { sushi, totalPrice, totalCount } = useSelector((state: IState) => state.cart);
 
-  const CartElements = inCart.map((element) => <CartListItem key={element.id} {...element} />);
+  const onClickClear = () => dispatch(clearCart());
 
-  const totalCount = inCart.length;
-  const totalPrice = 0;
+  const CartElements = sushi.map((item) => (
+    <CartListItem key={item.id * item.count} {...item} />
+  ));
 
   return (
     <div className={styles.cart}>
@@ -84,7 +63,7 @@ const CartList = () => {
 
             <span>Вернуться назад</span>
           </Link>
-          <div className='button pay-btn'>
+          <div className={`${styles.button} ${styles.payBtn}`}>
             <span>Оплатить сейчас</span>
           </div>
         </div>

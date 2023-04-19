@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import type { Sushi } from '../../types';
+import { addSushi } from '../../store/slices/cartSlice';
+import type { IState, Sushi, SushiCart } from '../../types';
 import styles from './SushiList.module.scss';
 
 type SushiListItemProps = Sushi;
@@ -16,8 +18,25 @@ const FoodListItem = ({
   rating,
   weight,
 }: SushiListItemProps) => {
-  const [cartCount, setCartCount] = useState(0);
   const [selectSize, setSelectSize] = useState(counts[0]); // TODO проверить на ререндер массив, мб useMemo нужно будет заюзать
+  const sushiInCart = useSelector((state: IState) =>
+    state.cart.sushi.filter((item) => item.id === id)
+  );
+  const dispatch = useDispatch();
+
+  const onClickAddToCart = () => {
+    const item: SushiCart = {
+      id,
+      name,
+      img,
+      price,
+      category,
+      count: selectSize,
+      inCartCount: 1,
+    };
+
+    dispatch(addSushi(item));
+  };
 
   const choicesElements = counts.map((countFood) => (
     <li key={countFood} className={selectSize === countFood ? styles.active : ''}>
@@ -27,16 +46,22 @@ const FoodListItem = ({
 
   return (
     <li className={styles.item}>
-      <Link to='sushi/1'>
+      <Link to={`sushi/${id}`}>
         <img src={img} alt={name} />
         <h3>{name}</h3>
       </Link>
 
       <ul className={styles.choices}>{choicesElements}</ul>
+      {/* можно тут реализовать блок, который будет показывать рейтинг суши и вес основанный на выбранном количестве * на из пропса вес */}
       <div className={styles.footer}>
         <p>{price} грн</p>
-        <button onClick={() => setCartCount((prev) => prev + 1)}>
-          Добавить {cartCount > 0 ? <span>{cartCount}</span> : null}
+        <button onClick={onClickAddToCart}>
+          Добавить
+          {sushiInCart.length > 0 ? (
+            <span>
+              {sushiInCart.reduce((sumCount, item) => sumCount + item.inCartCount, 0)}
+            </span>
+          ) : null}
         </button>
       </div>
     </li>

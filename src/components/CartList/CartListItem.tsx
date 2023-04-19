@@ -1,50 +1,40 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import type { Sushi } from '../../types';
+import { addSushi, deleteSushi, removeSushi } from '../../store/slices/cartSlice';
+import type { SushiCart } from '../../types';
 import styles from './CartList.module.scss';
 
-export interface CartListItemProps extends Sushi {
-  inCart: number;
-}
+const CartListItem = ({ id, name, img, price, category, count, inCartCount }: SushiCart) => {
+  const dispatch = useDispatch();
 
-const CartListItem = ({
-  id,
-  category,
-  counts,
-  img,
-  name,
-  price,
-  rating,
-  weight,
-  inCart,
-}: CartListItemProps) => {
-  const onClickRemove = () => {};
-  const onClickAdd = () => {};
-  const onClickDelete = () => {};
+  const onClickRemove = () => dispatch(removeSushi({ id, count }));
+  const onClickAdd = () => dispatch(addSushi({ id, count }));
+  const onClickDelete = () => dispatch(deleteSushi({ id, count }));
 
   return (
     <li className={styles.item}>
       <div className={styles.img}>
-        <img src={img} alt='Pizza' />
+        <img src={img} alt={name} />
       </div>
       <div className={styles.info}>
         <h3>{name}</h3>
-        <p>{weight} г</p>
+        <p>в количестве: {count}</p>
       </div>
       <div className={styles.count}>
         <button
-          disabled={inCart === 1}
+          disabled={inCartCount === 1}
           onClick={onClickRemove}
           className={styles.circleButton}
         >
           <i className='fa-solid fa-minus' />
         </button>
-        <b>{inCart}</b>
+        <b>{inCartCount}</b>
         <button onClick={onClickAdd} className={styles.circleButton}>
           <i className='fa-solid fa-plus' />
         </button>
       </div>
-      <b className={styles.price}>{price * inCart} грн</b>
+      <b className={styles.price}>{price * inCartCount} грн</b>
       <div className={styles.remove}>
         <button onClick={onClickDelete} className={styles.circleButton}>
           <i className='fa-solid fa-xmark' />

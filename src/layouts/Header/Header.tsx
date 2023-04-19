@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Menu from '../../components/Menu/Menu';
-import type { SearchProps } from '../../components/Search/Search';
 import Search from '../../components/Search/Search';
 import styles from './Header.module.scss';
 

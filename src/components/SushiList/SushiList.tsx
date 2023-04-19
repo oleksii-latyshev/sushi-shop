@@ -32,10 +32,10 @@ const SushiList = ({
   currentPage,
 }: SushiListProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const isSearch = useRef(false);
-  const isMounted = useRef(false);
+  // const isMounted = useRef(false);
 
   const fetchPizzas = () => {
     setIsLoading(true);
@@ -58,19 +58,20 @@ const SushiList = ({
       .finally(() => setIsLoading(false));
   };
 
-  useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
-      dispatch(
-        setOptions({
-          sortProperty: params.sortProperty,
-          categoryId: params.categoryId,
-          page: +params.page,
-        })
-      );
-      isSearch.current = true;
-    }
-  }, []);
+  // FIXME в асинхронную санку нужно закинуть, чтоб после загрузки категорий эти действия выполнялись
+  // useEffect(() => {
+  //   if (window.location.search) {
+  //     const params = qs.parse(window.location.search.substring(1));
+  //     dispatch(
+  //       setOptions({
+  //         sortProperty: params.sortProperty,
+  //         categoryId: params.categoryId,
+  //         page: +params.page,
+  //       })
+  //     );
+  //     isSearch.current = true;
+  //   }
+  // }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -81,21 +82,22 @@ const SushiList = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCategory.id, selectedSort.byProperty, searchValue, currentPage]);
 
-  useEffect(() => {
-    // если был первый рендер и изменился массив зависимостей, то выполняем вшивание в адресную строку
-    if (isMounted.current) {
-      const queryParams: QueryParams = {
-        sortProperty: selectedSort.byProperty,
-        categoryId: activeCategory.id,
-        page: currentPage,
-      };
-      const options: IStringifyOptions = {};
-      const queryString: string = qs.stringify(queryParams, options);
+  // FIXME туда же, что и выше
+  // useEffect(() => {
+  //   // если был первый рендер и изменился массив зависимостей, то выполняем вшивание в адресную строку
+  //   if (isMounted.current) {
+  //     const queryParams: QueryParams = {
+  //       sortProperty: selectedSort.byProperty,
+  //       categoryId: activeCategory.id,
+  //       page: currentPage,
+  //     };
+  //     const options: IStringifyOptions = {};
+  //     const queryString: string = qs.stringify(queryParams, options);
 
-      navigate(`?${queryString}`);
-    }
-    isMounted.current = true;
-  }, [activeCategory.id, selectedSort.byProperty, searchValue, currentPage]);
+  //     navigate(`?${queryString}`);
+  //   }
+  //   isMounted.current = true;
+  // }, [activeCategory.id, selectedSort.byProperty, searchValue, currentPage]);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const skeletons = [...new Array(6)].map((_, i) => <SushiListItemSkeleton key={i} />);
