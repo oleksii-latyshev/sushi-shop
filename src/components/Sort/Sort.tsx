@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import type { ISort } from '../../types';
 import styles from './Sort.module.scss';
@@ -12,11 +12,24 @@ export interface SortProps {
 
 const Sort = ({ sortOptions, selectedSort, onSelectSort }: SortProps) => {
   const [open, setOpen] = useState(false);
+  const sortRef = useRef<HTMLDivElement>(null);
 
   const onClickSortItem = (sortOption: ISort) => {
     onSelectSort(sortOption);
     setOpen(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
+        setOpen(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => document.body.removeEventListener('click', handleClickOutside);
+  }, []);
 
   const sortItemsElements = sortOptions.map(({ name, byProperty }) => (
     <SortItem
@@ -28,7 +41,7 @@ const Sort = ({ sortOptions, selectedSort, onSelectSort }: SortProps) => {
   ));
 
   return (
-    <div className={styles.sort}>
+    <div ref={sortRef} className={styles.sort}>
       <div className={styles.label}>
         <button onClick={() => setOpen((prev) => !prev)}>
           <svg

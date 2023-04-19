@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { IStringifyOptions } from 'qs';
 import qs from 'qs';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -34,19 +34,10 @@ const SushiList = ({
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isSearch = useRef(false);
+  const isMounted = useRef(false);
 
-  useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
-      // dispatch(
-      //   setOptions({
-      //     ...params,
-      //   })
-      // );
-    }
-  }, []);
-
-  useEffect(() => {
+  const fetchPizzas = () => {
     setIsLoading(true);
 
     const category = activeCategory.id > 0 ? `&category=${activeCategory.id}` : '';
@@ -65,21 +56,45 @@ const SushiList = ({
         throw new Error(error);
       })
       .finally(() => setIsLoading(false));
+  };
 
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      dispatch(
+        setOptions({
+          sortProperty: params.sortProperty,
+          categoryId: params.categoryId,
+          page: +params.page,
+        })
+      );
+      isSearch.current = true;
+    }
+  }, []);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
+
+    if (!isSearch.current) fetchPizzas();
+
+    isSearch.current = false;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCategory.id, selectedSort.byProperty, searchValue, currentPage]);
 
   useEffect(() => {
-    const queryParams: QueryParams = {
-      sortProperty: selectedSort.byProperty,
-      categoryId: activeCategory.id,
-      page: currentPage,
-    };
-    const options: IStringifyOptions = {};
-    const queryString: string = qs.stringify(queryParams, options);
+    // если был первый рендер и изменился массив зависимостей, то выполняем вшивание в адресную строку
+    if (isMounted.current) {
+      const queryParams: QueryParams = {
+        sortProperty: selectedSort.byProperty,
+        categoryId: activeCategory.id,
+        page: currentPage,
+      };
+      const options: IStringifyOptions = {};
+      const queryString: string = qs.stringify(queryParams, options);
 
-    navigate(`?${queryString}`);
+      navigate(`?${queryString}`);
+    }
+    isMounted.current = true;
   }, [activeCategory.id, selectedSort.byProperty, searchValue, currentPage]);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment

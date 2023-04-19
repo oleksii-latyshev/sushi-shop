@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Sushi } from 'types';
 
+import type { Sushi } from '../../types';
 import styles from './CartList.module.scss';
 
 export interface CartListItemProps extends Sushi {
