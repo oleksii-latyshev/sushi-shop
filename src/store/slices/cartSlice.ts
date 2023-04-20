@@ -56,9 +56,8 @@ export const cartSlice = createSlice({
       state = calcTotals(state);
     },
     deleteSushi(state, action: { payload: Pick<SushiCart, 'id' | 'count'> }) {
-      console.log(action.payload);
       state.sushi = state.sushi.filter(
-        (item) => item.id !== action.payload.id && item.count !== action.payload.count // FIXME удаляет по id не учитывая count
+        (item) => item.id !== action.payload.id || item.count !== action.payload.count
       );
 
       state = calcTotals(state);
