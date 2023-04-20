@@ -1,5 +1,6 @@
 import type { InitialStateCart } from '../store/slices/cartSlice';
 import type { InitialStateOptions } from '../store/slices/optionsSlice';
+import type { InitialStateSushi } from '../store/slices/sushiSlice';
 
 export interface Sushi {
   id: number;
@@ -30,6 +31,7 @@ export interface ISort {
 export interface IState {
   options: InitialStateOptions;
   cart: InitialStateCart;
+  sushi: InitialStateSushi;
 }
 
 export interface QueryParams {

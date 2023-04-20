@@ -1,9 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 import type { ICategory, ISort, QueryParams } from '../../types';
+import { isArrayCategories } from '../../types';
 import { sortOptions } from '../../utilities/constants';
 
 export interface InitialStateOptions {
+  categoriesStatus: 'idle' | 'pending' | 'succeeded' | 'failed';
   categories: ICategory[];
   sortOptions: ISort[];
   activeCategory: ICategory;
@@ -13,6 +16,7 @@ export interface InitialStateOptions {
 }
 
 const initialState: InitialStateOptions = {
+  categoriesStatus: 'idle',
   categories: [],
   sortOptions,
   activeCategory: {
@@ -26,6 +30,13 @@ const initialState: InitialStateOptions = {
   currentPage: 1,
   searchValue: '',
 };
+
+export const fetchCategories = createAsyncThunk('options/fetchCategories', async () => {
+  const response = await axios.get('http://localhost:3000/category');
+
+  if (isArrayCategories(response.data)) return response.data;
+  throw Error('unexpected data');
+});
 
 export const optionsSlice = createSlice({
   name: 'options',
@@ -58,6 +69,20 @@ export const optionsSlice = createSlice({
     setSearchValue(state, action: { payload: string }) {
       state.searchValue = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCategories.pending, (state) => {
+      state.categoriesStatus = 'pending';
+      state.categories = [];
+    });
+    builder.addCase(fetchCategories.fulfilled, (state, action) => {
+      state.categoriesStatus = 'succeeded';
+      state.categories = action.payload;
+    });
+    builder.addCase(fetchCategories.rejected, (state) => {
+      state.categoriesStatus = 'failed';
+      state.categories = [];
+    });
   },
 });
 

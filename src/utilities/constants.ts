@@ -6,3 +6,5 @@ export const sortOptions: ISort[] = [
   { name: 'убыванию цены', byProperty: '-price' },
   { name: 'возрастанию цены', byProperty: 'price' },
 ];
+
+export const sushiLimitOnPage = 8;

@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Pagination from '../../components/Pagination/Pagination';
 import SushiList from '../../components/SushiList/SushiList';
 import { setCurrentPage } from '../../store/slices/optionsSlice';
-import type { IState, Sushi } from '../../types';
+import type { QueryOptions } from '../../store/slices/sushiSlice';
+import { fetchSushi } from '../../store/slices/sushiSlice';
+import type { IState } from '../../types';
 import styles from './Catalog.module.scss';
 
-interface CatalogProps {
-  sushi: Sushi[];
-  setSushi: React.Dispatch<React.SetStateAction<Sushi[]>>;
-}
-
-const Catalog = ({ sushi, setSushi }: CatalogProps) => {
+const Catalog = () => {
   const { activeCategory, activeSort, currentPage, searchValue } = useSelector(
     (state: IState) => state.options
   );
+  const { items, status } = useSelector((state: IState) => state.sushi);
   const dispatch = useDispatch();
+
+  const isSearch = useRef(false);
+
+  const fetchPizzas = () => {
+    const category = activeCategory.id > 0 ? `&category=${activeCategory.id}` : '';
+    const order = activeSort.byProperty.includes('-') ? 'desc' : 'asc';
+    const sort = activeSort.byProperty.replace('-', '');
+    const search = searchValue ? `&name_like=${searchValue}` : '';
+
+    const queryOptions: QueryOptions = { category, order, sort, search, currentPage };
+
+    dispatch(fetchSushi(queryOptions));
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    if (!isSearch.current) fetchPizzas();
+
+    isSearch.current = false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory.id, activeSort.byProperty, searchValue, currentPage]);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -24,14 +44,7 @@ const Catalog = ({ sushi, setSushi }: CatalogProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <SushiList
-        searchValue={searchValue}
-        currentPage={currentPage}
-        sushi={sushi}
-        setSushi={setSushi}
-        activeCategory={activeCategory}
-        selectedSort={activeSort}
-      />
+      <SushiList sushi={items} status={status} />
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
