@@ -1,5 +1,12 @@
 import type { ICategory, Sushi, SushiCart } from '../types/types';
 
+export const isSushi = (arg: unknown): arg is Sushi => {
+  if (arg && typeof arg === 'object') {
+    return 'id' in arg && 'name' in arg;
+  }
+  return false;
+};
+
 export const isArraySushi = (arg: unknown): arg is Sushi[] => {
   if (!Array.isArray(arg)) {
     return false;

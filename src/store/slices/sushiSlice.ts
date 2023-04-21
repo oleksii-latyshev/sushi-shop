@@ -2,15 +2,17 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import type { IState, Sushi } from '../../types';
-import { isArraySushi } from '../../types';
+import { isArraySushi, isSushi } from '../../types';
 import { sushiLimitOnPage } from '../../utilities/constants';
 
 export interface InitialStateSushi {
+  selectedSushi: Sushi | null;
   items: Sushi[];
   status: 'idle' | 'pending' | 'succeeded' | 'failed';
 }
 
 const initialState: InitialStateSushi = {
+  selectedSushi: null,
   items: [],
   status: 'idle',
 };
@@ -31,9 +33,16 @@ export const fetchSushi = createAsyncThunk(
     );
 
     if (isArraySushi(response.data)) return response.data;
-    throw Error('unexpected data');
+    throw Error('unexpected data when fetching list of sushi');
   }
 );
+
+export const fetchSushiById = createAsyncThunk('sushi/fetchSushiById', async (id: number) => {
+  const response = await axios.get(`http://localhost:3000/sushi/${id}`);
+
+  if (isSushi(response.data)) return response.data;
+  throw Error('unexpected data when fetching sushi by id');
+});
 
 export const sushiSlice = createSlice({
   name: 'sushi',
@@ -55,6 +64,18 @@ export const sushiSlice = createSlice({
     builder.addCase(fetchSushi.rejected, (state) => {
       state.status = 'failed';
       state.items = [];
+    });
+    builder.addCase(fetchSushiById.pending, (state) => {
+      state.status = 'pending';
+      state.selectedSushi = null;
+    });
+    builder.addCase(fetchSushiById.fulfilled, (state, action) => {
+      state.status = 'succeeded';
+      state.selectedSushi = action.payload;
+    });
+    builder.addCase(fetchSushiById.rejected, (state) => {
+      state.status = 'failed';
+      state.selectedSushi = null;
     });
   },
 });

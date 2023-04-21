@@ -1,7 +1,9 @@
 import React from 'react';
 
+import SushiDescription from '../layouts/SushiDescription/SushiDescription';
+
 const Sushi = () => {
-  return <div>Sushi</div>;
+  return <SushiDescription />;
 };
 
 export default Sushi;
