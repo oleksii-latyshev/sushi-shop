@@ -3,17 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Pagination from '../../components/Pagination/Pagination';
 import SushiList from '../../components/SushiList/SushiList';
-import { setCurrentPage } from '../../store/slices/optionsSlice';
+import { selectOptions, setCurrentPage } from '../../store/slices/optionsSlice';
 import type { QueryOptions } from '../../store/slices/sushiSlice';
-import { fetchSushi } from '../../store/slices/sushiSlice';
-import type { IState } from '../../types';
+import { fetchSushi, selectSushi } from '../../store/slices/sushiSlice';
 import styles from './Catalog.module.scss';
 
 const Catalog = () => {
-  const { activeCategory, activeSort, currentPage, searchValue } = useSelector(
-    (state: IState) => state.options
-  );
-  const { items, status } = useSelector((state: IState) => state.sushi);
+  const { activeCategory, activeSort, currentPage, searchValue } = useSelector(selectOptions);
+  const { items, status } = useSelector(selectSushi);
   const dispatch = useDispatch();
 
   const isSearch = useRef(false);

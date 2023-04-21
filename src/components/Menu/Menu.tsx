@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import type { IState } from '../../types';
+import { selectCartTotalCount } from '../../store/slices/cartSlice';
 import styles from './Menu.module.scss';
 
 interface MenuInstance {
@@ -10,7 +10,7 @@ interface MenuInstance {
 }
 
 const Menu = ({ className }: MenuInstance) => {
-  const totalCount = useSelector((state: IState) => state.cart.totalCount);
+  const totalCount = useSelector(selectCartTotalCount);
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
 
   return (

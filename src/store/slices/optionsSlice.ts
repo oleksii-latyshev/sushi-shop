@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import type { ICategory, ISort, QueryParams } from '../../types';
+import type { ICategory, ISort, IState, QueryParams } from '../../types';
 import { isArrayCategories } from '../../types';
 import { sortOptions } from '../../utilities/constants';
 
@@ -85,6 +85,8 @@ export const optionsSlice = createSlice({
     });
   },
 });
+
+export const selectOptions = (state: IState) => state.options;
 
 export const {
   setCategory,

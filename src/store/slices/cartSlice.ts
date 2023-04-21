@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { SushiCart } from '../../types';
+import type { IState, SushiCart } from '../../types';
 import { isSushiCart } from '../../types';
 
 export interface InitialStateCart {
@@ -67,6 +67,9 @@ export const cartSlice = createSlice({
     },
   },
 });
+
+export const selectCart = (state: IState) => state.cart;
+export const selectCartTotalCount = (state: IState) => state.cart.totalCount;
 
 export const { addSushi, clearCart, removeSushi, deleteSushi } = cartSlice.actions;
 

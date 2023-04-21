@@ -3,14 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from '../../components/Categories/Categories';
 import Sort from '../../components/Sort/Sort';
-import { fetchCategories, setCategory, setSortOption } from '../../store/slices/optionsSlice';
-import type { ICategory, ISort, IState } from '../../types';
+import {
+  fetchCategories,
+  selectOptions,
+  setCategory,
+  setSortOption,
+} from '../../store/slices/optionsSlice';
+import type { ICategory, ISort } from '../../types';
 import styles from './Options.module.scss';
 
 const Options = () => {
-  const { activeCategory, activeSort, categories, sortOptions } = useSelector(
-    (state: IState) => state.options
-  );
+  const { activeCategory, activeSort, categories, sortOptions } = useSelector(selectOptions);
   const dispatch = useDispatch();
 
   useEffect(() => {

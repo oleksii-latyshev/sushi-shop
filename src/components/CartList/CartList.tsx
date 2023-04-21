@@ -2,14 +2,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { clearCart } from '../../store/slices/cartSlice';
-import type { IState } from '../../types';
+import { clearCart, selectCart } from '../../store/slices/cartSlice';
 import styles from './CartList.module.scss';
 import CartListItem from './CartListItem';
 
 const CartList = () => {
   const dispatch = useDispatch();
-  const { sushi, totalPrice, totalCount } = useSelector((state: IState) => state.cart);
+  const { sushi, totalPrice, totalCount } = useSelector(selectCart);
 
   const onClickClear = () => dispatch(clearCart());
 

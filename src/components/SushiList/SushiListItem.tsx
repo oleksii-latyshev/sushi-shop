@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { addSushi } from '../../store/slices/cartSlice';
-import type { IState, Sushi, SushiCart } from '../../types';
+import { selectSushiById } from '../../store/slices/sushiSlice';
+import type { Sushi, SushiCart } from '../../types';
 import styles from './SushiList.module.scss';
 
 type SushiListItemProps = Sushi;
@@ -19,9 +20,7 @@ const FoodListItem = ({
   weight,
 }: SushiListItemProps) => {
   const [selectSize, setSelectSize] = useState(counts[0]); // TODO проверить на ререндер массив, мб useMemo нужно будет заюзать
-  const sushiInCart = useSelector((state: IState) =>
-    state.cart.sushi.filter((item) => item.id === id)
-  );
+  const sushiInCart = useSelector(selectSushiById(id));
   const dispatch = useDispatch();
 
   const onClickAddToCart = () => {

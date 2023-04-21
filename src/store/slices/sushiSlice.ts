@@ -1,9 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import type { Sushi } from '../../types';
+import type { IState, Sushi } from '../../types';
 import { isArraySushi } from '../../types';
 import { sushiLimitOnPage } from '../../utilities/constants';
+
+export interface InitialStateSushi {
+  items: Sushi[];
+  status: 'idle' | 'pending' | 'succeeded' | 'failed';
+}
+
+const initialState: InitialStateSushi = {
+  items: [],
+  status: 'idle',
+};
 
 export interface QueryOptions {
   category: string;
@@ -24,16 +34,6 @@ export const fetchSushi = createAsyncThunk(
     throw Error('unexpected data');
   }
 );
-
-export interface InitialStateSushi {
-  items: Sushi[];
-  status: 'idle' | 'pending' | 'succeeded' | 'failed';
-}
-
-const initialState: InitialStateSushi = {
-  items: [],
-  status: 'idle',
-};
 
 export const sushiSlice = createSlice({
   name: 'sushi',
@@ -58,6 +58,10 @@ export const sushiSlice = createSlice({
     });
   },
 });
+
+export const selectSushi = (state: IState) => state.sushi;
+export const selectSushiById = (id: number) => (state: IState) =>
+  state.cart.sushi.filter((item) => item.id === id);
 
 export const { setItems } = sushiSlice.actions;
 
