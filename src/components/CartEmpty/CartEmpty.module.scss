@@ -1,0 +1,32 @@
+@import '../../assets/sass/variables.scss';
+
+.wrapper {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  h2 {
+    text-align: center;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: $background-active;
+    border: none;
+    padding: 10px 20px;
+
+    height: 100%;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: $font-color;
+    border-radius: 10px;
+
+    &:hover {
+      opacity: $opacity-active;
+    }
+  }
+}

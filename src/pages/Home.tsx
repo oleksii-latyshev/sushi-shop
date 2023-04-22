@@ -1,7 +1,7 @@
 import Catalog from '../layouts/Catalog/Catalog';
 import Options from '../layouts/Options/Options';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <>
       <Options />

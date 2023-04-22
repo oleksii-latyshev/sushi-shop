@@ -10,8 +10,12 @@ export interface CategoriesProps {
   onClickCategory: (category: ICategory) => void;
 }
 
-const Categories = ({ categories, activeCategory, onClickCategory }: CategoriesProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+const Categories: React.FC<CategoriesProps> = ({
+  categories,
+  activeCategory,
+  onClickCategory,
+}) => {
+  const [isLoading, setIsLoading] = useState(true); // TODO сделать заглушку для загрузки
 
   const categoriesElements = categories.map(({ id, name }) => (
     <Category

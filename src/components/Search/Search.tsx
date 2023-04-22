@@ -11,15 +11,13 @@ export interface SearchProps {
   className?: string;
 }
 
-const Search = ({ className, placeholder }: SearchProps) => {
+const Search: React.FC<SearchProps> = ({ className, placeholder }) => {
   const searchValue = useSelector((state: IState) => state.options.searchValue);
   const dispatch = useDispatch();
+  const [value, setValue] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
-
-  const [value, setValue] = useState('');
-
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const onClickClose = () => {
     dispatch(setSearchValue(''));

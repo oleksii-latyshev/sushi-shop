@@ -12,7 +12,7 @@ import {
 import type { ICategory, ISort } from '../../types';
 import styles from './Options.module.scss';
 
-const Options = () => {
+const Options: React.FC = () => {
   const { activeCategory, activeSort, categories, sortOptions } = useSelector(selectOptions);
   const dispatch = useDispatch();
 

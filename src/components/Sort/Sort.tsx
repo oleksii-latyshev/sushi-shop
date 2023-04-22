@@ -10,7 +10,7 @@ export interface SortProps {
   onSelectSort: (category: ISort) => void;
 }
 
-const Sort = ({ sortOptions, selectedSort, onSelectSort }: SortProps) => {
+const Sort: React.FC<SortProps> = ({ sortOptions, selectedSort, onSelectSort }) => {
   const [open, setOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
 

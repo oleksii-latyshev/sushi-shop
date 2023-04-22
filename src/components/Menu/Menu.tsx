@@ -5,11 +5,11 @@ import { NavLink } from 'react-router-dom';
 import { selectCartTotalCount } from '../../store/slices/cartSlice';
 import styles from './Menu.module.scss';
 
-interface MenuInstance {
+interface MenuProps {
   className?: string;
 }
 
-const Menu = ({ className }: MenuInstance) => {
+const Menu: React.FC<MenuProps> = ({ className }) => {
   const totalCount = useSelector(selectCartTotalCount);
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
 

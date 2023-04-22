@@ -10,7 +10,7 @@ interface SushiListProps {
   status: 'idle' | 'pending' | 'succeeded' | 'failed';
 }
 
-const SushiList = ({ sushi, status }: SushiListProps) => {
+const SushiList: React.FC<SushiListProps> = ({ sushi, status }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const skeletons = [...new Array(6)].map((_, i) => <SushiListItemSkeleton key={i} />);
 
@@ -37,7 +37,7 @@ export default SushiList;
 // const navigate = useNavigate();
 // const isMounted = useRef(false);
 
-// FIXME в асинхронную санку нужно закинуть, чтоб после загрузки категорий эти действия выполнялись
+// FIXME в асинхронную сагу нужно закинуть, чтоб после загрузки категорий эти действия выполнялись
 // useEffect(() => {
 //   if (window.location.search) {
 //     const params = qs.parse(window.location.search.substring(1));

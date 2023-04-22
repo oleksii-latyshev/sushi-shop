@@ -5,7 +5,15 @@ import { addSushi, deleteSushi, removeSushi } from '../../store/slices/cartSlice
 import type { SushiCart } from '../../types';
 import styles from './CartList.module.scss';
 
-const CartListItem = ({ id, name, img, price, category, count, inCartCount }: SushiCart) => {
+const CartListItem: React.FC<SushiCart> = ({
+  id,
+  name,
+  img,
+  price,
+  category,
+  count,
+  inCartCount,
+}) => {
   const dispatch = useDispatch();
 
   const onClickRemove = () => dispatch(removeSushi({ id, count }));

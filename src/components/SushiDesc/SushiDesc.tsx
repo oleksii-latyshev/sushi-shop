@@ -3,7 +3,16 @@ import React from 'react';
 import type { Sushi } from '../../types';
 import styles from './SushiDesc.module.scss';
 
-const SushiDesc = ({ id, category, counts, img, name, price, rating, weight }: Sushi) => {
+const SushiDesc: React.FC<Sushi> = ({
+  id,
+  category,
+  counts,
+  img,
+  name,
+  price,
+  rating,
+  weight,
+}) => {
   return (
     <div className={styles.wrapper}>
       <img src={img} alt={name} />

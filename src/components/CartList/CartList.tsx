@@ -6,7 +6,7 @@ import { clearCart, selectCart } from '../../store/slices/cartSlice';
 import styles from './CartList.module.scss';
 import CartListItem from './CartListItem';
 
-const CartList = () => {
+const CartList: React.FC = () => {
   const dispatch = useDispatch();
   const { sushi, totalPrice, totalCount } = useSelector(selectCart);
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import CartList from '../../components/CartList/CartList';
 
-const CartBlock = () => {
+const CartBlock: React.FC = () => {
   return (
     <div>
       <CartList />

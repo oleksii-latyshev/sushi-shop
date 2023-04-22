@@ -7,7 +7,7 @@ import SushiDescError from '../../components/SushiDesc/SushiDescError';
 import SushiDescLoading from '../../components/SushiDesc/SushiDescLoading';
 import { fetchSushiById, selectSushi } from '../../store/slices/sushiSlice';
 
-const SushiDescription = () => {
+const SushiDescription: React.FC = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { selectedSushi, status } = useSelector(selectSushi);

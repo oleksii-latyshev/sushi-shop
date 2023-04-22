@@ -5,7 +5,7 @@ import Menu from '../../components/Menu/Menu';
 import Search from '../../components/Search/Search';
 import styles from './Header.module.scss';
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <Link className={styles.logo} to='/'>

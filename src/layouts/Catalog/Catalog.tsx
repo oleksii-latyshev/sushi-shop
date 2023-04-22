@@ -8,7 +8,7 @@ import type { QueryOptions } from '../../store/slices/sushiSlice';
 import { fetchSushi, selectSushi } from '../../store/slices/sushiSlice';
 import styles from './Catalog.module.scss';
 
-const Catalog = () => {
+const Catalog: React.FC = () => {
   const { activeCategory, activeSort, currentPage, searchValue } = useSelector(selectOptions);
   const { items, status } = useSelector(selectSushi);
   const dispatch = useDispatch();

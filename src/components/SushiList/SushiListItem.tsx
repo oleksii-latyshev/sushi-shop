@@ -9,7 +9,7 @@ import styles from './SushiList.module.scss';
 
 type SushiListItemProps = Sushi;
 
-const FoodListItem = ({
+const FoodListItem: React.FC<SushiListItemProps> = ({
   id,
   name,
   img,
@@ -18,7 +18,7 @@ const FoodListItem = ({
   counts,
   rating,
   weight,
-}: SushiListItemProps) => {
+}) => {
   const [selectSize, setSelectSize] = useState(counts[0]); // TODO проверить на ререндер массив, мб useMemo нужно будет заюзать
   const sushiInCart = useSelector(selectSushiById(id));
   const dispatch = useDispatch();

@@ -6,7 +6,7 @@ interface SortItemInstance {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const SortItem = ({ name, className, onClick }: SortItemInstance) => {
+const SortItem: React.FC<SortItemInstance> = ({ name, className, onClick }) => {
   return (
     <li className={className}>
       <button onClick={onClick}>{name}</button>
