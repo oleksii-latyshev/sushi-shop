@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import Categories from '../../components/Categories/Categories';
@@ -22,13 +22,13 @@ const Options: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onClickCategory = (category: ICategory) => {
+  const onClickCategory = useCallback((category: ICategory) => {
     dispatch(setCategory(category));
-  };
+  }, []);
 
-  const onSelectSort = (sortOption: ISort) => {
+  const onSelectSort = useCallback((sortOption: ISort) => {
     dispatch(setSortOption(sortOption));
-  };
+  }, []);
 
   return (
     <div className={styles.wrapper}>

@@ -31,7 +31,7 @@ const CartListItem: React.FC<SushiCart> = ({
       </div>
       <div className={styles.count}>
         <button
-          disabled={inCartCount === 1}
+          disabled={inCartCount <= 1}
           onClick={onClickRemove}
           className={styles.circleButton}
         >

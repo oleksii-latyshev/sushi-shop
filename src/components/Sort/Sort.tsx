@@ -10,7 +10,7 @@ export interface SortProps {
   onSelectSort: (category: ISort) => void;
 }
 
-const Sort: React.FC<SortProps> = ({ sortOptions, selectedSort, onSelectSort }) => {
+const Sort: React.FC<SortProps> = React.memo(({ sortOptions, selectedSort, onSelectSort }) => {
   const [open, setOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
 
@@ -67,6 +67,8 @@ const Sort: React.FC<SortProps> = ({ sortOptions, selectedSort, onSelectSort }) 
       )}
     </div>
   );
-};
+});
+
+Sort.displayName = 'Sort';
 
 export default Sort;

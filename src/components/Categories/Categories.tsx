@@ -1,3 +1,4 @@
+import { useWhyDidYouUpdate } from 'ahooks';
 import React, { useState } from 'react';
 
 import type { ICategory } from '../../types';
@@ -10,33 +11,39 @@ export interface CategoriesProps {
   onClickCategory: (category: ICategory) => void;
 }
 
-const Categories: React.FC<CategoriesProps> = ({
-  categories,
-  activeCategory,
-  onClickCategory,
-}) => {
-  const [isLoading, setIsLoading] = useState(true); // TODO сделать заглушку для загрузки
+const Categories: React.FC<CategoriesProps> = React.memo(
+  ({ categories, activeCategory, onClickCategory }) => {
+    const [isLoading, setIsLoading] = useState(true); // TODO сделать заглушку для загрузки
 
-  const categoriesElements = categories.map(({ id, name }) => (
-    <Category
-      key={id}
-      title={name}
-      className={activeCategory.id === id ? styles.active : ''}
-      onClick={() => onClickCategory({ id, name })}
-    />
-  ));
+    useWhyDidYouUpdate('Categories', {
+      categories,
+      activeCategory,
+      onClickCategory,
+    });
 
-  return (
-    <ul className={styles.list}>
+    const categoriesElements = categories.map(({ id, name }) => (
       <Category
-        key={0}
-        title='все'
-        className={activeCategory.id === 0 ? styles.active : ''}
-        onClick={() => onClickCategory({ id: 0, name: 'все' })}
+        key={id}
+        title={name}
+        className={activeCategory.id === id ? styles.active : ''}
+        onClick={() => onClickCategory({ id, name })}
       />
-      {categoriesElements}
-    </ul>
-  );
-};
+    ));
+
+    return (
+      <ul className={styles.list}>
+        <Category
+          key={0}
+          title='все'
+          className={activeCategory.id === 0 ? styles.active : ''}
+          onClick={() => onClickCategory({ id: 0, name: 'все' })}
+        />
+        {categoriesElements}
+      </ul>
+    );
+  }
+);
+
+Categories.displayName = 'Categories';
 
 export default Categories;
