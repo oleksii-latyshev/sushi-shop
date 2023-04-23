@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Pagination from '../../components/Pagination/Pagination';
 import SushiList from '../../components/SushiList/SushiList';
+import { useAppDispatch } from '../../hooks';
 import { selectOptions, setCurrentPage } from '../../store/slices/optionsSlice';
 import type { QueryOptions } from '../../store/slices/sushiSlice';
 import { fetchSushi, selectSushi } from '../../store/slices/sushiSlice';
@@ -11,7 +12,7 @@ import styles from './Catalog.module.scss';
 const Catalog: React.FC = () => {
   const { activeCategory, activeSort, currentPage, searchValue } = useSelector(selectOptions);
   const { items, status } = useSelector(selectSushi);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const isSearch = useRef(false);
 
@@ -23,7 +24,7 @@ const Catalog: React.FC = () => {
 
     const queryOptions: QueryOptions = { category, order, sort, search, currentPage };
 
-    dispatch(fetchSushi(queryOptions));
+    dispatch(fetchSushi(queryOptions)).catch((error) => console.log(error));
   };
 
   useEffect(() => {

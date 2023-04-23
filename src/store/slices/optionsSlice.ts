@@ -1,11 +1,13 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import type { ICategory, ISort, IState, QueryParams } from '../../types';
+import type { ICategory, ISort, QueryParams } from '../../types';
 import { isArrayCategories } from '../../types';
 import { sortOptions } from '../../utilities/constants';
+import type { RootState } from '../store';
 
-export interface InitialStateOptions {
+interface InitialStateOptions {
   categoriesStatus: 'idle' | 'pending' | 'succeeded' | 'failed';
   categories: ICategory[];
   sortOptions: ISort[];
@@ -31,33 +33,38 @@ const initialState: InitialStateOptions = {
   searchValue: '',
 };
 
-export const fetchCategories = createAsyncThunk('options/fetchCategories', async () => {
-  const response = await axios.get('http://localhost:3000/category');
+export const fetchCategories = createAsyncThunk<ICategory[], void>(
+  'options/fetchCategories',
+  async () => {
+    const { data } = await axios.get<ICategory[]>('http://localhost:3000/category');
 
-  if (isArrayCategories(response.data)) return response.data;
-  throw Error('unexpected data');
-});
+    // if (isArrayCategories(response.data)) return response.data;
+    // throw Error('unexpected data');
+
+    return data;
+  }
+);
 
 export const optionsSlice = createSlice({
   name: 'options',
   initialState,
   reducers: {
-    setCategories(state, action: { payload: ICategory[] }) {
+    setCategories(state, action: PayloadAction<ICategory[]>) {
       state.categories = action.payload;
     },
-    setCategory(state, action: { payload: ICategory }) {
+    setCategory(state, action: PayloadAction<ICategory>) {
       state.activeCategory = action.payload;
     },
-    setSortOptions(state, action: { payload: ICategory[] }) {
+    setSortOptions(state, action: PayloadAction<ICategory[]>) {
       state.categories = action.payload;
     },
-    setSortOption(state, action: { payload: ISort }) {
+    setSortOption(state, action: PayloadAction<ISort>) {
       state.activeSort = action.payload;
     },
-    setCurrentPage(state, action: { payload: number }) {
+    setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
-    setOptions(state, action: { payload: QueryParams }) {
+    setOptions(state, action: PayloadAction<QueryParams>) {
       state.currentPage = action.payload.page || initialState.currentPage;
       state.activeSort =
         state.sortOptions.find((sort) => sort.byProperty === action.payload.sortProperty) ||
@@ -66,7 +73,7 @@ export const optionsSlice = createSlice({
         state.categories.find((category) => category.id === action.payload.categoryId) ||
         initialState.activeCategory;
     },
-    setSearchValue(state, action: { payload: string }) {
+    setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
   },
@@ -86,7 +93,7 @@ export const optionsSlice = createSlice({
   },
 });
 
-export const selectOptions = (state: IState) => state.options;
+export const selectOptions = (state: RootState) => state.options;
 
 export const {
   setCategory,

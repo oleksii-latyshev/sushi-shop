@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Categories from '../../components/Categories/Categories';
 import Sort from '../../components/Sort/Sort';
+import { useAppDispatch } from '../../hooks';
 import {
   fetchCategories,
   selectOptions,
@@ -14,10 +15,11 @@ import styles from './Options.module.scss';
 
 const Options: React.FC = () => {
   const { activeCategory, activeSort, categories, sortOptions } = useSelector(selectOptions);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategories());
+    dispatch(fetchCategories()).catch((error) => console.log(error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onClickCategory = (category: ICategory) => {

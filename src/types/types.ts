@@ -1,7 +1,3 @@
-import type { InitialStateCart } from '../store/slices/cartSlice';
-import type { InitialStateOptions } from '../store/slices/optionsSlice';
-import type { InitialStateSushi } from '../store/slices/sushiSlice';
-
 export interface Sushi {
   id: number;
   name: string;
@@ -25,13 +21,7 @@ export interface ICategory {
 
 export interface ISort {
   name: string;
-  byProperty: string;
-}
-
-export interface IState {
-  options: InitialStateOptions;
-  cart: InitialStateCart;
-  sushi: InitialStateSushi;
+  byProperty: 'rating' | 'name' | '-price' | 'price';
 }
 
 export interface QueryParams {

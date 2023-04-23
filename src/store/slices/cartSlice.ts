@@ -1,9 +1,11 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { IState, SushiCart } from '../../types';
+import type { SushiCart } from '../../types';
 import { isSushiCart } from '../../types';
+import type { RootState } from '../store';
 
-export interface InitialStateCart {
+interface InitialStateCart {
   sushi: SushiCart[];
   totalPrice: number;
   totalCount: number;
@@ -30,7 +32,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addSushi(state, action: { payload: SushiCart | Pick<SushiCart, 'id' | 'count'> }) {
+    addSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, 'id' | 'count'>>) {
       const findItem = state.sushi.find(
         (item) => item.id === action.payload.id && item.count === action.payload.count
       );
@@ -40,7 +42,7 @@ export const cartSlice = createSlice({
 
       state = calcTotals(state);
     },
-    removeSushi(state, action: { payload: Pick<SushiCart, 'id' | 'count'> }) {
+    removeSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, 'id' | 'count'>>) {
       const findItem = state.sushi.find(
         (item) => item.id === action.payload.id && item.count === action.payload.count
       );
@@ -55,7 +57,7 @@ export const cartSlice = createSlice({
 
       state = calcTotals(state);
     },
-    deleteSushi(state, action: { payload: Pick<SushiCart, 'id' | 'count'> }) {
+    deleteSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, 'id' | 'count'>>) {
       state.sushi = state.sushi.filter(
         (item) => item.id !== action.payload.id || item.count !== action.payload.count
       );
@@ -68,8 +70,8 @@ export const cartSlice = createSlice({
   },
 });
 
-export const selectCart = (state: IState) => state.cart;
-export const selectCartTotalCount = (state: IState) => state.cart.totalCount;
+export const selectCart = (state: RootState) => state.cart;
+export const selectCartTotalCount = (state: RootState) => state.cart.totalCount;
 
 export const { addSushi, clearCart, removeSushi, deleteSushi } = cartSlice.actions;
 

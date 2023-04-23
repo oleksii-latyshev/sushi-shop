@@ -1,11 +1,13 @@
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import type { IState, Sushi } from '../../types';
+import type { Sushi } from '../../types';
 import { isArraySushi, isSushi } from '../../types';
 import { sushiLimitOnPage } from '../../utilities/constants';
+import type { RootState } from '../store';
 
-export interface InitialStateSushi {
+interface InitialStateSushi {
   selectedSushi: Sushi | null;
   items: Sushi[];
   status: 'idle' | 'pending' | 'succeeded' | 'failed';
@@ -25,30 +27,37 @@ export interface QueryOptions {
   currentPage: number;
 }
 
-export const fetchSushi = createAsyncThunk(
+export const fetchSushi = createAsyncThunk<Sushi[], QueryOptions>(
   'sushi/fetchSushi',
-  async ({ category, order, sort, search, currentPage }: QueryOptions) => {
-    const response = await axios.get(
+  async ({ category, order, sort, search, currentPage }) => {
+    const { data } = await axios.get<Sushi[]>(
       `http://localhost:3000/sushi?_page=${currentPage}&_limit=${sushiLimitOnPage}${category}&_sort=${sort}&_order=${order}${search}`
     );
 
-    if (isArraySushi(response.data)) return response.data;
-    throw Error('unexpected data when fetching list of sushi');
+    // if (isArraySushi(response.data)) return response.data;
+    // throw Error('unexpected data when fetching list of sushi');
+
+    return data;
   }
 );
 
-export const fetchSushiById = createAsyncThunk('sushi/fetchSushiById', async (id: number) => {
-  const response = await axios.get(`http://localhost:3000/sushi/${id}`);
+export const fetchSushiById = createAsyncThunk<Sushi, number>(
+  'sushi/fetchSushiById',
+  async (id) => {
+    const { data } = await axios.get<Sushi>(`http://localhost:3000/sushi/${id}`);
 
-  if (isSushi(response.data)) return response.data;
-  throw Error('unexpected data when fetching sushi by id');
-});
+    // if (isSushi(response.data)) return response.data;
+    // throw Error('unexpected data when fetching sushi by id');
+
+    return data;
+  }
+);
 
 export const sushiSlice = createSlice({
   name: 'sushi',
   initialState,
   reducers: {
-    setItems: (state, action: { payload: Sushi[] }) => {
+    setItems: (state, action: PayloadAction<Sushi[]>) => {
       state.items = action.payload;
     },
   },
@@ -80,8 +89,8 @@ export const sushiSlice = createSlice({
   },
 });
 
-export const selectSushi = (state: IState) => state.sushi;
-export const selectSushiById = (id: number) => (state: IState) =>
+export const selectSushi = (state: RootState) => state.sushi;
+export const selectSushiById = (id: number) => (state: RootState) =>
   state.cart.sushi.filter((item) => item.id === id);
 
 export const { setItems } = sushiSlice.actions;
