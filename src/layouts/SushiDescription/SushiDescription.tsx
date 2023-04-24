@@ -5,15 +5,16 @@ import { useParams } from 'react-router-dom';
 import SushiDesc from '../../components/SushiDesc/SushiDesc';
 import SushiDescError from '../../components/SushiDesc/SushiDescError';
 import SushiDescLoading from '../../components/SushiDesc/SushiDescLoading';
+import { useAppDispatch } from '../../hooks';
 import { fetchSushiById, selectSushi } from '../../store/slices/sushiSlice';
 
 const SushiDescription: React.FC = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { selectedSushi, status } = useSelector(selectSushi);
 
   useEffect(() => {
-    dispatch(fetchSushiById(id));
+    dispatch(fetchSushiById(id)).catch((error) => console.log(error));
   }, []);
 
   const errorBlock = status === 'failed' && <SushiDescError />;

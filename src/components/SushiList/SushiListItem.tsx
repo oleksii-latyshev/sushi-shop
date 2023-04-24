@@ -9,7 +9,7 @@ import styles from './SushiList.module.scss';
 
 type SushiListItemProps = Sushi;
 
-const FoodListItem: React.FC<SushiListItemProps> = ({
+const SushiListItem: React.FC<SushiListItemProps> = ({
   id,
   name,
   img,
@@ -67,4 +67,4 @@ const FoodListItem: React.FC<SushiListItemProps> = ({
   );
 };
 
-export default FoodListItem;
+export default SushiListItem;

@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-import type { Food } from '../types';
+import type { Sushi } from '../types';
 
 // import instance from './instance';
 
 const basicUrl = 'http://localhost:5173/sushi.json';
 
 interface ApiResponse {
-  data: Food[];
+  data: Sushi[];
   status: number;
 }
 

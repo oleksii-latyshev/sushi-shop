@@ -3,7 +3,7 @@ import ContentLoader from 'react-content-loader';
 
 import styles from './SushiList.module.scss';
 
-const FoodListItemSkeleton = () => (
+const SushiListItemSkeleton = () => (
   <ContentLoader
     className={styles.item}
     speed={2}
@@ -21,4 +21,4 @@ const FoodListItemSkeleton = () => (
   </ContentLoader>
 );
 // 5363 5420 9501 4800
-export default FoodListItemSkeleton;
+export default SushiListItemSkeleton;

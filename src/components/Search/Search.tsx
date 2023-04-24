@@ -1,9 +1,9 @@
 import debounce from 'lodash.debounce';
 import React, { useCallback, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
+import { useAppSelector } from '../../hooks';
 import { setSearchValue } from '../../store/slices/optionsSlice';
-import type { IState } from '../../types';
 import styles from './Search.module.scss';
 
 export interface SearchProps {
@@ -12,7 +12,7 @@ export interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = ({ className, placeholder }) => {
-  const searchValue = useSelector((state: IState) => state.options.searchValue);
+  const searchValue = useAppSelector((state) => state.options.searchValue);
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);

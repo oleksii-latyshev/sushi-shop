@@ -16,7 +16,6 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
   useEffect(() => {
     if (isMounted) {
       const json = JSON.stringify(sushi);
-      console.log(json);
       localStorage.setItem('cart', json);
     }
     isMounted.current = true;

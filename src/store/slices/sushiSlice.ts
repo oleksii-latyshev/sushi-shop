@@ -41,10 +41,10 @@ export const fetchSushi = createAsyncThunk<Sushi[], QueryOptions>(
   }
 );
 
-export const fetchSushiById = createAsyncThunk<Sushi, number>(
+export const fetchSushiById = createAsyncThunk<Sushi, string | undefined>(
   'sushi/fetchSushiById',
   async (id) => {
-    const { data } = await axios.get<Sushi>(`http://localhost:3000/sushi/${id}`);
+    const { data } = await axios.get<Sushi>(`http://localhost:3000/sushi/${id || 0}`);
 
     // if (isSushi(response.data)) return response.data;
     // throw Error('unexpected data when fetching sushi by id');
