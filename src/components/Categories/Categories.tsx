@@ -15,12 +15,6 @@ const Categories: React.FC<CategoriesProps> = React.memo(
   ({ categories, activeCategory, onClickCategory }) => {
     const [isLoading, setIsLoading] = useState(true); // TODO сделать заглушку для загрузки
 
-    useWhyDidYouUpdate('Categories', {
-      categories,
-      activeCategory,
-      onClickCategory,
-    });
-
     const categoriesElements = categories.map(({ id, name }) => (
       <Category
         key={id}

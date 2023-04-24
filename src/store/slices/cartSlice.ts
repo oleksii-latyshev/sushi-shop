@@ -3,27 +3,30 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { SushiCart } from '../../types';
 import { isSushiCart } from '../../types';
+import {
+  calcTotalCount,
+  calcTotalPrice,
+  getCartFromLocalStorage,
+} from '../../utilities/helpers';
 import type { RootState } from '../store';
 
-interface InitialStateCart {
+export interface InitialStateCart {
   sushi: SushiCart[];
   totalPrice: number;
   totalCount: number;
 }
 
+const { sushi, totalCount, totalPrice } = getCartFromLocalStorage();
+
 const initialState: InitialStateCart = {
-  sushi: [],
-  totalPrice: 0,
-  totalCount: 0,
+  sushi,
+  totalPrice,
+  totalCount,
 };
 
 const calcTotals = (state: InitialStateCart) => {
-  state.totalPrice = state.sushi.reduce(
-    (sumPrice, item) => item.price * item.inCartCount + sumPrice,
-    0
-  );
-
-  state.totalCount = state.sushi.reduce((sumCount, item) => sumCount + item.inCartCount, 0);
+  state.totalPrice = calcTotalPrice(state.sushi);
+  state.totalCount = calcTotalCount(state.sushi);
 
   return state;
 };

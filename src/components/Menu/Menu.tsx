@@ -1,8 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { selectCartTotalCount } from '../../store/slices/cartSlice';
+import { useAppSelector } from '../../hooks';
 import styles from './Menu.module.scss';
 
 interface MenuProps {
@@ -10,8 +9,18 @@ interface MenuProps {
 }
 
 const Menu: React.FC<MenuProps> = ({ className }) => {
-  const totalCount = useSelector(selectCartTotalCount);
+  const { totalCount, sushi } = useAppSelector((state) => state.cart);
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (isMounted) {
+      const json = JSON.stringify(sushi);
+      console.log(json);
+      localStorage.setItem('cart', json);
+    }
+    isMounted.current = true;
+  }, [sushi]);
 
   return (
     <div className={conditionalClass}>
