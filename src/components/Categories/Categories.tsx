@@ -1,30 +1,36 @@
 import { useWhyDidYouUpdate } from 'ahooks';
-import React, { useState } from 'react';
+import React from 'react';
 
+import { useGetAllCategoriesQuery } from '../../store/api/categories.api';
 import type { ICategory } from '../../types';
 import styles from './Categories.module.scss';
 import Category from './Category';
 
 export interface CategoriesProps {
-  categories: ICategory[];
   activeCategory: ICategory;
   onClickCategory: (category: ICategory) => void;
 }
 
 const Categories: React.FC<CategoriesProps> = React.memo(
-  ({ categories, activeCategory, onClickCategory }) => {
-    const [isLoading, setIsLoading] = useState(true); // TODO сделать заглушку для загрузки
+  ({ activeCategory, onClickCategory }) => {
+    const { isLoading, isError, isSuccess, data } = useGetAllCategoriesQuery(null);
 
-    const categoriesElements = categories.map(({ id, name }) => (
-      <Category
-        key={id}
-        title={name}
-        className={activeCategory.id === id ? styles.active : ''}
-        onClick={() => onClickCategory({ id, name })}
-      />
-    ));
+    const categoriesElements = data
+      ? data.map(({ id, name }) => (
+          <Category
+            key={id}
+            title={name}
+            className={activeCategory.id === id ? styles.active : ''}
+            onClick={() => onClickCategory({ id, name })}
+          />
+        ))
+      : [];
 
-    return (
+    const loading = isLoading && <div>загрузка</div>;
+    const error = isError && <div>не удалось получить остальные категории 😱</div>;
+    const success = isSuccess && categoriesElements;
+
+    const content = !isLoading && (
       <ul className={styles.list}>
         <Category
           key={0}
@@ -32,8 +38,16 @@ const Categories: React.FC<CategoriesProps> = React.memo(
           className={activeCategory.id === 0 ? styles.active : ''}
           onClick={() => onClickCategory({ id: 0, name: 'все' })}
         />
-        {categoriesElements}
+        {error}
+        {success}
       </ul>
+    );
+
+    return (
+      <>
+        {loading}
+        {content}
+      </>
     );
   }
 );

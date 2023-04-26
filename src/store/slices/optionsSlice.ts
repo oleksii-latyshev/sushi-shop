@@ -1,15 +1,11 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
 
 import type { ICategory, ISort, QueryParams } from '../../types';
-import { isArrayCategories } from '../../types';
-import { sortOptions } from '../../utilities/constants';
+import { sortOptions } from '../../utils/constants';
 import type { RootState } from '../store';
 
 interface InitialStateOptions {
-  categoriesStatus: 'idle' | 'pending' | 'succeeded' | 'failed';
-  categories: ICategory[];
   sortOptions: ISort[];
   activeCategory: ICategory;
   activeSort: ISort;
@@ -18,8 +14,6 @@ interface InitialStateOptions {
 }
 
 const initialState: InitialStateOptions = {
-  categoriesStatus: 'idle',
-  categories: [],
   sortOptions,
   activeCategory: {
     id: 0,
@@ -33,30 +27,12 @@ const initialState: InitialStateOptions = {
   searchValue: '',
 };
 
-export const fetchCategories = createAsyncThunk<ICategory[], void>(
-  'options/fetchCategories',
-  async () => {
-    const { data } = await axios.get<ICategory[]>('http://localhost:3000/category');
-
-    // if (isArrayCategories(response.data)) return response.data;
-    // throw Error('unexpected data');
-
-    return data;
-  }
-);
-
 export const optionsSlice = createSlice({
   name: 'options',
   initialState,
   reducers: {
-    setCategories(state, action: PayloadAction<ICategory[]>) {
-      state.categories = action.payload;
-    },
     setCategory(state, action: PayloadAction<ICategory>) {
       state.activeCategory = action.payload;
-    },
-    setSortOptions(state, action: PayloadAction<ICategory[]>) {
-      state.categories = action.payload;
     },
     setSortOption(state, action: PayloadAction<ISort>) {
       state.activeSort = action.payload;
@@ -69,39 +45,21 @@ export const optionsSlice = createSlice({
       state.activeSort =
         state.sortOptions.find((sort) => sort.byProperty === action.payload.sortProperty) ||
         initialState.activeSort;
-      state.activeCategory =
-        state.categories.find((category) => category.id === action.payload.categoryId) ||
-        initialState.activeCategory;
+      // FIXME нужно подумать как лучше теперь изменить, раз я не храню категории, то на каком этапе мне получать обьект активной
+      // state.activeCategory =
+      //   state.categories.find((category) => category.id === action.payload.categoryId) ||
+      //   initialState.activeCategory;
+      state.activeCategory = initialState.activeCategory;
     },
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchCategories.pending, (state) => {
-      state.categoriesStatus = 'pending';
-      state.categories = [];
-    });
-    builder.addCase(fetchCategories.fulfilled, (state, action) => {
-      state.categoriesStatus = 'succeeded';
-      state.categories = action.payload;
-    });
-    builder.addCase(fetchCategories.rejected, (state) => {
-      state.categoriesStatus = 'failed';
-      state.categories = [];
-    });
-  },
 });
 
 export const selectOptions = (state: RootState) => state.options;
 
-export const {
-  setCategory,
-  setSortOption,
-  setCurrentPage,
-  setCategories,
-  setOptions,
-  setSearchValue,
-} = optionsSlice.actions;
+export const { setCategory, setSortOption, setCurrentPage, setOptions, setSearchValue } =
+  optionsSlice.actions;
 
 export default optionsSlice.reducer;

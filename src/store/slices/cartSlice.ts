@@ -3,11 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { SushiCart } from '../../types';
 import { isSushiCart } from '../../types';
-import {
-  calcTotalCount,
-  calcTotalPrice,
-  getCartFromLocalStorage,
-} from '../../utilities/helpers';
+import { calcTotalCount, calcTotalPrice, getCartFromLocalStorage } from '../../utils/helpers';
 import type { RootState } from '../store';
 
 export interface InitialStateCart {
@@ -75,6 +71,8 @@ export const cartSlice = createSlice({
 
 export const selectCart = (state: RootState) => state.cart;
 export const selectCartTotalCount = (state: RootState) => state.cart.totalCount;
+export const selectSushiById = (id: number) => (state: RootState) =>
+  state.cart.sushi.filter((item) => item.id === id);
 
 export const { addSushi, clearCart, removeSushi, deleteSushi } = cartSlice.actions;
 

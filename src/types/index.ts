@@ -1,2 +1,2 @@
-export * from '../utilities/typeGuards';
+export * from '../utils/typeGuards';
 export * from './types';

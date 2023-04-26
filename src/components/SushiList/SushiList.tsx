@@ -1,26 +1,27 @@
 import React from 'react';
 
-import type { Sushi } from '../../types';
+import { useQueryOptions } from '../../hooks';
+import { useGetAllSushiQuery } from '../../store/api/api';
 import styles from './SushiList.module.scss';
 import SushiListItem from './SushiListItem';
 import SushiListItemSkeleton from './SushiListItemSkeleton';
 
-interface SushiListProps {
-  sushi: Sushi[];
-  status: 'idle' | 'pending' | 'succeeded' | 'failed';
-}
-
-const SushiList: React.FC<SushiListProps> = ({ sushi, status }) => {
+const SushiList: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const skeletons = [...new Array(6)].map((_, i) => <SushiListItemSkeleton key={i} />);
 
-  const sushiListItemElements = sushi.map((sushi) => (
-    <SushiListItem key={sushi.id} {...sushi} />
-  ));
+  const queryOptions = useQueryOptions();
 
-  const errorBlock = status === 'failed' && <div>error</div>;
-  const pending = status === 'pending' && skeletons;
-  const succeeded = status === 'succeeded' && sushiListItemElements;
+  const { isLoading, isError, isSuccess, data } = useGetAllSushiQuery(queryOptions, {});
+
+  const sushiListItemElements = data
+    ? data.map((sushi) => <SushiListItem key={sushi.id} {...sushi} />)
+    : [];
+
+  const errorBlock = isError && <div>error</div>;
+  const pending = isLoading && skeletons;
+  const succeeded = isSuccess && sushiListItemElements;
+
   return (
     <ul className={styles.list}>
       {errorBlock}
