@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api', routes);
 // app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-const start = async () => {
+const start = async (): Promise<void> => {
   try {
     mongoose.connection.once('open', () => {
       checkFullnessDB();

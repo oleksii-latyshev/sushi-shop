@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Love ua",
+    "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
+    "price": 649,
+    "counts": [10, 15, 20],
+    "weight": 11,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/love-ua.jpeg",
+    "category": "646394f563f308d8ee0e3beb",
+    "rating": 7
+  },
+  {
+    "name": "Сан сет",
+    "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
+    "price": 899,
+    "counts": [15, 20, 50],
+    "weight": 12,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/san-set.jpeg",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 10
+  },
+  {
+    "name": "Супер Фила XL",
+    "description": "Voluptate officia ducimus mollitia delectus dolor soluta et modi. Officiis aut quia qui hic. Repudiandae rerum velit. Aperiam et quasi et sint esse exercitationem aliquam aspernatur.",
+    "price": 599,
+    "counts": [20, 30, 40],
+    "weight": 12,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/super-fila-xl_166391961194.jpeg",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 10
+  },
+  {
+    "name": "Супер Фила XXL",
+    "description": "Sint ut autem laboriosam et dolores et. Unde omnis et. Sed veniam deleniti. Minus doloremque sequi. Aut eum ab alias deserunt quo soluta eos placeat vero. Ipsum qui qui officia qui quis aut.",
+    "price": 699,
+    "counts": [20, 50],
+    "weight": 13,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/super-fila-xxl_1663919041348.jpeg",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 9
+  },
+  {
+    "name": "Драгон XXL",
+    "description": "Rerum possimus ad exercitationem vitae eius voluptatem vitae aut. Animi sit repellat voluptas a quam earum est dignissimos dolorem. Earum cumque aliquam. Et dolorem non veniam laboriosam. Enim qui numquam id est repudiandae nihil id nulla nulla. Incidunt dolorem quis recusandae error.",
+    "price": 949,
+    "counts": [15],
+    "weight": 16,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/dragon-xxl.jpeg",
+    "category": "646394f563f308d8ee0e3beb",
+    "rating": 2
+  },
+  {
+    "name": "Биг Фиш XXL",
+    "description": "Repudiandae magnam cumque totam qui. Perspiciatis ab soluta vero molestiae et rerum sit. Quisquam eius rerum tenetur voluptas dicta vel aut tempora. Eos provident quis natus perspiciatis sit id et eum animi. Qui dolorem labore ea autem aut ad eius. Error autem aut.",
+    "price": 669,
+    "counts": [15, 20, 50],
+    "weight": 14,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/_1623396196635.jpeg",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 8
+  },
+  {
+    "name": "Лосось&Лосось XL",
+    "description": "Sit et omnis qui voluptas qui ullam est doloribus. Voluptatem rerum aliquid impedit et.",
+    "price": 799,
+    "counts": [15, 20, 50],
+    "weight": 11,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/lososlosos-l.jpeg",
+    "category": "646394f563f308d8ee0e3beb",
+    "rating": 2
+  },
+  {
+    "name": "Атлантик сет",
+    "description": "Perspiciatis eveniet error tempora aut nam est sit dolorum. Voluptatum laboriosam quod quis est dolorum beatae eius possimus dolorum. Maiores temporibus culpa aut numquam qui perspiciatis omnis voluptates deserunt. Voluptas rerum blanditiis ut cumque quas ut. Molestiae sit possimus.",
+    "price": 729,
+    "counts": [15, 20, 50],
+    "weight": 12,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/atlantik-set.jpeg",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 4
+  },
+  {
+    "name": "Темпура-ролл с лососем",
+    "description": "Assumenda quisquam dignissimos nobis. Fugiat enim minima velit velit. Neque rerum voluptatibus sit beatae voluptas voluptas unde.",
+    "price": 229,
+    "counts": [15, 20, 50],
+    "weight": 29,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/_1670842082364.jpeg",
+    "category": "646394f563f308d8ee0e3beb",
+    "rating": 6
+  },
+  {
+    "name": "Капа маки",
+    "description": "Ut aspernatur perspiciatis perspiciatis aut. Aspernatur aut consequatur vel. Eveniet aperiam et qui odio qui voluptates cupiditate esse quod. Maxime est placeat autem qui maxime rerum eum voluptas voluptatem.",
+    "price": 55,
+    "counts": [15, 20, 50],
+    "weight": 11,
+    "img": "https://mafia.ua/storage/editor/fotos/450x450/maki-s-ogurcom.jpeg",
+    "category": "646394f563f308d8ee0e3beb",
+    "rating": 4
+  }
+]

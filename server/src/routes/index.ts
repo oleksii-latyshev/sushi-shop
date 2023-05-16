@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { sushiRoute } from './sushi.route';
+import sushiRoute from './sushi.route';
 
 const router = express.Router({ mergeParams: true });
 

@@ -7,7 +7,7 @@ async function createInitialEntity<T, S>(Model: Model<T>, data: S) {
     return Promise.all(
       data.map(async (item) => {
         try {
-          const { _id, ...newItem } = item;
+          const { id, ...newItem } = item;
 
           const model = new Model(newItem);
           await model.save();
