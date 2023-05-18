@@ -14,9 +14,10 @@ const SushiList: React.FC = () => {
 
   const { isLoading, isError, isSuccess, data } = useGetAllSushiQuery(queryOptions, {});
 
-  const sushiListItemElements = data
-    ? data.map((sushi) => <SushiListItem key={sushi.id} {...sushi} />)
-    : [];
+  const sushiListItemElements =
+    isSuccess && data?.sushi.length
+      ? data.sushi.map((sushi) => <SushiListItem key={sushi._id} {...sushi} />)
+      : [];
 
   const errorBlock = isError && <div>error</div>;
   const pending = isLoading && skeletons;

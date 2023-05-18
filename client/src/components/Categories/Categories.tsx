@@ -16,12 +16,12 @@ const Categories: React.FC<CategoriesProps> = React.memo(
     const { isLoading, isError, isSuccess, data } = useGetAllCategoriesQuery(null);
 
     const categoriesElements = data
-      ? data.map(({ id, name }) => (
+      ? data.map(({ _id, name }) => (
           <Category
-            key={id}
+            key={_id}
             title={name}
-            className={activeCategory.id === id ? styles.active : ''}
-            onClick={() => onClickCategory({ id, name })}
+            className={activeCategory._id === _id ? styles.active : ''}
+            onClick={() => onClickCategory({ _id, name })}
           />
         ))
       : [];
@@ -35,8 +35,8 @@ const Categories: React.FC<CategoriesProps> = React.memo(
         <Category
           key={0}
           title='все'
-          className={activeCategory.id === 0 ? styles.active : ''}
-          onClick={() => onClickCategory({ id: 0, name: 'все' })}
+          className={activeCategory._id === 0 ? styles.active : ''}
+          onClick={() => onClickCategory({ _id: 0, name: 'все' })}
         />
         {error}
         {success}

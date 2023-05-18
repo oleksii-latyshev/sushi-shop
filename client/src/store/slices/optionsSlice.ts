@@ -16,7 +16,7 @@ interface InitialStateOptions {
 const initialState: InitialStateOptions = {
   sortOptions,
   activeCategory: {
-    id: 0,
+    _id: 0,
     name: 'все',
   },
   activeSort: {

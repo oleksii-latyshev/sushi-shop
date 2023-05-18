@@ -4,17 +4,21 @@ import SushiModel from '../models/Sushi.model';
 
 interface Query {
   name?: { $regex: RegExp } | string;
+  category?: string;
 }
 
 const router = express.Router({ mergeParams: true });
 
 router.get('/', async (request, response): Promise<void> => {
-  const { page = 1, limit = 9, sort = 'name', order = 'asc', name } = request.query;
+  const { page = 1, limit = 9, sort = 'name', order = 'asc', name, category } = request.query;
   try {
     const orderValue = order === 'asc' ? 1 : order === 'desc' ? -1 : -1;
     const query: Query = {};
-    if (name?.length) {
+    if (name) {
       query.name = { $regex: new RegExp(`${name}`, 'i') };
+    }
+    if (category) {
+      query.category = category as string;
     }
 
     const sushi = await SushiModel.find(query)

@@ -13,7 +13,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     getAllSushi: builder.query<Sushi[], QueryOptions>({
       query: ({ category, currentPage, order, search, sort }) =>
-        `sushi?_page=${currentPage}&_limit=${sushiLimitOnPage}${category}&_sort=${sort}&_order=${order}${search}`,
+        `sushi?page=${currentPage}&limit=${sushiLimitOnPage}&sort=${sort}&order=${order}${category}${search}`,
     }),
     getSushiById: builder.query<Sushi, string>({
       query: (id) => `sushi/${id}`,

@@ -9,4 +9,4 @@ export const sortOptions: ISort[] = [
 
 export const sushiLimitOnPage = 8;
 
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'http://localhost:3001/api/';
