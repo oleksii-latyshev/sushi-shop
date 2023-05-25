@@ -13,7 +13,7 @@ const CartList: React.FC = () => {
   const onClickClear = () => dispatch(clearCart());
 
   const CartElements = sushi.map((item) => (
-    <CartListItem key={item.id * item.count} {...item} />
+    <CartListItem key={+item.id * item.count} {...item} />
   ));
 
   return (

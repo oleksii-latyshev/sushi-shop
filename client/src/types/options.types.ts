@@ -1,0 +1,17 @@
+export interface ICategory {
+  id: string;
+  name: string;
+}
+
+export type CategoryFromServer = Omit<ICategory, 'id'> & { _id: string };
+
+export interface ISort {
+  name: string;
+  byProperty: 'rating' | 'name' | '-price' | 'price';
+}
+
+export interface QueryParams {
+  sortProperty: string;
+  categoryId: ICategory['id'];
+  page: number;
+}

@@ -9,7 +9,7 @@ import styles from './SushiList.module.scss';
 type SushiListItemProps = Sushi;
 
 const SushiListItem: React.FC<SushiListItemProps> = ({
-  _id,
+  id,
   name,
   img,
   price,
@@ -19,12 +19,12 @@ const SushiListItem: React.FC<SushiListItemProps> = ({
   weight,
 }) => {
   const [selectSize, setSelectSize] = useState(counts[0]); // TODO проверить на ререндер массив, мб useMemo нужно будет заюзать
-  const sushiInCart = useSelector(selectSushiById(_id));
+  const sushiInCart = useSelector(selectSushiById(id));
   const dispatch = useDispatch();
 
   const onClickAddToCart = () => {
     const item: SushiCart = {
-      _id,
+      id,
       name,
       img,
       price,
@@ -44,7 +44,7 @@ const SushiListItem: React.FC<SushiListItemProps> = ({
 
   return (
     <li className={styles.item}>
-      <Link to={`sushi/${_id}`}>
+      <Link to={`sushi/${id}`}>
         <img src={img} alt={name} />
         <h3>{name}</h3>
       </Link>

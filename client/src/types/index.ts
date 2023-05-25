@@ -1,2 +1,2 @@
-export * from '../utils/typeGuards';
-export * from './types';
+export * from './options.types';
+export * from './sushi.types';

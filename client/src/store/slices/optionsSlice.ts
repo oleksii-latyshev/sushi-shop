@@ -10,13 +10,14 @@ interface InitialStateOptions {
   activeCategory: ICategory;
   activeSort: ISort;
   currentPage: number;
+  totalPages: number;
   searchValue: string;
 }
 
 const initialState: InitialStateOptions = {
   sortOptions,
   activeCategory: {
-    _id: 0,
+    id: '0',
     name: 'все',
   },
   activeSort: {
@@ -24,6 +25,7 @@ const initialState: InitialStateOptions = {
     byProperty: 'rating',
   },
   currentPage: 1,
+  totalPages: 1,
   searchValue: '',
 };
 
@@ -37,8 +39,11 @@ export const optionsSlice = createSlice({
     setSortOption(state, action: PayloadAction<ISort>) {
       state.activeSort = action.payload;
     },
-    setCurrentPage(state, action: PayloadAction<number>) {
+    setCurrentPage(state, action: PayloadAction<InitialStateOptions['currentPage']>) {
       state.currentPage = action.payload;
+    },
+    setTotalPages(state, action: PayloadAction<InitialStateOptions['totalPages']>) {
+      state.totalPages = action.payload;
     },
     setOptions(state, action: PayloadAction<QueryParams>) {
       state.currentPage = action.payload.page || initialState.currentPage;
@@ -59,7 +64,13 @@ export const optionsSlice = createSlice({
 
 export const selectOptions = (state: RootState) => state.options;
 
-export const { setCategory, setSortOption, setCurrentPage, setOptions, setSearchValue } =
-  optionsSlice.actions;
+export const {
+  setCategory,
+  setSortOption,
+  setCurrentPage,
+  setTotalPages,
+  setOptions,
+  setSearchValue,
+} = optionsSlice.actions;
 
 export default optionsSlice.reducer;

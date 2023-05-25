@@ -1,4 +1,5 @@
-import type { ICategory, Sushi, SushiCart } from '../types/types';
+import type { Sushi, SushiCart } from '../types';
+import type { ICategory } from '../types/options.types';
 
 export const isSushi = (arg: unknown): arg is Sushi => {
   if (arg && typeof arg === 'object') {

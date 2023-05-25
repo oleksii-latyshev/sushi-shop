@@ -22,13 +22,18 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: './client/tsconfig.json',
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'simple-import-sort'],
   rules: {
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     '@typescript-eslint/no-shadow': 0,
     '@typescript-eslint/consistent-type-imports': [
       'error',

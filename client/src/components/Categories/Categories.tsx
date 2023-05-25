@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useGetAllCategoriesQuery } from '../../store/api/categories.api';
 import type { ICategory } from '../../types';
+import { convertCategoryId } from '../../utils/helpers/convertCategoryId';
 import styles from './Categories.module.scss';
 import Category from './Category';
 
@@ -16,14 +17,17 @@ const Categories: React.FC<CategoriesProps> = React.memo(
     const { isLoading, isError, isSuccess, data } = useGetAllCategoriesQuery(null);
 
     const categoriesElements = data
-      ? data.map(({ _id, name }) => (
-          <Category
-            key={_id}
-            title={name}
-            className={activeCategory._id === _id ? styles.active : ''}
-            onClick={() => onClickCategory({ _id, name })}
-          />
-        ))
+      ? data.map((categoryFromServer) => {
+          const { id, name } = convertCategoryId(categoryFromServer);
+          return (
+            <Category
+              key={id}
+              title={name}
+              className={activeCategory.id === id ? styles.active : ''}
+              onClick={() => onClickCategory({ id, name })}
+            />
+          );
+        })
       : [];
 
     const loading = isLoading && <div>загрузка</div>;
@@ -35,8 +39,8 @@ const Categories: React.FC<CategoriesProps> = React.memo(
         <Category
           key={0}
           title='все'
-          className={activeCategory._id === 0 ? styles.active : ''}
-          onClick={() => onClickCategory({ _id: 0, name: 'все' })}
+          className={activeCategory.id === '0' ? styles.active : ''}
+          onClick={() => onClickCategory({ id: '0', name: 'все' })}
         />
         {error}
         {success}

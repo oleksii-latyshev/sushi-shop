@@ -13,7 +13,7 @@ export const useQueryOptions: () => QueryOptions = () => {
     (state) => state.options
   );
 
-  const category = activeCategory._id.length > 0 ? `&category=${activeCategory._id}` : '';
+  const category = activeCategory.id.length > 1 ? `&category=${activeCategory.id}` : '';
   const order = activeSort.byProperty.includes('-') ? 'desc' : 'asc';
   const sort = activeSort.byProperty.replace('-', '');
   const search = searchValue ? `&name=${searchValue}` : '';

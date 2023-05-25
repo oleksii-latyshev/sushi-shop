@@ -30,6 +30,6 @@
     //   "@/layouts/helpers": ["src/layouts/*"]
     // }
   },
-  "include": [".eslintrc.cjs", "src"],
+  "include": [".eslintrc", "src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
