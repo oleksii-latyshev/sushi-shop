@@ -1,7 +1,3 @@
-@import '../../assets/sass/variables.scss';
-
-$fixMe: #fff;
-
 .cart {
   .top {
     display: flex;
@@ -10,6 +6,8 @@ $fixMe: #fff;
   }
 
   .title {
+    color: var(--font-color);
+
     display: flex;
     align-items: center;
     gap: 10px;
@@ -22,32 +20,36 @@ $fixMe: #fff;
       height: 30px;
       margin-right: 10px;
       path {
-        stroke: $fixMe;
+        stroke: var(--font-color);
         stroke-width: 1.9;
       }
     }
   }
 
   .clearBtn {
+    color: var(--font-color);
+
     button {
-      background: $background-content;
+      background: var(--background-content-color);
       padding: 12px 20px;
       border-radius: 10px;
       cursor: pointer;
       border: none;
-      color: $font-color;
+      color: var(--font-color);
       font-size: 1.2rem;
 
       i {
         padding-right: 10px;
-        color: $font-active;
+        color: var(--font-active-color);
       }
 
       &:hover,
       &:active {
-        background-color: darken($color: $font-color, $amount: 90);
-        border-color: darken($color: $font-color, $amount: 90);
+        opacity: var(--opacity-active);
       }
+    }
+    span {
+      color: var(--font-color);
     }
   }
 
@@ -70,15 +72,15 @@ $fixMe: #fff;
       border-radius: 50%;
       text-align: center;
       font-size: 1rem;
-      background: $background-active;
+      background: var(--background-active-color);
 
       &:disabled {
-        background-color: $background-content;
-        color: $font-color;
+        background-color: var(--background-content-color);
+        color: var(--font-color);
       }
 
       &:hover {
-        opacity: $opacity-active;
+        opacity: var(--opacity-active);
       }
     }
 
@@ -98,11 +100,15 @@ $fixMe: #fff;
       width: 40%;
 
       h3 {
+        color: var(--font-color);
+
         font-weight: bold;
         font-size: 1.5rem;
       }
 
       p {
+        color: var(--font-color);
+
         font-size: 1.2rem;
         opacity: 0.8;
       }
@@ -115,11 +121,15 @@ $fixMe: #fff;
       gap: 20px;
 
       b {
+        color: var(--font-color);
+
         font-size: 1.2rem;
       }
     }
 
     .price {
+      color: var(--font-color);
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -143,8 +153,7 @@ $fixMe: #fff;
         }
         &:hover,
         &:active {
-          border-color: darken($color: $fixMe, $amount: 80);
-          background-color: darken($color: $fixMe, $amount: 80);
+          opacity: var(--opacity-active);
         }
       }
     }
@@ -156,7 +165,13 @@ $fixMe: #fff;
       justify-content: space-between;
 
       span {
+        color: var(--font-color);
+
         font-size: 1.5rem;
+
+        b {
+          color: var(--font-color);
+        }
       }
     }
 
@@ -175,16 +190,16 @@ $fixMe: #fff;
         border-radius: 10px;
 
         span {
-          color: $font-color;
+          color: var(--font-color);
           font-weight: 600;
         }
       }
 
       .goBackBtn {
-        background: $background-content;
+        background: var(--background-content-color);
 
         span {
-          color: darken($color: $font-color, $amount: 20);
+          color: var(--font-color);
         }
 
         svg {
@@ -197,17 +212,16 @@ $fixMe: #fff;
 
         &:hover,
         &:active {
-          background-color: darken($color: $font-color, $amount: 90);
-          border-color: darken($color: $font-color, $amount: 90);
+          opacity: var(--opacity-active);
         }
       }
 
       .payBtn {
-        background: $background-active;
+        background: var(--background-active-color);
 
         &:hover,
         &:active {
-          opacity: $opacity-active;
+          opacity: var(--opacity-active);
         }
       }
     }

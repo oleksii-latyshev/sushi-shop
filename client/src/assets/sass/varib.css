@@ -1,0 +1,37 @@
+:root {
+  --duration: 0.15s;
+  --active-color: #646cff;
+
+  --container-width: 90%;
+  --opacity-active: 0.7;
+}
+
+/* TODO цветовую палитру для светлой темы */
+
+html[data-theme='light'] {
+  --background-color: #ffffff;
+  --background-content-color: #e3e3e3;
+  --background-interactive-color: #3c3c3c;
+  --background-active-color: var(--active-color);
+
+  --background-skeleton-in-color: var(--background-content-color);
+  --background-skeleton-out-color: #404040;
+
+  --font-color: #000;
+  --font-active-color: var(--active-color);
+  --font-interactive-color: #242424;
+}
+
+html[data-theme='dark'] {
+  --background-color: #242424;
+  --background-content-color: #303030;
+  --background-interactive-color: #fff;
+  --background-active-color: var(--active-color);
+
+  --background-skeleton-in-color: var(--background-content);
+  --background-skeleton-out-color: #404040;
+
+  --font-color: #fff;
+  --font-active-color: var(--active-color);
+  --font-interactive-color: #242424;
+}

@@ -1,5 +1,3 @@
-@import '../../assets/sass/variables.scss';
-
 .sort {
   position: relative;
   & .label {
@@ -18,12 +16,14 @@
     }
 
     b {
+      color: var(--font-color);
+
       margin-right: 8px;
     }
 
     span {
-      color: $font-active;
-      border-bottom: 1px dashed $font-active;
+      color: var(--font-active-color);
+      border-bottom: 1px dashed var(--font-active-color);
     }
   }
 
@@ -31,14 +31,14 @@
     position: absolute;
     right: 0;
     margin-top: 15px;
-    background: $background-content;
+    background: var(--background-content-color);
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     border-radius: 10px;
     overflow: hidden;
     ul {
       overflow: hidden;
       li {
-        color: $font-color;
+        color: var(--font-color);
         // min-width: 200px;
         button {
           cursor: pointer;
@@ -53,11 +53,11 @@
 
         &.active,
         &:hover {
-          color: $font-interactive;
-          background: $background-interactive;
+          color: var(--font-interactive-color);
+          background: var(--background-interactive-color);
         }
         &.active {
-          color: $font-interactive;
+          color: var(--font-interactive-color);
         }
       }
     }

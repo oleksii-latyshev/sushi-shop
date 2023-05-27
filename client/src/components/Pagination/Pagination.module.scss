@@ -1,5 +1,3 @@
-@import '../../assets/sass/variables.scss';
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -9,7 +7,7 @@
     cursor: pointer;
 
     a {
-      background: $background-interactive;
+      background: var(--background-interactive-color);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,11 +17,11 @@
       padding: 10px;
       font-size: 1rem;
       font-weight: bold;
-      color: $font-interactive;
+      color: var(--font-interactive-color);
     }
 
     &:hover {
-      opacity: $opacity-active;
+      opacity: var(--opacity-active);
     }
   }
 
@@ -31,14 +29,14 @@
   :global {
     .selected {
       a {
-        background: $background-active;
+        background: var(--background-active-color);
       }
     }
 
     .disabled {
       a {
-        color: $font-color;
-        background: $background-content;
+        color: var(--font-color);
+        background: var(--background-content-color);
       }
     }
   }

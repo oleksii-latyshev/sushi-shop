@@ -1,8 +1,8 @@
-@import '../../assets/sass/variables.scss';
 @import '../../assets/sass/libs/normalize';
 
 body {
-  background-color: $background;
+  transition: all 0.3s;
+  background-color: var(--background-color);
 }
 
 .wrapper {

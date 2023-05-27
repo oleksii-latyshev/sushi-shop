@@ -1,5 +1,3 @@
-@import '../../assets/sass/variables.scss';
-
 .list {
   display: flex;
   flex-flow: row wrap;
@@ -11,8 +9,8 @@
 .item {
   min-width: 4rem;
   border-radius: 7px;
-  background-color: $background-interactive;
-  color: $font-interactive;
+  background-color: var(--background-interactive-color);
+  color: var(--font-interactive-color);
 
   button {
     cursor: pointer;
@@ -26,11 +24,11 @@
   }
 
   &.active {
-    background-color: $background-active;
-    color: $font-active;
+    background-color: var(--background-active-color);
+    color: var(--font-active-color);
   }
 
   &:hover {
-    opacity: $opacity-active;
+    opacity: var(--opacity-active);
   }
 }

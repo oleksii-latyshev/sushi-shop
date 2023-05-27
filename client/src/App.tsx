@@ -1,3 +1,5 @@
+import './assets/sass/varib.css';
+
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
