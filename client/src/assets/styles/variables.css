@@ -1,3 +1,5 @@
+@import '../styles/libs/_normalize.scss';
+
 :root {
   --duration: 0.15s;
   --active-color: #646cff;

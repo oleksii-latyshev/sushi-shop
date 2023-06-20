@@ -1,10 +1,12 @@
 module.exports = {
-  tabWidth: 2,
   singleQuote: true,
+  // "prettier.bracketSameLine": true,
+  tabWidth: 2,
   jsxSingleQuote: true,
   arrowParens: 'always',
   useTabs: false,
   printWidth: 95,
   trailingComma: 'es5',
-  semi: true
+  semi: true,
+  endOfLine: 'auto',
 };

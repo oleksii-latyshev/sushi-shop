@@ -1,11 +1,10 @@
 {
-  "name": "sushi-shop",
+  "name": "client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "json-server --watch mock.json",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
@@ -27,6 +26,7 @@
     "sass": "^1.61.0"
   },
   "devDependencies": {
+    "@types/node": "^20.3.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
@@ -41,9 +41,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "prettier": "^2.8.7",
-    "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9"
   }
 }

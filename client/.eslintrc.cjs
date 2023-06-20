@@ -1,44 +1,19 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-  },
+  env: { browser: true, es2020: true },
   ignorePatterns: ['vite.config.ts'],
   extends: [
     'airbnb',
     'airbnb/hooks',
     'airbnb-typescript',
-    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'prettier',
+    'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
-  overrides: [],
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: './client/tsconfig.json',
-  },
-  plugins: ['react', '@typescript-eslint', 'prettier', 'simple-import-sort'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module', project: './tsconfig.json' },
+  plugins: ['react-refresh', 'prettier', 'simple-import-sort'],
   rules: {
-    'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
-    '@typescript-eslint/no-shadow': 0,
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
-      { prefer: 'type-imports', disallowTypeAnnotations: false },
-    ],
+    'react-refresh/only-export-components': 'warn',
     'react/function-component-definition': [
       2,
       {
@@ -59,8 +34,8 @@ module.exports = {
     ],
     'react/no-array-index-key': 0,
     'no-param-reassign': 0,
-    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
     'import/order': 0,
     'import/extensions': 0,
     'import/no-extraneous-dependencies': 0,

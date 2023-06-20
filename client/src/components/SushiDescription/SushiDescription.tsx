@@ -1,10 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import SushiDesc from '../../components/SushiDesc/SushiDesc';
-import SushiDescError from '../../components/SushiDesc/SushiDescError';
-import SushiDescLoading from '../../components/SushiDesc/SushiDescLoading';
-import { useGetSushiByIdQuery } from '../../store/api/api';
+import SushiDesc from '@/components/SushiDesc/SushiDesc';
+import SushiDescError from '@/components/SushiDesc/SushiDescError';
+import SushiDescLoading from '@/components/SushiDesc/SushiDescLoading';
+import { useGetSushiByIdQuery } from '@/store/api/api';
 
 const SushiDescription: React.FC = () => {
   const { id } = useParams();

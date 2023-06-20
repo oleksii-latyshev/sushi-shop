@@ -1,9 +1,10 @@
-import './assets/sass/varib.css';
+import '@/assets/styles/variables.css';
 
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import MainLayout from './layouts/MainLayout/MainLayout';
+import MainLayout from '@/layouts/MainLayout';
+
 import { Home } from './pages';
 
 const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'));

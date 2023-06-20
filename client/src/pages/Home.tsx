@@ -1,5 +1,5 @@
-import Catalog from '../layouts/Catalog/Catalog';
-import Options from '../layouts/Options/Options';
+import Catalog from '@/components/Catalog/Catalog';
+import Options from '@/components/Options/Options';
 
 const Home: React.FC = () => {
   return (
