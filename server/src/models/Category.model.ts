@@ -1,9 +1,6 @@
-import { Document, Schema, Model, model } from 'mongoose';
-import { Category } from '../types/category.type';
+import { model, Schema } from 'mongoose';
 
-export interface ICategoryModel extends Category, Document {
-  _id: string;
-}
+import { ICategory } from '@/types/category.types';
 
 const categorySchema: Schema = new Schema({
   name: {
@@ -12,6 +9,4 @@ const categorySchema: Schema = new Schema({
   },
 });
 
-const CategoryModel: Model<ICategoryModel> = model<ICategoryModel>('Category', categorySchema);
-
-export default CategoryModel;
+export default model<ICategory>('Category', categorySchema);

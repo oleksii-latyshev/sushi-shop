@@ -1,22 +1,31 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import env from 'dotenv';
 import cors from 'cors';
+import env from 'dotenv';
+import express from 'express';
+import session from 'express-session';
+import mongoose from 'mongoose';
+import passport from 'passport';
 
-import checkFullnessDB from './helpers/checkFullnessDB';
+import initializePassport from './lib/passport';
 import routes from './routes';
+import checkFullnessDB from './utils/helpers/checkFullnessDB';
 
 env.config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
+const secretSession = process.env.PORT || 'secretSession';
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
+app.use(session({ secret: secretSession, resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/api', routes);
-// app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+initializePassport(passport);
 
 const start = async (): Promise<void> => {
   try {

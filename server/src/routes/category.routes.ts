@@ -1,5 +1,5 @@
 import express from 'express';
-import CategoryModel from '../models/Category.model';
+import CategoryModel from '../models/category.model';
 
 const router = express.Router({ mergeParams: true });
 

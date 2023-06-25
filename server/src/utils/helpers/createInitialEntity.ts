@@ -7,6 +7,7 @@ async function createInitialEntity<T, S>(Model: Model<T>, data: S) {
     return Promise.all(
       data.map(async (item) => {
         try {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { id, ...newItem } = item;
 
           const model = new Model(newItem);

@@ -1,12 +1,6 @@
-import { Document, Schema, Model, model } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
-import { Sushi } from '../types/sushi.type';
-
-export interface ISushiModel extends Sushi, Document {
-  _id: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { ISushi } from '@/types/sushi.types';
 
 const sushiSchema: Schema = new Schema(
   {
@@ -50,6 +44,4 @@ const sushiSchema: Schema = new Schema(
   }
 );
 
-const SushiModel: Model<ISushiModel> = model<ISushiModel>('Sushi', sushiSchema);
-
-export default SushiModel;
+export default model<ISushi>('Sushi', sushiSchema);

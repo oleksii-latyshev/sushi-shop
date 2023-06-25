@@ -1,4 +1,6 @@
-export interface Sushi {
+import { Document } from 'mongoose';
+
+export interface ISushi extends Document {
   name: string;
   description: string;
   price: number;
