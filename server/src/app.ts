@@ -5,9 +5,9 @@ import session from 'express-session';
 import mongoose from 'mongoose';
 import passport from 'passport';
 
-import initializePassport from './lib/passport';
-import routes from './routes';
-import checkFullnessDB from './utils/helpers/checkFullnessDB';
+import initializePassport from '@/lib/passport';
+import routes from '@/routes';
+import checkFullnessDB from '@/utils/helpers/checkFullnessDB';
 
 env.config();
 
@@ -23,9 +23,9 @@ app.use(session({ secret: secretSession, resave: false, saveUninitialized: false
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api', routes);
-
 initializePassport(passport);
+
+app.use('/api', routes);
 
 const start = async (): Promise<void> => {
   try {
