@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-import { useAppSelector } from '../../hooks';
-import { useTheme } from '../../hooks/useTheme';
+import { useAppSelector } from '@/hooks';
+import { useTheme } from '@/hooks/useTheme';
+
 import styles from './Menu.module.scss';
 
 interface MenuProps {
@@ -41,7 +42,9 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
           <i className='fa-solid fa-cart-shopping' />
         </NavLink>
       </div>
-      <i className={`${styles.icon} fa-solid fa-user`} />
+      <Link to='/signIn'>
+        <i className={`${styles.icon} fa-solid fa-user`} />
+      </Link>
     </div>
   );
 };

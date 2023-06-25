@@ -1,12 +1,13 @@
 import React from 'react';
 
-import Pagination from '../../components/Pagination/Pagination';
-import SushiList from '../../components/SushiList/SushiList';
-import SushiListSkeleton from '../../components/SushiList/SushiListSkeleton';
-import { useAppDispatch, useQueryOptions } from '../../hooks';
-import { useGetAllSushiQuery } from '../../store/api/api';
-import { setCurrentPage } from '../../store/slices/optionsSlice';
-import type { SushiFromServer } from '../../types';
+import Pagination from '@/components/Pagination/Pagination';
+import SushiList from '@/components/SushiList/SushiList';
+import SushiListSkeleton from '@/components/SushiList/SushiListSkeleton';
+import { useAppDispatch, useQueryOptions } from '@/hooks';
+import { useGetAllSushiQuery } from '@/store/api/api';
+import { setCurrentPage } from '@/store/slices/optionsSlice';
+import { SushiFromServer } from '@/types';
+
 import styles from './Catalog.module.scss';
 
 const Catalog: React.FC = () => {

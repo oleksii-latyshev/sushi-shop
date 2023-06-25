@@ -3,6 +3,9 @@
 :root {
   --duration: 0.15s;
   --active-color: #646cff;
+  --danger-color: #ae0101;
+
+  --rounded: 0.5rem;
 
   --container-width: 90%;
   --opacity-active: 0.7;

@@ -12,6 +12,7 @@ const NotFound = React.lazy(
   () => import(/* webpackChunkName: "NotFound" */ './pages/NotFound')
 ); // ? одновременно полезно и бесполезно
 const Sushi = React.lazy(() => import(/* webpackChunkName: "Sushi" */ './pages/Sushi'));
+const SignIn = React.lazy(() => import(/* webpackChunkName: "SignIn" */ './pages/SignIn'));
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='sushi/:id' element={<Sushi />} />
           <Route path='*' element={<NotFound />} />
         </Route>
+        <Route path='/signIn' element={<SignIn />} />
       </Routes>
     </Suspense>
   );
