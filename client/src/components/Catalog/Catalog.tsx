@@ -4,7 +4,7 @@ import Pagination from '@/components/Pagination/Pagination';
 import SushiList from '@/components/SushiList/SushiList';
 import SushiListSkeleton from '@/components/SushiList/SushiListSkeleton';
 import { useAppDispatch, useQueryOptions } from '@/hooks';
-import { useGetAllSushiQuery } from '@/store/api/api';
+import { useGetAllSushiQuery } from '@/services/sushi.service';
 import { setCurrentPage } from '@/store/slices/optionsSlice';
 import { SushiFromServer } from '@/types';
 

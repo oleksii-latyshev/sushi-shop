@@ -1,12 +1,13 @@
 .wrapper {
-  width: 25vw;
-  min-width: 400px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border-radius: var(--rounded);
-  background-color: var(--background-content-color);
+
+  span {
+    color: var(--danger-color);
+    font-size: 1.2rem;
+    text-align: center;
+  }
 
   label {
     cursor: pointer;
@@ -26,7 +27,7 @@
     }
 
     span {
-      color: var(--danger-color);
+      font-size: 1rem;
     }
   }
 

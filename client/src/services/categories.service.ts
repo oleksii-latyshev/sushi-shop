@@ -1,4 +1,5 @@
-import type { CategoryFromServer } from '../../types';
+import { CategoryFromServer } from '@/types';
+
 import { api } from './api';
 
 export const categoriesApi = api.injectEndpoints({

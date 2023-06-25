@@ -1,9 +1,9 @@
-import { useWhyDidYouUpdate } from 'ahooks';
 import React from 'react';
 
-import { useGetAllCategoriesQuery } from '../../store/api/categories.api';
-import type { ICategory } from '../../types';
-import { convertCategoryId } from '../../utils/helpers/convertCategoryId';
+import { useGetAllCategoriesQuery } from '@/services/categories.service';
+import { ICategory } from '@/types';
+import { convertCategoryId } from '@/utils/helpers/convertCategoryId';
+
 import styles from './Categories.module.scss';
 import Category from './Category';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useQueryOptions } from '../../hooks';
-import { useGetAllSushiQuery } from '../../store/api/api';
+import { useGetAllSushiQuery } from '../../services/api';
 import type { Sushi, SushiFromServer } from '../../types';
 import { convertSushiId } from '../../utils/helpers/convertSushiId';
 import styles from './SushiList.module.scss';
