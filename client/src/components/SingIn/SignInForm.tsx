@@ -2,7 +2,9 @@ import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+import { useAppDispatch } from '@/hooks';
 import { useLoginMutation } from '@/services/auth.service';
+import { setUser } from '@/store/slices/user.slice';
 import { ILoginUser } from '@/types/user.types';
 
 import styles from './SignInForm.module.scss';
@@ -13,7 +15,7 @@ export const SignInForm: FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<ILoginUser>();
-
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [errorLogin, setErrorLogin] = useState<string | null>(null);
@@ -29,10 +31,12 @@ export const SignInForm: FC = () => {
   const onSubmit = async (fields: ILoginUser) => {
     const response = await loginUser(fields);
 
-    if ('data' in response) console.log(response.data);
-    else if ('error' in response && 'data' in response.error) {
+    if ('data' in response) {
+      dispatch(setUser(response.data));
+    } else if ('error' in response && 'data' in response.error) {
       setErrorLogin(response.error.data as string);
-      console.log(response.error);
+    } else {
+      setErrorLogin('something is wrong');
     }
   };
 

@@ -5,7 +5,7 @@ import SushiList from '@/components/SushiList/SushiList';
 import SushiListSkeleton from '@/components/SushiList/SushiListSkeleton';
 import { useAppDispatch, useQueryOptions } from '@/hooks';
 import { useGetAllSushiQuery } from '@/services/sushi.service';
-import { setCurrentPage } from '@/store/slices/optionsSlice';
+import { setCurrentPage } from '@/store/slices/options.slice';
 import { SushiFromServer } from '@/types';
 
 import styles from './Catalog.module.scss';

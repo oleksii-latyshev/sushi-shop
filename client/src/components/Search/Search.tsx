@@ -3,7 +3,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useAppSelector } from '../../hooks';
-import { setSearchValue } from '../../store/slices/optionsSlice';
+import { setSearchValue } from '../../store/slices/options.slice';
 import styles from './Search.module.scss';
 
 export interface SearchProps {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { addSushi, selectSushiById } from '../../store/slices/cartSlice';
+import { addSushi, selectSushiById } from '../../store/slices/cart.slice';
 import type { Sushi, SushiCart } from '../../types';
 import styles from './SushiList.module.scss';
 

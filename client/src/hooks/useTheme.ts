@@ -1,5 +1,5 @@
-import type { InitialStateSettings } from '../store/slices/settingsSlice';
-import { setTheme } from '../store/slices/settingsSlice';
+import type { InitialStateSettings } from '../store/slices/settings.slice';
+import { setTheme } from '../store/slices/settings.slice';
 import { useAppDispatch, useAppSelector } from './hooks';
 
 export const useTheme = (): [InitialStateSettings['theme'], () => void] => {

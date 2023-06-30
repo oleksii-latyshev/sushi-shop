@@ -5,7 +5,12 @@ import { api } from './api';
 const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<IUser, ILoginUser>({
-      query: ({ ...body }) => ({ url: 'auth/signIn', method: 'POST', body }),
+      query: ({ ...body }) => ({
+        url: 'auth/signIn',
+        method: 'POST',
+        credentials: 'include',
+        body,
+      }),
       // transformResponse: (response: { data: IUser }) => response.data,
     }),
   }),

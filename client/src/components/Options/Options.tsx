@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Categories from '../../components/Categories/Categories';
 import Sort from '../../components/Sort/Sort';
 import { useAppDispatch } from '../../hooks';
-import { selectOptions, setCategory, setSortOption } from '../../store/slices/optionsSlice';
+import { selectOptions, setCategory, setSortOption } from '../../store/slices/options.slice';
 import type { ICategory, ISort } from '../../types';
 import styles from './Options.module.scss';
 

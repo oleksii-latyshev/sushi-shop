@@ -1,3 +1,4 @@
-export { default as cart } from './cartSlice';
-export { default as options } from './optionsSlice';
-export { default as settings } from './settingsSlice';
+export { default as cart } from './cart.slice';
+export { default as options } from './options.slice';
+export { default as settings } from './settings.slice';
+export { default as user } from './user.slice';
