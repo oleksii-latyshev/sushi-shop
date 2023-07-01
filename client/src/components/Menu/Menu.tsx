@@ -12,6 +12,7 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({ className }) => {
   const { totalCount, sushi } = useAppSelector((state) => state.cart);
+  const { user } = useAppSelector((state) => state.user);
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
   const isMounted = useRef(false);
 
@@ -42,9 +43,20 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
           <i className='fa-solid fa-cart-shopping' />
         </NavLink>
       </div>
-      <Link to='/signIn'>
-        <i className={`${styles.icon} fa-solid fa-user`} />
-      </Link>
+      {user ? (
+        <Link to='/profile'>
+          <i className={`${styles.icon} fa-solid fa-user`} />
+        </Link>
+      ) : (
+        <div className={styles.auth}>
+          <Link to='/signIn'>
+            <button>sing in</button>
+          </Link>
+          <Link to='/signUp'>
+            <button className='active'>sing up</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

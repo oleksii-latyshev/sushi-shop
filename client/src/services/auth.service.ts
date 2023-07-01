@@ -1,19 +1,25 @@
-import { ILoginUser, IUser } from '@/types/user.types';
+import { ILoginUser, IResponseUser } from '@/types/user.types';
 
 import { api } from './api';
 
 const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<IUser, ILoginUser>({
+    login: builder.mutation<IResponseUser, ILoginUser>({
       query: ({ ...body }) => ({
         url: 'auth/signIn',
         method: 'POST',
         credentials: 'include',
         body,
       }),
-      // transformResponse: (response: { data: IUser }) => response.data,
+      // transformResponse: (response: { data: IResponseUser }) => response.data,
+    }),
+    authMe: builder.query<IResponseUser, null>({
+      query: () => ({
+        url: 'auth/me',
+        credentials: 'include',
+      }),
     }),
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useAuthMeQuery } = authApi;

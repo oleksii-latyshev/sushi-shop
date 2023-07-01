@@ -3,6 +3,7 @@ import '@/assets/styles/variables.css';
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import { useInitialization } from '@/hooks/useInitialization';
 import MainLayout from '@/layouts/MainLayout';
 
 import { Home } from './pages';
@@ -15,6 +16,8 @@ const Sushi = React.lazy(() => import(/* webpackChunkName: "Sushi" */ './pages/S
 const SignIn = React.lazy(() => import(/* webpackChunkName: "SignIn" */ './pages/SignIn'));
 
 const App = () => {
+  useInitialization();
+
   return (
     <Suspense fallback={<div>загрузка</div>}>
       <Routes>

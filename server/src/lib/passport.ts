@@ -8,7 +8,7 @@ import { IUser } from '@/types/user.types';
 const initializePassport = (passport: PassportStatic): void => {
   passport.use(
     new LocalStrategy(
-      { usernameField: 'username' },
+      { usernameField: 'username', session: true },
       async (username: string, password: string, done: any) => {
         try {
           const user: IUser | null = await User.findOne({ username });

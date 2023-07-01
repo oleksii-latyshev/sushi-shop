@@ -33,3 +33,14 @@ export const signUpUser = async (request: Request, response: Response): Promise<
     });
   }
 };
+
+export const authMe = async (request: Request, response: Response): Promise<Response> => {
+  try {
+    return response.send(createResponseUser(request.user as IUser));
+  } catch (error) {
+    return response.send({
+      message: 'error on the server side when identifying the user',
+      error,
+    });
+  }
+};

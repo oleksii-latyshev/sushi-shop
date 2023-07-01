@@ -1,3 +1,5 @@
+@import '@/assets/styles/mixins/btn.mixins.scss';
+
 .wrapper {
   display: flex;
   gap: 10px;
@@ -21,24 +23,34 @@
       opacity: var(--opacity-active);
     }
   }
-}
 
-.cart {
-  position: relative;
+  .cart {
+    position: relative;
 
-  span {
-    font-weight: bold;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: var(--background-active-color);
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    border-radius: 50%;
+    span {
+      font-weight: bold;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: var(--background-active-color);
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      opacity: var(--opacity-active);
+    }
   }
 
-  &:hover {
-    opacity: var(--opacity-active);
+  .auth {
+    height: 100%;
+    display: flex;
+    gap: 5px;
+
+    a button {
+      @include main-btn;
+    }
   }
 }

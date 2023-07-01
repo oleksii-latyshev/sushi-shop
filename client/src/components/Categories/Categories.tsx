@@ -23,7 +23,7 @@ const Categories: React.FC<CategoriesProps> = React.memo(
             <Category
               key={id}
               title={name}
-              className={activeCategory.id === id ? styles.active : ''}
+              isActive={activeCategory.id === id}
               onClick={() => onClickCategory({ id, name })}
             />
           );
@@ -39,7 +39,7 @@ const Categories: React.FC<CategoriesProps> = React.memo(
         <Category
           key={0}
           title='все'
-          className={activeCategory.id === '0' ? styles.active : ''}
+          isActive={activeCategory.id === '0'}
           onClick={() => onClickCategory({ id: '0', name: 'все' })}
         />
         {error}
