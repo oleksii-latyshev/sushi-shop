@@ -23,8 +23,8 @@ export class Order {
       return null;
     }
   }
-  public static getAllByUserId(
-    user: string | Pick<IUser, '_id'>,
+  public static findAllByUserId(
+    user: Pick<IUser, '_id'>,
     options: IOptionAllOrders
   ): Promise<IOrder[]> | null {
     const { page, limit, sort, order, status } = options;
@@ -43,6 +43,15 @@ export class Order {
         .skip((page - 1) * limit)
         .exec();
     } catch (error) {
+      console.error('get all order by user id', error);
+      return null;
+    }
+  }
+  public static findById(id: string): Promise<IOrder | null> | null {
+    try {
+      return orderSchema.findById(id);
+    } catch (error) {
+      console.error('get order by id', error);
       return null;
     }
   }
@@ -51,7 +60,7 @@ export class Order {
     try {
       return orderSchema.countDocuments();
     } catch (error) {
-      console.log(error);
+      console.error('get total order', error);
       return 0;
     }
   }

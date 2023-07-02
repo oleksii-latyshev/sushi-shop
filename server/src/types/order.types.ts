@@ -11,7 +11,7 @@ export interface IProduct {
 }
 
 export interface IOrder extends Document {
-  user: Pick<IUser, '_id'>;
+  user: Pick<IUser, '_id'>; // ? почему при сравнении ид настоящего пользователя с Pick<IUser, '_id'> ошибка типизации...
   products: IProduct[];
   totalPrice: number;
   status: IStatusOrder;

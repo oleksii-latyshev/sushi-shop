@@ -37,7 +37,7 @@ export const getOrders = async (request: Request, response: Response): Promise<R
   if (request.user && request.user._id) {
     try {
       const ordersTotalCount = await Order.totalCount();
-      const orders = await Order.getAllByUserId(request.user?._id, {
+      const orders = await Order.findAllByUserId(request.user?._id, {
         page: +page,
         limit: +limit,
         sort: sort as string,
@@ -58,6 +58,31 @@ export const getOrders = async (request: Request, response: Response): Promise<R
   } else {
     return response.status(400).send({
       message: 'invalid body request',
+    });
+  }
+};
+
+export const getOrderById = async (
+  request: Request,
+  response: Response
+): Promise<Response> => {
+  const { id } = request.params;
+  try {
+    const existedOrder = await Order.findById(id);
+
+    if (existedOrder && existedOrder.user !== request.user?._id) {
+      return response.status(409).send({
+        message: 'you are not the owner of this order',
+        id,
+      });
+    }
+
+    return response.status(200).send(existedOrder);
+  } catch (error) {
+    console.error('controller get order by id', error);
+    return response.status(500).send({
+      message: 'an error occurred on the server side while receiving the order',
+      id,
     });
   }
 };
