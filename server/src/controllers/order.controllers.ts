@@ -70,7 +70,7 @@ export const getOrderById = async (
   try {
     const existedOrder = await Order.findById(id);
 
-    if (existedOrder && existedOrder.user !== request.user?._id) {
+    if (existedOrder && String(existedOrder.user) !== String(request.user?._id)) {
       return response.status(409).send({
         message: 'you are not the owner of this order',
         id,
@@ -83,6 +83,32 @@ export const getOrderById = async (
     return response.status(500).send({
       message: 'an error occurred on the server side while receiving the order',
       id,
+    });
+  }
+};
+
+export const deleteOrderById = async (
+  request: Request,
+  response: Response
+): Promise<Response> => {
+  const { id } = request.params;
+
+  try {
+    const existedOrder = await Order.findById(id as string);
+
+    if (existedOrder && String(existedOrder.user) === String(request.user?._id)) {
+      await Order.deleteById(id);
+      return response.status(200).send(null);
+    } else {
+      return response.status(403).send({
+        message: 'you are not the owner of this order',
+        id,
+      });
+    }
+  } catch (error) {
+    console.error('delete order by id', error);
+    return response.status(500).send({
+      message: 'an error occurred on the server while deleting the order',
     });
   }
 };

@@ -1,7 +1,6 @@
-import { Document } from 'mongoose';
+import { Document, ObjectId } from 'mongoose';
 
 import { ISushi } from './sushi.types';
-import { IUser } from './user.types';
 
 export type IStatusOrder = 'accepted' | 'completed';
 
@@ -11,7 +10,7 @@ export interface IProduct {
 }
 
 export interface IOrder extends Document {
-  user: Pick<IUser, '_id'>; // ? почему при сравнении ид настоящего пользователя с Pick<IUser, '_id'> ошибка типизации...
+  user: ObjectId; // ? почему при сравнении ид настоящего пользователя с Pick<IUser, '_id'> ошибка типизации...
   products: IProduct[];
   totalPrice: number;
   status: IStatusOrder;

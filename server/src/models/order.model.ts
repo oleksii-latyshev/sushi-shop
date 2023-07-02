@@ -1,6 +1,7 @@
+import { ObjectId } from 'mongoose';
+
 import orderSchema from '@/db/schemas/order.schema';
 import { ICreateOrder, IOrder, IStatusOrder } from '@/types/order.types';
-import { IUser } from '@/types/user.types';
 
 interface IOptionAllOrders {
   page: number;
@@ -23,8 +24,16 @@ export class Order {
       return null;
     }
   }
+  public static async deleteById(id: string): Promise<IOrder | null> {
+    try {
+      const existedOrder = await Order.findById(id);
+      return existedOrder && (await existedOrder.deleteOne());
+    } catch (error) {
+      return null;
+    }
+  }
   public static findAllByUserId(
-    user: Pick<IUser, '_id'>,
+    user: ObjectId,
     options: IOptionAllOrders
   ): Promise<IOrder[]> | null {
     const { page, limit, sort, order, status } = options;
