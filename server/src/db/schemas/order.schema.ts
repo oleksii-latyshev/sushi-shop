@@ -10,8 +10,9 @@ const orderSchema: Schema = new Schema(
     },
     products: [
       {
-        type: Schema.Types.ObjectId,
-        ref: 'Sushi',
+        sushiId: { type: Schema.Types.ObjectId, ref: 'Sushi' },
+        count: Number,
+        _id: false, // это для отключения автоматической генерации идентификатора
       },
     ],
     totalPrice: {
