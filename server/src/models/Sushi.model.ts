@@ -1,47 +1,13 @@
-import { model, Schema } from 'mongoose';
-
+import sushiSchema from '@/db/schemas/sushi.schema';
 import { ISushi } from '@/types/sushi.types';
 
-const sushiSchema: Schema = new Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    counts: [
-      {
-        type: Number,
-        required: true,
-      },
-    ],
-    weight: {
-      type: Number,
-      required: true,
-    },
-    img: {
-      type: String,
-      required: true,
-    },
-    category: {
-      type: Schema.Types.ObjectId,
-      ref: 'Category',
-    },
-    rating: {
-      type: Number,
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
+export class Sushi {
+  public static findById(id: Pick<ISushi, '_id'>): Promise<ISushi | null> | null {
+    try {
+      return sushiSchema.findById(id);
+    } catch (error) {
+      console.log('get sushi by id:', error);
+      return null;
+    }
   }
-);
-
-export default model<ISushi>('Sushi', sushiSchema);
+}

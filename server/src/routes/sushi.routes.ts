@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getAllSushi, getSushiById } from '@/controllers/sushi.controller';
+import { getAllSushi, getSushiById } from '@/controllers/sushi.controllers';
 
 const router = express.Router({ mergeParams: true });
 

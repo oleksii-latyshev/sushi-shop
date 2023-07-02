@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import Sushi from '@/models/sushi.model';
+import Sushi from '@/db/schemas/sushi.schema';
 
 interface Query {
   name?: { $regex: RegExp } | string;

@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { useQueryOptions } from '../../hooks';
-import { useGetAllSushiQuery } from '../../services/api';
-import type { Sushi, SushiFromServer } from '../../types';
-import { convertSushiId } from '../../utils/helpers/convertSushiId';
+import type { SushiFromServer } from '@/types';
+import { convertSushiId } from '@/utils/helpers/convertSushiId';
+
 import styles from './SushiList.module.scss';
 import SushiListItem from './SushiListItem';
-import SushiListItemSkeleton from './SushiListItemSkeleton';
 
 interface SushiListProps {
   sushi: SushiFromServer[];
@@ -21,8 +19,8 @@ const SushiList: React.FC<SushiListProps> = ({ sushi, status }) => {
   const sushiListItemElements =
     sushi?.length > 0 &&
     sushi.map((sushiFromServer) => {
-      const sushi = convertSushiId(sushiFromServer);
-      return <SushiListItem key={sushi.id} {...sushi} />;
+      const convertedSushi = convertSushiId(sushiFromServer);
+      return <SushiListItem key={convertedSushi.id} {...convertedSushi} />;
     });
 
   const errorBlock = status.isError && <div>error</div>;

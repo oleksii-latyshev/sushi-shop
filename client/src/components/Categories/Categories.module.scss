@@ -10,20 +10,8 @@
 
 .item {
   min-width: 4rem;
-  border-radius: 7px;
-  background-color: var(--background-interactive-color);
-  color: var(--font-interactive-color);
 
   button {
     @include main-btn;
-  }
-
-  &.active {
-    background-color: var(--background-active-color);
-    color: var(--font-active-color);
-  }
-
-  &:hover {
-    opacity: var(--opacity-active);
   }
 }

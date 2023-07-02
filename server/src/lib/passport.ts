@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import { PassportStatic } from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
-import User from '@/models/user.model';
+import User from '@/db/schemas/user.schema';
 import { IUser } from '@/types/user.types';
 
 const initializePassport = (passport: PassportStatic): void => {

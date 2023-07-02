@@ -1,7 +1,7 @@
 import categoryMock from '@/db/mocks/category.mock.json';
 import sushiMock from '@/db/mocks/sushi.mock.json';
-import Category from '@/models/category.model';
-import Sushi from '@/models/sushi.model';
+import Category from '@/db/schemas/category.schema';
+import Sushi from '@/db/schemas/sushi.schema';
 import { ICategory } from '@/types/category.types';
 import { ISushi } from '@/types/sushi.types';
 

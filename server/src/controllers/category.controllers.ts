@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import Category from '@/models/category.model';
+import Category from '@/db/schemas/category.schema';
 
 export const getAllCategories = async (
   request: Request,

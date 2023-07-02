@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 
-import { authMe, signInUser, signUpUser } from '@/controllers/auth.controller';
+import { authMe, signInUser, signUpUser } from '@/controllers/auth.controllers';
 import { isAuthenticated } from '@/middleware/auth.middleware';
 
 const router = express.Router({ mergeParams: true });

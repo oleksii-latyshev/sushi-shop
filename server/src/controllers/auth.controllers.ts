@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import { Request, Response } from 'express';
 
-import User from '@/models/user.model';
+import User from '@/db/schemas/user.schema';
 import { IUser } from '@/types/user.types';
 import { createResponseUser } from '@/utils/helpers/createResponseUser';
 

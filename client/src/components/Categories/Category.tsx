@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 
 import styles from './Categories.module.scss';
@@ -16,8 +17,8 @@ const Category: React.FC<CategoryProps> = ({
   isActive = false,
 }) => {
   return (
-    <li className={`${styles.item} ${className}`}>
-      <button className={isActive ? 'active' : ''} onClick={onClick}>
+    <li className={clsx(styles.item, className)}>
+      <button className={clsx(isActive && styles.active)} onClick={onClick}>
         {title}
       </button>
     </li>
