@@ -34,6 +34,7 @@ module.exports = {
     ],
     'react/no-array-index-key': 0,
     'no-param-reassign': 0,
+    'no-underscore-dangle': 0,
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'import/order': 0,

@@ -1,37 +1,22 @@
 import React from 'react';
 
-import type { SushiFromServer } from '@/types';
-import { convertSushiId } from '@/utils/helpers/convertSushiId';
+import { ISushi } from '@/types';
 
 import styles from './SushiList.module.scss';
 import SushiListItem from './SushiListItem';
 
 interface SushiListProps {
-  sushi: SushiFromServer[];
-  status: {
-    isLoading: boolean;
-    isError: boolean;
-    isSuccess: boolean;
-  };
+  sushi: ISushi[];
 }
 
-const SushiList: React.FC<SushiListProps> = ({ sushi, status }) => {
+const SushiList: React.FC<SushiListProps> = ({ sushi }) => {
   const sushiListItemElements =
-    sushi?.length > 0 &&
+    sushi.length > 0 &&
     sushi.map((sushiFromServer) => {
-      const convertedSushi = convertSushiId(sushiFromServer);
-      return <SushiListItem key={convertedSushi.id} {...convertedSushi} />;
+      return <SushiListItem key={sushiFromServer._id} {...sushiFromServer} />;
     });
 
-  const errorBlock = status.isError && <div>error</div>;
-  const succeeded = status.isSuccess && sushiListItemElements;
-
-  return (
-    <ul className={styles.list}>
-      {errorBlock}
-      {succeeded}
-    </ul>
-  );
+  return <ul className={styles.list}>{sushiListItemElements}</ul>;
 };
 
 export default SushiList;

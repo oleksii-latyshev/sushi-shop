@@ -6,7 +6,7 @@ import SushiListSkeleton from '@/components/SushiList/SushiListSkeleton';
 import { useAppDispatch, useQueryOptions } from '@/hooks';
 import { useGetAllSushiQuery } from '@/services/sushi.service';
 import { setCurrentPage } from '@/store/slices/options.slice';
-import { SushiFromServer } from '@/types';
+import { ISushi } from '@/types';
 
 import styles from './Catalog.module.scss';
 
@@ -14,10 +14,9 @@ const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const queryOptions = useQueryOptions();
-  const { isLoading, isError, isSuccess, data } = useGetAllSushiQuery(queryOptions, {});
+  const { isLoading, isError, data } = useGetAllSushiQuery(queryOptions, {});
 
-  const status = { isLoading, isError, isSuccess };
-  const sushi = data?.sushi as SushiFromServer[];
+  const sushi = data?.sushi as ISushi[];
   const currentPage = data?.currentPage ?? 1;
   const totalPages = data?.totalPages ?? 1;
 
@@ -26,12 +25,11 @@ const Catalog: React.FC = () => {
   };
 
   if (isLoading) return <SushiListSkeleton />;
-
   if (isError) return <div>error</div>;
 
   return (
     <div className={styles.wrapper}>
-      <SushiList sushi={sushi} status={status} />
+      <SushiList sushi={sushi} />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

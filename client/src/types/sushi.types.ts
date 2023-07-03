@@ -1,28 +1,31 @@
-export interface Sushi {
-  id: string;
-  name: string;
+export interface ISushiVariant {
+  count: number;
   price: number;
-  counts: number[];
   weight: number;
   img: string;
-  category: number;
-  rating: number;
 }
 
-export interface SushiCart extends Pick<Sushi, 'id' | 'name' | 'price' | 'img' | 'category'> {
-  count: number;
+export interface ISushi {
+  _id: string;
+  name: string;
+  category: number;
+  rating: number;
+  description: string;
+  variants: ISushiVariant[];
+}
+
+export interface SushiCart extends Pick<ISushi, '_id' | 'name' | 'category'> {
+  variant: ISushiVariant;
   inCartCount: number;
 }
 
-export type SushiFromServer = Omit<Sushi, 'id'> & { _id: string };
-
 export interface ResponseSushi {
-  sushi: SushiFromServer[];
+  sushi: ISushi[];
   totalPages: number;
   currentPage: number;
 }
 
-export const isSushiFromServer = (sushi: unknown): sushi is SushiFromServer => {
+export const isSushiFromServer = (sushi: unknown): sushi is ISushi => {
   return Array.isArray(sushi);
 };
 
