@@ -1,102 +1,238 @@
 [
   {
     "name": "Love ua",
-    "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
-    "price": 649,
-    "counts": [10, 15, 20],
-    "weight": 11,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/love-ua.jpeg",
     "category": "646394f563f308d8ee0e3beb",
-    "rating": 7
+    "rating": 7,
+    "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
+    "variants": [
+      {
+        "count": 10,
+        "price": 120,
+        "weight": 100,
+        "img": "https://rocosushi.com/web/uploads/products/8c540035c8a0257de77b-%D0%A4%D1%96%D0%BB%D0%B0%D0%B4%D0%B5%D0%BB%D1%8C%D1%84%D1%96%D1%8F-%D0%B7-%D0%BB%D0%BE%D1%81%D0%BE%D1%81%D0%B5%D0%BC-%D1%96-%D0%B0%D0%B2%D0%BE%D0%BA%D0%B0%D0%B4%D0%BE.jpg"
+      },
+      {
+        "count": 15,
+        "price": 180,
+        "weight": 200,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/love-ua.jpeg"
+      },
+      {
+        "count": 20,
+        "price": 220,
+        "weight": 300,
+        "img": "https://roll-club.kh.ua/wp-content/uploads/2023/04/krevetka-h3-900h600.jpg.webp"
+      }
+    ]
   },
   {
     "name": "Сан сет",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 10,
     "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
-    "price": 899,
-    "counts": [15, 20, 50],
-    "weight": 12,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/san-set.jpeg",
-    "category": "646394f563f308d8ee0e3bec",
-    "rating": 10
+    "variants": [
+      {
+        "count": 10,
+        "price": 200,
+        "weight": 70,
+        "img": "https://images.pizza33.ua/products/product/M3q6Qk8KBHQUsUnzGNscytt2mB9SD4SF.jpg"
+      },
+      {
+        "count": 15,
+        "price": 250,
+        "weight": 120,
+        "img": "https://imageproxy.wolt.com/menu/menu-images/shared/1d8b7774-0c10-11ee-b8cb-f6701e7db42d_set_11.jpg"
+      }
+    ]
   },
   {
-    "name": "Супер Фила XL",
-    "description": "Voluptate officia ducimus mollitia delectus dolor soluta et modi. Officiis aut quia qui hic. Repudiandae rerum velit. Aperiam et quasi et sint esse exercitationem aliquam aspernatur.",
-    "price": 599,
-    "counts": [20, 30, 40],
-    "weight": 12,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/super-fila-xl_166391961194.jpeg",
+    "name": "Сушіманія",
     "category": "646394f563f308d8ee0e3bec",
-    "rating": 10
+    "rating": 8,
+    "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
+    "variants": [
+      {
+        "count": 10,
+        "price": 300,
+        "weight": 60,
+        "img": "https://cafetashkent.by/wp-content/uploads/2023/01/TASHKENT-roll.jpg"
+      }
+    ]
   },
   {
-    "name": "Супер Фила XXL",
-    "description": "Sint ut autem laboriosam et dolores et. Unde omnis et. Sed veniam deleniti. Minus doloremque sequi. Aut eum ab alias deserunt quo soluta eos placeat vero. Ipsum qui qui officia qui quis aut.",
-    "price": 699,
-    "counts": [20, 50],
-    "weight": 13,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/super-fila-xxl_1663919041348.jpeg",
-    "category": "646394f563f308d8ee0e3bec",
-    "rating": 9
-  },
-  {
-    "name": "Драгон XXL",
-    "description": "Rerum possimus ad exercitationem vitae eius voluptatem vitae aut. Animi sit repellat voluptas a quam earum est dignissimos dolorem. Earum cumque aliquam. Et dolorem non veniam laboriosam. Enim qui numquam id est repudiandae nihil id nulla nulla. Incidunt dolorem quis recusandae error.",
-    "price": 949,
-    "counts": [15],
-    "weight": 16,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/dragon-xxl.jpeg",
+    "name": "Кіото",
     "category": "646394f563f308d8ee0e3beb",
-    "rating": 2
+    "rating": 10,
+    "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
+    "variants": [
+      {
+        "count": 10,
+        "price": 120,
+        "weight": 100,
+        "img": "https://dasushi.od.ua/storage/product-preview/app-product/72/origin/roll-syrnyi1637781056.jpg?t=1637781056"
+      },
+      {
+        "count": 20,
+        "price": 220,
+        "weight": 300,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/_1684994077533.jpeg"
+      }
+    ]
   },
   {
-    "name": "Биг Фиш XXL",
-    "description": "Repudiandae magnam cumque totam qui. Perspiciatis ab soluta vero molestiae et rerum sit. Quisquam eius rerum tenetur voluptas dicta vel aut tempora. Eos provident quis natus perspiciatis sit id et eum animi. Qui dolorem labore ea autem aut ad eius. Error autem aut.",
-    "price": 669,
-    "counts": [15, 20, 50],
-    "weight": 14,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/_1623396196635.jpeg",
+    "name": "Океанік",
     "category": "646394f563f308d8ee0e3bec",
-    "rating": 8
+    "rating": 6,
+    "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
+    "variants": [
+      {
+        "count": 20,
+        "price": 300,
+        "weight": 210,
+        "img": "https://images.pizza33.ua/products/product/M3q6Qk8KBHQUsUnzGNscytt2mB9SD4SF.jpg"
+      },
+      {
+        "count": 30,
+        "price": 400,
+        "weight": 320,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/_1684914434346.jpeg"
+      }
+    ]
   },
   {
-    "name": "Лосось&Лосось XL",
-    "description": "Sit et omnis qui voluptas qui ullam est doloribus. Voluptatem rerum aliquid impedit et.",
-    "price": 799,
-    "counts": [15, 20, 50],
-    "weight": 11,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/lososlosos-l.jpeg",
-    "category": "646394f563f308d8ee0e3beb",
-    "rating": 2
-  },
-  {
-    "name": "Атлантик сет",
-    "description": "Perspiciatis eveniet error tempora aut nam est sit dolorum. Voluptatum laboriosam quod quis est dolorum beatae eius possimus dolorum. Maiores temporibus culpa aut numquam qui perspiciatis omnis voluptates deserunt. Voluptas rerum blanditiis ut cumque quas ut. Molestiae sit possimus.",
-    "price": 729,
-    "counts": [15, 20, 50],
-    "weight": 12,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/atlantik-set.jpeg",
+    "name": "Френдлі",
     "category": "646394f563f308d8ee0e3bec",
-    "rating": 4
+    "rating": 9,
+    "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
+    "variants": [
+      {
+        "count": 20,
+        "price": 280,
+        "weight": 260,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/frendli_168494833369.jpeg"
+      }
+    ]
   },
   {
-    "name": "Темпура-ролл с лососем",
-    "description": "Assumenda quisquam dignissimos nobis. Fugiat enim minima velit velit. Neque rerum voluptatibus sit beatae voluptas voluptas unde.",
-    "price": 229,
-    "counts": [15, 20, 50],
-    "weight": 29,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/_1670842082364.jpeg",
+    "name": "Тонхе",
     "category": "646394f563f308d8ee0e3beb",
-    "rating": 6
+    "rating": 8,
+    "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
+    "variants": [
+      {
+        "count": 50,
+        "price": 700,
+        "weight": 500,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/tonhe.jpeg"
+      }
+    ]
   },
   {
-    "name": "Капа маки",
-    "description": "Ut aspernatur perspiciatis perspiciatis aut. Aspernatur aut consequatur vel. Eveniet aperiam et qui odio qui voluptates cupiditate esse quod. Maxime est placeat autem qui maxime rerum eum voluptas voluptatem.",
-    "price": 55,
-    "counts": [15, 20, 50],
-    "weight": 11,
-    "img": "https://mafia.ua/storage/editor/fotos/450x450/maki-s-ogurcom.jpeg",
+    "name": "Морський мікс",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 10,
+    "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
+    "variants": [
+      {
+        "count": 30,
+        "price": 350,
+        "weight": 280,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/morskoj-miks_1685003414429.jpeg"
+      }
+    ]
+  },
+  {
+    "name": "Фелікс рол з масляною",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 8,
+    "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
+    "variants": [
+      {
+        "count": 15,
+        "price": 189,
+        "weight": 120,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/_168137452488.jpeg"
+      }
+    ]
+  },
+  {
+    "name": "Love ua",
     "category": "646394f563f308d8ee0e3beb",
-    "rating": 4
+    "rating": 7,
+    "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
+    "variants": [
+      {
+        "count": 10,
+        "price": 120,
+        "weight": 100,
+        "img": "https://rocosushi.com/web/uploads/products/8c540035c8a0257de77b-%D0%A4%D1%96%D0%BB%D0%B0%D0%B4%D0%B5%D0%BB%D1%8C%D1%84%D1%96%D1%8F-%D0%B7-%D0%BB%D0%BE%D1%81%D0%BE%D1%81%D0%B5%D0%BC-%D1%96-%D0%B0%D0%B2%D0%BE%D0%BA%D0%B0%D0%B4%D0%BE.jpg"
+      },
+      {
+        "count": 15,
+        "price": 180,
+        "weight": 200,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/love-ua.jpeg"
+      },
+      {
+        "count": 20,
+        "price": 220,
+        "weight": 300,
+        "img": "https://roll-club.kh.ua/wp-content/uploads/2023/04/krevetka-h3-900h600.jpg.webp"
+      }
+    ]
+  },
+  {
+    "name": "Сан сет",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 10,
+    "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
+    "variants": [
+      {
+        "count": 10,
+        "price": 200,
+        "weight": 70,
+        "img": "https://images.pizza33.ua/products/product/M3q6Qk8KBHQUsUnzGNscytt2mB9SD4SF.jpg"
+      },
+      {
+        "count": 15,
+        "price": 250,
+        "weight": 120,
+        "img": "https://imageproxy.wolt.com/menu/menu-images/shared/1d8b7774-0c10-11ee-b8cb-f6701e7db42d_set_11.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Сушіманія",
+    "category": "646394f563f308d8ee0e3bec",
+    "rating": 8,
+    "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
+    "variants": [
+      {
+        "count": 10,
+        "price": 300,
+        "weight": 60,
+        "img": "https://cafetashkent.by/wp-content/uploads/2023/01/TASHKENT-roll.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Кіото",
+    "category": "646394f563f308d8ee0e3beb",
+    "rating": 10,
+    "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
+    "variants": [
+      {
+        "count": 10,
+        "price": 120,
+        "weight": 100,
+        "img": "https://dasushi.od.ua/storage/product-preview/app-product/72/origin/roll-syrnyi1637781056.jpg?t=1637781056"
+      },
+      {
+        "count": 20,
+        "price": 220,
+        "weight": 300,
+        "img": "https://mafia.ua/storage/editor/fotos/450x450/_1684994077533.jpeg"
+      }
+    ]
   }
 ]

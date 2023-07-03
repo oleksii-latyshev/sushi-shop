@@ -11,7 +11,10 @@ const orderSchema: Schema = new Schema(
     products: [
       {
         sushiId: { type: Schema.Types.ObjectId, ref: 'Sushi' },
-        count: Number,
+        count: {
+          type: Number,
+          required: true,
+        },
         _id: false, // это для отключения автоматической генерации идентификатора
       },
     ],

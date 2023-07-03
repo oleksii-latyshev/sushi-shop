@@ -8,28 +8,6 @@ const sushiSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    description: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    counts: [
-      {
-        type: Number,
-        required: true,
-      },
-    ],
-    weight: {
-      type: Number,
-      required: true,
-    },
-    img: {
-      type: String,
-      required: true,
-    },
     category: {
       type: Schema.Types.ObjectId,
       ref: 'Category',
@@ -38,6 +16,31 @@ const sushiSchema: Schema = new Schema(
       type: Number,
       required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
+    variants: [
+      {
+        count: {
+          type: Number,
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
+        weight: {
+          type: Number,
+          required: true,
+        },
+        img: {
+          type: String,
+          required: true,
+        },
+        _id: false, // это для отключения автоматической генерации идентификатора
+      },
+    ],
   },
   {
     timestamps: true,
