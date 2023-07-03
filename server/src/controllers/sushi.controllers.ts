@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import Sushi from '@/db/schemas/sushi.schema';
+import { CustomResponse } from '@/utils/helpers/customResponse';
 
 interface Query {
   name?: { $regex: RegExp } | string;
@@ -26,16 +27,13 @@ export const getAllSushi = async (request: Request, response: Response): Promise
       .exec();
 
     const count = await Sushi.countDocuments();
-    console.log('[GET] sushi requested successfully');
-    return response.status(200).send({
+    return CustomResponse.ok(response, {
       sushi,
       totalPages: Math.ceil(count / +limit),
       currentPage: +page,
     });
   } catch (error) {
-    console.log('[GET] sushi requested unsuccessfully');
-
-    return response.status(500).json({
+    return CustomResponse.serverError(response, {
       message: `failed to get sushi`,
     });
   }
@@ -48,11 +46,10 @@ export const getSushiById = async (
   const { id } = request.params;
   try {
     const sushi = await Sushi.findById(id);
-    console.log(`[GET] sushi by id ${id} successfully received`);
-    return response.status(200).send(sushi);
+    return CustomResponse.ok(response, sushi);
   } catch (error) {
     console.log(`[GET] sushi by id ${id} unsuccessfully received`);
-    return response.status(500).json({
+    return CustomResponse.serverError(response, {
       message: `failed to get sushi by id: ${id}`,
     });
   }

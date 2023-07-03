@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import Category from '@/db/schemas/category.schema';
+import { CustomResponse } from '@/utils/helpers/customResponse';
 
 export const getAllCategories = async (
   request: Request,
@@ -9,11 +10,10 @@ export const getAllCategories = async (
   try {
     const category = await Category.find();
 
-    console.log('[GET] categories received');
-    return response.status(200).send(category);
+    return CustomResponse.ok(response, category);
   } catch (error) {
-    console.log('[GET] categories were not received');
-    return response.send(500).json({
+    console.error('get all categories error: ', error);
+    return CustomResponse.serverError(response, {
       message: 'categories were not received',
     });
   }
