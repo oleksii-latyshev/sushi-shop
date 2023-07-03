@@ -3,11 +3,19 @@ import passport from 'passport';
 
 import { authMe, signInUser, signUpUser } from '@/controllers/auth.controllers';
 import { isAuthenticated } from '@/middleware/auth.middleware';
+import { validation } from '@/middleware/validation.middleware';
+import { signInValidators, signUpValidators } from '@/utils/validators/auth.validators';
 
 const router = express.Router({ mergeParams: true });
 
-router.post('/signIn', passport.authenticate('local'), signInUser);
-router.post('/signUp', signUpUser);
+router.post(
+  '/signIn',
+  signInValidators,
+  validation,
+  passport.authenticate('local'),
+  signInUser
+);
+router.post('/signUp', signUpValidators, validation, signUpUser);
 router.get('/me', isAuthenticated, authMe);
 
 export default router;
