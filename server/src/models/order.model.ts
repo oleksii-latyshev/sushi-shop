@@ -64,6 +64,17 @@ export class Order {
       return null;
     }
   }
+  public static findByIdAndUpdate(
+    id: string,
+    updatedData: IOrder
+  ): Promise<Order | null> | null {
+    try {
+      return orderSchema.findByIdAndUpdate(id, updatedData, { new: true });
+    } catch (error) {
+      console.error(`find by id and update, id=${id}`, error);
+      return null;
+    }
+  }
 
   public static totalCount(): Promise<number> | number {
     try {

@@ -112,3 +112,34 @@ export const deleteOrderById = async (
     });
   }
 };
+
+export const updateOrderById = async (
+  request: Request,
+  response: Response
+): Promise<Response> => {
+  const { id } = request.params;
+
+  try {
+    const existedOrder = await Order.findById(id as string);
+
+    if (existedOrder && String(existedOrder.user) === String(request.user?._id)) {
+      const updatedOrder = await Order.findByIdAndUpdate(id, request.body);
+      return response.status(200).send(updatedOrder);
+    }
+
+    if (!existedOrder) {
+      return response.status(404).send({
+        message: `order with id = ${id} not found`,
+      });
+    }
+
+    return response.status(409).send({
+      message: `you are not the owner order with id = ${id}`,
+    });
+  } catch (error) {
+    console.error(`update order by id = ${id}`, error);
+    return response.status(500).send({
+      message: 'server side error when updating order',
+    });
+  }
+};
