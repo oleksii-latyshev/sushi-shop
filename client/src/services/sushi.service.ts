@@ -1,5 +1,5 @@
 import { QueryOptions } from '@/hooks';
-import { ResponseSushi, Sushi } from '@/types';
+import { ISushi, ResponseSushi } from '@/types';
 import { sushiLimitOnPage } from '@/utils/constants';
 
 import { api } from './api';
@@ -10,7 +10,7 @@ export const categoriesApi = api.injectEndpoints({
       query: ({ category, currentPage, order, search, sort }) =>
         `sushi?page=${currentPage}&limit=${sushiLimitOnPage}&sort=${sort}&order=${order}${category}${search}`,
     }),
-    getSushiById: builder.query<Sushi, string>({
+    getSushiById: builder.query<ISushi, string>({
       query: (id) => `sushi/${id}`,
     }),
   }),

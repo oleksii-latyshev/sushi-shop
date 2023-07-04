@@ -10,6 +10,7 @@
   border-radius: var(--rounded);
 
   &.active {
+    color: var(--font-color);
     background-color: var(--background-active-color);
   }
 

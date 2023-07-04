@@ -15,9 +15,8 @@ const CartListItem: React.FC<SushiCart> = ({ _id, inCartCount, name, variant, va
 
   return (
     <li className={styles.item}>
-      <div className={styles.img}>
-        <img src={variants[variant].img} alt={name} />
-      </div>
+      <img className={styles.img} src={variants[variant].img} alt={name} />
+
       <div className={styles.info}>
         <h3>{name}</h3>
         <p>у кількості: {variants[variant].count}</p>
