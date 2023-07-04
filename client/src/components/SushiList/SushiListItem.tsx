@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { addSushi, selectSushiById } from '@/store/slices/cart.slice';
 import type { ISushi, ISushiVariant, SushiCart } from '@/types';
 
+import SushiVariants from '../SushiVariants/SushiVariants';
 import styles from './SushiList.module.scss';
 
 const SushiListItem: React.FC<ISushi> = ({
@@ -16,7 +17,7 @@ const SushiListItem: React.FC<ISushi> = ({
   rating,
   variants,
 }) => {
-  const [selectVariant, setSelectVariant] = useState<ISushiVariant>(variants[0]); // TODO проверить на ререндер массив, мб useMemo нужно будет заюзать
+  const [selectVariant, setSelectVariant] = useState(0);
   const sushiInCart = useSelector(selectSushiById(_id));
   const dispatch = useDispatch();
 
@@ -33,28 +34,30 @@ const SushiListItem: React.FC<ISushi> = ({
     // dispatch(addSushi(item));
   };
 
-  const choicesElements = variants.map((variant, i) => (
-    <li key={i} className={clsx(selectVariant.count === variant.count && styles.active)}>
-      <button onClick={() => setSelectVariant(variant)}>{variant.count} шт</button>
-    </li>
-  ));
+  const onClickVariant = (i: number) => {
+    setSelectVariant(i);
+  };
 
   return (
     <li className={styles.item}>
-      <Link to={`sushi/${_id}`} className={styles.header}>
-        <img src={selectVariant.img} alt={name} />
+      <Link to={`sushi/${_id}?variant=${selectVariant}`} className={styles.header}>
+        <img src={variants[selectVariant].img} alt={name} />
         <h3>{name}</h3>
       </Link>
 
-      <ul className={styles.choices}>{choicesElements}</ul>
+      <SushiVariants
+        variants={variants}
+        onClick={onClickVariant}
+        activeVariant={selectVariant}
+      />
 
       <div className={styles.info}>
-        <span>{selectVariant.weight} г</span>
+        <span>{variants[selectVariant].weight} г</span>
         <span>{rating}/10⭐</span>
       </div>
 
       <div className={styles.footer}>
-        <p>{selectVariant.price} грн</p>
+        <p>{variants[selectVariant].price} грн</p>
         <button onClick={onClickAddToCart}>
           Добавить
           {sushiInCart.length > 0 ? (

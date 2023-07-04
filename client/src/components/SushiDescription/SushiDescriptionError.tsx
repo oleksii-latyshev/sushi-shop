@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import emptyBox from '../../assets/img/emptyBox.png';
-import styles from './SushiDesc.module.scss';
+import emptyBox from '@/assets/img/emptyBox.png';
+
+import styles from './SushiDescription.module.scss';
 
 const SushiDescError: React.FC = () => {
   return (

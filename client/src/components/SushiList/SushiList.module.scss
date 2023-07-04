@@ -43,37 +43,6 @@
     }
   }
 
-  .choices {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    // background: $background-content;
-
-    li {
-      flex: 1;
-      background: var(--background-interactive-color);
-      border-radius: 5px;
-
-      &:hover {
-        opacity: var(--opacity-active);
-      }
-
-      &.active {
-        background-color: var(--background-active-color);
-      }
-
-      button {
-        cursor: pointer;
-        background: initial;
-        padding: 5px;
-        width: 100%;
-        border: none;
-        font-weight: bold;
-        font-size: 1rem;
-      }
-    }
-  }
-
   .info {
     display: flex;
     justify-content: space-between;
