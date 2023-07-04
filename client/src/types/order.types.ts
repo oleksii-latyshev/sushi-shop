@@ -1,7 +1,9 @@
+import { ISushi } from './sushi.types';
+
 export type IStatusOrder = 'accepted' | 'completed';
 
 export interface IProduct {
-  sushiId: string;
+  sushiId: ISushi;
   variant: number;
   count: number;
 }

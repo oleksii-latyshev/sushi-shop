@@ -1,3 +1,5 @@
+@import '@/assets/styles/mixins/btn.mixins.scss';
+
 .list {
   display: flex;
   flex-direction: column;
@@ -6,22 +8,101 @@
 
 .item {
   display: flex;
-  gap: 5px;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
   background-color: var(--background-content-color);
-  padding: 10px;
   border-radius: var(--rounded);
+  padding: 10px;
 
-  .info {
+  .header {
     display: flex;
-    flex-direction: column;
     gap: 5px;
-    font-size: 1rem;
-    font-weight: bold;
+    justify-content: space-between;
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 1rem;
+      font-weight: bold;
 
-    .desc {
-      opacity: 0.75;
-      font-weight: 400;
+      .desc {
+        opacity: 0.75;
+        font-weight: 400;
+      }
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      button {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        rotate: 270deg;
+      }
+
+      &.active {
+        button {
+          rotate: 90deg;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: none;
+
+    &.visible {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .product {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        justify-items: center;
+        align-items: center;
+        font-size: 1rem;
+        font-weight: bold;
+
+        img {
+          justify-self: start;
+          width: 150px;
+          height: 150px;
+          background-color: white;
+          object-fit: contain;
+        }
+        .info {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 5px;
+
+      span {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      button {
+        @include main-btn;
+        width: fit-content;
+        padding: 10px;
+      }
     }
   }
 }

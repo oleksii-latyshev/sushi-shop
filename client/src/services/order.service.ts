@@ -1,4 +1,9 @@
-import { IOrder, IProduct, IRequestAllOrder, IResponseAllOrderRequest } from '@/types';
+import {
+  IOrder,
+  IProduct,
+  IRequestAllOrder,
+  IResponseAllOrderRequest,
+} from '@/types/order.types';
 
 import { api } from './api';
 

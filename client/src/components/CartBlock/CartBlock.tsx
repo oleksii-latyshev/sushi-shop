@@ -7,7 +7,7 @@ import CartList from '@/components/CartList/CartList';
 import { useAppSelector } from '@/hooks';
 import { useCreateOrderMutation } from '@/services/order.service';
 import { clearCart } from '@/store/slices/cart.slice';
-import { IProduct } from '@/types';
+import { IProduct } from '@/types/order.types';
 
 import styles from './CartBlock.module.scss';
 
