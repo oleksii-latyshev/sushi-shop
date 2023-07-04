@@ -6,6 +6,7 @@ export type IStatusOrder = 'accepted' | 'completed';
 
 export interface IProduct {
   sushiId: Pick<ISushi, '_id'>;
+  variant: number;
   count: number;
 }
 

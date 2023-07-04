@@ -5,7 +5,8 @@ export const createOrderValidators = [
     min: 1,
   }),
   check('products.*.sushiId').trim().isString(),
-  check('products.*.count').isInt({ min: 1 }),
+  check('products.*.variant').isInt({ min: 0 }),
+  check('products.*.count').optional().isInt({ min: 1 }),
 ];
 
 export const updateOrderValidators = [

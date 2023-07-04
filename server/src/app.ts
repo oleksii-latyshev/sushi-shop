@@ -17,7 +17,7 @@ const secretSession = process.env.PORT || 'secretSession';
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: '*', credentials: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
@@ -30,6 +30,7 @@ app.use(
   })
 );
 app.use(passport.initialize());
+app.use(passport.session());
 
 initializePassport(passport);
 

@@ -1,12 +1,17 @@
 import { Document } from 'mongoose';
 
-export interface ISushi extends Document {
-  name: string;
-  description: string;
+export interface ISushiVariant {
+  count: number;
   price: number;
-  counts: number[];
   weight: number;
   img: string;
-  category: string;
+}
+
+export interface ISushi extends Document {
+  _id: string;
+  name: string;
+  category: number;
   rating: number;
+  description: string;
+  variants: ISushiVariant[];
 }

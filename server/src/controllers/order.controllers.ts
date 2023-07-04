@@ -9,7 +9,7 @@ export const createOrder = async (request: Request, response: Response): Promise
   const { products } = request.body;
 
   const totalPrice = await products.reduce(
-    async (totalPromise: number, { sushiId }: Pick<IProduct, 'sushiId'>) => {
+    async (totalPromise: number, { sushiId, variant, count }: IProduct) => {
       const total = await totalPromise;
       const currentSushi = await Sushi.findById(sushiId);
       if (!currentSushi) {
@@ -18,7 +18,7 @@ export const createOrder = async (request: Request, response: Response): Promise
           sushiId,
         });
       }
-      return total + ((currentSushi && currentSushi.price) || 0);
+      return total + currentSushi.variants[variant].price * count;
     },
     Promise.resolve(0)
   );
