@@ -11,7 +11,7 @@ interface MenuProps {
 }
 
 const Menu: React.FC<MenuProps> = ({ className }) => {
-  const { totalCount, sushi } = useAppSelector((state) => state.cart);
+  const { totalCount, cartSushi } = useAppSelector((state) => state.cart);
   const { user } = useAppSelector((state) => state.user);
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
   const isMounted = useRef(false);
@@ -20,11 +20,11 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
 
   useEffect(() => {
     if (isMounted) {
-      const json = JSON.stringify(sushi);
+      const json = JSON.stringify(cartSushi);
       localStorage.setItem('cart', json);
     }
     isMounted.current = true;
-  }, [sushi]);
+  }, [cartSushi]);
 
   const onClickThemeSwitcher = () => {
     toggleTheme();
@@ -53,7 +53,7 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
             <button>sing in</button>
           </Link>
           <Link to='/signUp'>
-            <button className='active'>sing up</button>
+            <button className={styles.active}>sing up</button>
           </Link>
         </div>
       )}

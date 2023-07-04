@@ -14,8 +14,8 @@ export interface ISushi {
   variants: ISushiVariant[];
 }
 
-export interface SushiCart extends Pick<ISushi, '_id' | 'name' | 'category'> {
-  variant: ISushiVariant;
+export interface SushiCart extends Pick<ISushi, '_id' | 'name' | 'variants'> {
+  variant: number;
   inCartCount: number;
 }
 

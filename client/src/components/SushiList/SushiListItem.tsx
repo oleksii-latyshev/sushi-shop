@@ -1,42 +1,37 @@
-import clsx from 'clsx';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import SushiVariants from '@/components/SushiVariants/SushiVariants';
 import { addSushi, selectSushiById } from '@/store/slices/cart.slice';
-import type { ISushi, ISushiVariant, SushiCart } from '@/types';
+import type { ISushi, SushiCart } from '@/types';
 
-import SushiVariants from '../SushiVariants/SushiVariants';
 import styles from './SushiList.module.scss';
 
-const SushiListItem: React.FC<ISushi> = ({
-  _id,
-  name,
-  category,
-  description,
-  rating,
-  variants,
-}) => {
+const SushiListItem: React.FC<ISushi> = ({ _id, name, rating, variants }) => {
   const [selectVariant, setSelectVariant] = useState(0);
   const sushiInCart = useSelector(selectSushiById(_id));
   const dispatch = useDispatch();
 
   const onClickAddToCart = () => {
-    // const item: SushiCart = {
-    //   _id,
-    //   name,
-    //   img,
-    //   price,
-    //   category,
-    //   count: selectSize,
-    //   inCartCount: 1,
-    // };
-    // dispatch(addSushi(item));
+    const item: SushiCart = {
+      _id,
+      name,
+      variants,
+      variant: selectVariant,
+      inCartCount: 1,
+    };
+    dispatch(addSushi(item));
   };
 
   const onClickVariant = (i: number) => {
     setSelectVariant(i);
   };
+
+  const countInCart =
+    sushiInCart.length > 0 ? (
+      <span>{sushiInCart.reduce((sumCount, item) => sumCount + item.inCartCount, 0)}</span>
+    ) : null;
 
   return (
     <li className={styles.item}>
@@ -60,11 +55,7 @@ const SushiListItem: React.FC<ISushi> = ({
         <p>{variants[selectVariant].price} грн</p>
         <button onClick={onClickAddToCart}>
           Добавить
-          {sushiInCart.length > 0 ? (
-            <span>
-              {sushiInCart.reduce((sumCount, item) => sumCount + item.inCartCount, 0)}
-            </span>
-          ) : null}
+          {countInCart}
         </button>
       </div>
     </li>

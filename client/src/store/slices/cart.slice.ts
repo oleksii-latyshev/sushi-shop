@@ -1,28 +1,28 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { SushiCart } from '../../types';
-import { calcTotalCount, calcTotalPrice, getCartFromLocalStorage } from '../../utils/helpers';
-import { isSushiCart } from '../../utils/typeGuards';
-import type { RootState } from '../store';
+import type { RootState } from '@/store';
+import type { SushiCart } from '@/types';
+import { calcTotalCount, calcTotalPrice, getCartFromLocalStorage } from '@/utils/helpers';
+import { isSushiCart } from '@/utils/typeGuards';
 
 export interface InitialStateCart {
-  sushi: SushiCart[];
+  cartSushi: SushiCart[];
   totalPrice: number;
   totalCount: number;
 }
 
-const { sushi, totalCount, totalPrice } = getCartFromLocalStorage();
+const { cartSushi, totalCount, totalPrice } = getCartFromLocalStorage();
 
 const initialState: InitialStateCart = {
-  sushi,
+  cartSushi,
   totalPrice,
   totalCount,
 };
 
 const calcTotals = (state: InitialStateCart) => {
-  state.totalPrice = calcTotalPrice(state.sushi);
-  state.totalCount = calcTotalCount(state.sushi);
+  state.totalPrice = calcTotalPrice(state.cartSushi);
+  state.totalCount = calcTotalCount(state.cartSushi);
 
   return state;
 };
@@ -31,40 +31,40 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, 'id' | 'count'>>) {
-      const findItem = state.sushi.find(
-        (item) => item.id === action.payload.id && item.count === action.payload.count
-      );
-
-      if (findItem) findItem.inCartCount += 1;
-      else if (isSushiCart(action.payload)) state.sushi.push(action.payload);
-
-      state = calcTotals(state);
-    },
-    removeSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, 'id' | 'count'>>) {
-      const findItem = state.sushi.find(
-        (item) => item.id === action.payload.id && item.count === action.payload.count
+    addSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, '_id' | 'variant'>>) {
+      const findItem = state.cartSushi.find(
+        (item) => item._id === action.payload._id && item.variant === action.payload.variant
       );
 
       if (findItem) {
-        if (findItem.inCartCount > 1) findItem.inCartCount -= 1;
-        else
-          state.sushi = state.sushi.filter(
-            (item) => item.id !== action.payload.id && item.count !== action.payload.count
-          );
+        findItem.inCartCount += 1;
+      } else if (isSushiCart(action.payload)) {
+        state.cartSushi.push(action.payload);
       }
 
       state = calcTotals(state);
     },
-    deleteSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, 'id' | 'count'>>) {
-      state.sushi = state.sushi.filter(
-        (item) => item.id !== action.payload.id || item.count !== action.payload.count
+    removeSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, '_id' | 'variant'>>) {
+      const findItem = state.cartSushi.find(
+        (item) => item._id === action.payload._id && item.variant === action.payload.variant
       );
+
+      if (findItem && findItem.inCartCount > 1) {
+        findItem.inCartCount -= 1;
+      }
 
       state = calcTotals(state);
     },
+    deleteSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, '_id' | 'variant'>>) {
+      state.cartSushi = state.cartSushi.filter(
+        (item) => item._id !== action.payload._id || item.variant !== action.payload.variant
+      );
+      state = calcTotals(state);
+    },
     clearCart(state) {
-      state.sushi = [];
+      state.cartSushi = [];
+      state.totalCount = 0;
+      state.totalPrice = 0;
     },
   },
 });
@@ -72,7 +72,7 @@ export const cartSlice = createSlice({
 export const selectCart = (state: RootState) => state.cart;
 export const selectCartTotalCount = (state: RootState) => state.cart.totalCount;
 export const selectSushiById = (id: string) => (state: RootState) =>
-  state.cart.sushi.filter((item) => item.id === id);
+  state.cart.cartSushi.filter((item) => item._id === id);
 
 export const { addSushi, clearCart, removeSushi, deleteSushi } = cartSlice.actions;
 

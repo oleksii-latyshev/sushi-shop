@@ -51,6 +51,15 @@
       }
     }
   }
+
+  @media (max-width: 730px) {
+    .header {
+      flex-direction: column;
+      img {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .errorWrapper {

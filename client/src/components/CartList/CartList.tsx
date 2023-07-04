@@ -2,19 +2,18 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { clearCart, selectCart } from '../../store/slices/cart.slice';
+import { clearCart, selectCart } from '@/store/slices/cart.slice';
+
 import styles from './CartList.module.scss';
 import CartListItem from './CartListItem';
 
 const CartList: React.FC = () => {
   const dispatch = useDispatch();
-  const { sushi, totalPrice, totalCount } = useSelector(selectCart);
+  const { cartSushi, totalPrice, totalCount } = useSelector(selectCart);
 
   const onClickClear = () => dispatch(clearCart());
 
-  const CartElements = sushi.map((item) => (
-    <CartListItem key={+item.id * item.count} {...item} />
-  ));
+  const CartElements = cartSushi.map((item, i) => <CartListItem key={i} {...item} />);
 
   return (
     <div className={styles.cart}>
@@ -26,7 +25,7 @@ const CartList: React.FC = () => {
         <div className={styles.clearBtn}>
           <button onClick={onClickClear}>
             <i className='fa-solid fa-trash' />
-            <span>Очистить корзину</span>
+            <span>Очистити корзину</span>
           </button>
         </div>
       </div>
@@ -36,10 +35,10 @@ const CartList: React.FC = () => {
       <div className={styles.bottom}>
         <div className={styles.details}>
           <span>
-            Всего заказано: <b>{totalCount} шт.</b>
+            Усього замовлено: <b>{totalCount} шт.</b>
           </span>
           <span>
-            Сумма заказа: <b>{totalPrice} грн</b>
+            Сума замовлення: <b>{totalPrice} грн</b>
           </span>
         </div>
         <div className={styles.buttons}>
@@ -60,10 +59,10 @@ const CartList: React.FC = () => {
               />
             </svg>
 
-            <span>Вернуться назад</span>
+            <span>Повернутися назад</span>
           </Link>
           <div className={`${styles.button} ${styles.payBtn}`}>
-            <span>Оплатить сейчас</span>
+            <span>Замовити</span>
           </div>
         </div>
       </div>

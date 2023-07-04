@@ -1,15 +1,17 @@
-import type { InitialStateCart } from '../../store/slices/cart.slice';
-import type { SushiCart } from '../../types';
+import type { InitialStateCart } from '@/store/slices/cart.slice';
+import type { SushiCart } from '@/types';
+
 import { calcTotalCount, calcTotalPrice } from './calcTotals';
 
 export const getCartFromLocalStorage: () => InitialStateCart = () => {
   const data = localStorage.getItem('cart');
-  const sushi = (data ? JSON.parse(data) : []) as SushiCart[];
-  const totalCount = calcTotalCount(sushi);
-  const totalPrice = calcTotalPrice(sushi);
+
+  const cartSushi = (data ? JSON.parse(data) : []) as SushiCart[];
+  const totalCount = calcTotalCount(cartSushi);
+  const totalPrice = calcTotalPrice(cartSushi);
 
   return {
-    sushi,
+    cartSushi,
     totalCount,
     totalPrice,
   };

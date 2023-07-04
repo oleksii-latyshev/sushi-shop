@@ -1,33 +1,26 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addSushi, deleteSushi, removeSushi } from '../../store/slices/cart.slice';
-import type { SushiCart } from '../../types';
+import { addSushi, deleteSushi, removeSushi } from '@/store/slices/cart.slice';
+import type { SushiCart } from '@/types';
+
 import styles from './CartList.module.scss';
 
-const CartListItem: React.FC<SushiCart> = ({
-  id,
-  name,
-  img,
-  price,
-  category,
-  count,
-  inCartCount,
-}) => {
+const CartListItem: React.FC<SushiCart> = ({ _id, inCartCount, name, variant, variants }) => {
   const dispatch = useDispatch();
 
-  const onClickRemove = () => dispatch(removeSushi({ id, count }));
-  const onClickAdd = () => dispatch(addSushi({ id, count }));
-  const onClickDelete = () => dispatch(deleteSushi({ id, count }));
+  const onClickRemove = () => dispatch(removeSushi({ _id, variant }));
+  const onClickAdd = () => dispatch(addSushi({ _id, variant }));
+  const onClickDelete = () => dispatch(deleteSushi({ _id, variant }));
 
   return (
     <li className={styles.item}>
       <div className={styles.img}>
-        <img src={img} alt={name} />
+        <img src={variants[variant].img} alt={name} />
       </div>
       <div className={styles.info}>
         <h3>{name}</h3>
-        <p>в количестве: {count}</p>
+        <p>у кількості: {variants[variant].count}</p>
       </div>
       <div className={styles.count}>
         <button
@@ -42,7 +35,7 @@ const CartListItem: React.FC<SushiCart> = ({
           <i className='fa-solid fa-plus' />
         </button>
       </div>
-      <b className={styles.price}>{price * inCartCount} грн</b>
+      <b className={styles.price}>{variants[variant].price * inCartCount} грн</b>
       <div className={styles.remove}>
         <button onClick={onClickDelete} className={styles.circleButton}>
           <i className='fa-solid fa-xmark' />
