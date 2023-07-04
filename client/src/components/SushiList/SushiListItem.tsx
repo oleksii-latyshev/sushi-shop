@@ -35,13 +35,13 @@ const SushiListItem: React.FC<ISushi> = ({
 
   const choicesElements = variants.map((variant, i) => (
     <li key={i} className={clsx(selectVariant.count === variant.count && styles.active)}>
-      <button onClick={() => setSelectVariant(variant)}>{selectVariant.count} шт</button>
+      <button onClick={() => setSelectVariant(variant)}>{variant.count} шт</button>
     </li>
   ));
 
   return (
     <li className={styles.item}>
-      <Link to={`sushi/${_id}`}>
+      <Link to={`sushi/${_id}`} className={styles.header}>
         <img src={selectVariant.img} alt={name} />
         <h3>{name}</h3>
       </Link>
@@ -50,7 +50,7 @@ const SushiListItem: React.FC<ISushi> = ({
 
       <div className={styles.info}>
         <span>{selectVariant.weight} г</span>
-        <span>{rating}/10</span>
+        <span>{rating}/10⭐</span>
       </div>
 
       <div className={styles.footer}>

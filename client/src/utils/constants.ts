@@ -1,4 +1,4 @@
-import type { ISort } from '../types';
+import type { ISort } from '@/types';
 
 export const sortOptions: ISort[] = [
   { name: 'рейтингу', byProperty: 'rating' },

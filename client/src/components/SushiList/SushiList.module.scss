@@ -23,15 +23,24 @@
   gap: 10px;
   width: 100%;
 
-  h3 {
-    font-size: 1.5rem;
-    text-align: center;
-  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
 
-  img {
-    max-width: 100%;
-    width: 100%;
-    object-fit: cover;
+    img {
+      max-width: 100%;
+      width: 100%;
+      object-fit: contain;
+      background-color: white;
+      height: 350px;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
   }
 
   .choices {
@@ -63,6 +72,13 @@
         font-size: 1rem;
       }
     }
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    font-weight: bold;
   }
 
   .footer {
