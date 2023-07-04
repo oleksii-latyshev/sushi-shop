@@ -7,10 +7,24 @@ export interface IProduct {
 }
 
 export interface IOrder {
+  _id: string;
   user: string;
   products: IProduct[];
   totalPrice: number;
   status: IStatusOrder;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface IResponseAllOrderRequest {
+  orders: IOrder[];
+  totalPages: number;
+  currentPage: number;
+}
+
+export interface IRequestAllOrder {
+  page?: number;
+  limit?: number;
+  sort?: 'createdAt' | 'totalPrice';
+  order?: 'asc' | 'desc';
 }

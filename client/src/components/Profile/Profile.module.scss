@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  background-color: var(--background-content-color);
+  padding: 10px;
+  border-radius: var(--rounded);
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+
+    .desc {
+      opacity: 0.75;
+      font-weight: 400;
+    }
+  }
+}
