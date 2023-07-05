@@ -24,9 +24,22 @@ export const updateWishlist = async (
 
     return CustomResponse.ok(response, updatedUser);
   } catch (error) {
-    console.error('update user: ', error);
+    console.error('update wishlist: ', error);
     return CustomResponse.serverError(response, {
-      message: 'an error occurred on the server while updating the user',
+      message: 'an error occurred on the server while updating the wishlist',
+    });
+  }
+};
+
+export const getWishlist = async (request: Request, response: Response): Promise<Response> => {
+  try {
+    const wishlist = await User.getWishlist(request.user?._id as ObjectId);
+
+    return CustomResponse.ok(response, wishlist);
+  } catch (error) {
+    console.error('get wishlist: ', error);
+    return CustomResponse.serverError(response, {
+      message: 'an error occurred on the server while getting the wishlist',
     });
   }
 };

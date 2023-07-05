@@ -9,3 +9,7 @@ export interface IUser extends Document {
   name: string;
   favorites: string[];
 }
+
+export interface IUserWithSushi extends Omit<IUser, 'favorites'> {
+  favorites: ISushi[];
+}
