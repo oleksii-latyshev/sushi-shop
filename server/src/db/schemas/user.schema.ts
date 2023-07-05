@@ -15,6 +15,7 @@ const userSchema: Schema = new Schema({
     type: String,
     required: true,
   },
+  favorites: [{ type: Schema.Types.ObjectId, ref: 'Sushi' }],
 });
 
 export default model<IUser>('User', userSchema);
