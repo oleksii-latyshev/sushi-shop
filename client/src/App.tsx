@@ -5,19 +5,18 @@ import { Route, Routes } from 'react-router-dom';
 
 import { useInitialization } from '@/hooks/useInitialization';
 import MainLayout from '@/layouts/MainLayout';
+import { Home } from '@/pages';
 
-import { Home } from './pages';
-
-const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'));
+const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ '@/pages/Cart'));
 const Wishlist = React.lazy(
-  () => import(/* webpackChunkName: "Wishlist" */ './pages/Wishlist')
+  () => import(/* webpackChunkName: "Wishlist" */ '@/pages/Wishlist')
 );
-const Profile = React.lazy(() => import(/* webpackChunkName: "Profile" */ './pages/Profile'));
+const Profile = React.lazy(() => import(/* webpackChunkName: "Profile" */ '@/pages/Profile'));
 const NotFound = React.lazy(
-  () => import(/* webpackChunkName: "NotFound" */ './pages/NotFound')
+  () => import(/* webpackChunkName: "NotFound" */ '@/pages/NotFound')
 ); // ? одновременно полезно и бесполезно
-const Sushi = React.lazy(() => import(/* webpackChunkName: "Sushi" */ './pages/Sushi'));
-const SignIn = React.lazy(() => import(/* webpackChunkName: "SignIn" */ './pages/SignIn'));
+const Sushi = React.lazy(() => import(/* webpackChunkName: "Sushi" */ '@/pages/Sushi'));
+const SignIn = React.lazy(() => import(/* webpackChunkName: "SignIn" */ '@/pages/SignIn'));
 
 const App = () => {
   useInitialization();

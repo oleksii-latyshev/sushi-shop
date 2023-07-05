@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SushiCart } from '@/types';
+import { SushiCart } from '@/types/sushi.types';
 
 import styles from './CartList.module.scss';
 import CartListItem from './CartListItem';

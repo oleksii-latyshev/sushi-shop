@@ -3,6 +3,7 @@ export interface IUser {
   username: string;
   password: string;
   name: string;
+  favorites: string[];
 }
 
 export type IResponseUser = Omit<IUser, 'password'>;

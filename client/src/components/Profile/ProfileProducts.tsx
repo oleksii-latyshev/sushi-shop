@@ -14,7 +14,6 @@ const ProfileProducts: FC<Pick<IOrder, 'products'>> = ({ products }) => {
         <span> {sushi.variants[variant].count} шт</span>
         <span> {sushi.variants[variant].weight} г</span>
       </div>
-      <span>{sushi.variants[variant].price} грн</span>
       <span>x{count}</span>
     </li>
   ));

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import type { ISort } from '../../types';
+import type { ISort } from '@/types/options.types';
+
 import styles from './Sort.module.scss';
 import SortItem from './SortItem';
 

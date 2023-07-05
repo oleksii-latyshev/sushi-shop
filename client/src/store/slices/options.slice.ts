@@ -1,9 +1,9 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { ICategory, ISort, QueryParams } from '../../types';
-import { sortOptions } from '../../utils/constants';
-import type { RootState } from '../store';
+import type { RootState } from '@/store';
+import type { ICategory, ISort, QueryParams } from '@/types/options.types';
+import { sortOptions } from '@/utils/constants';
 
 interface InitialStateOptions {
   sortOptions: ISort[];

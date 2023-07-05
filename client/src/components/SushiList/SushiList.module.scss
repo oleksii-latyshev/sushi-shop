@@ -24,10 +24,28 @@
   width: 100%;
 
   .header {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 5px;
+
+    .heart {
+      display: none;
+      cursor: pointer;
+      border: none;
+      background-color: inherit;
+      z-index: 5;
+      position: absolute;
+      color: var(--active-color);
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+
+      &:disabled {
+        color: var(--font-interactive-color);
+      }
+    }
 
     img {
       max-width: 100%;
@@ -40,6 +58,12 @@
     h3 {
       font-size: 1.5rem;
       text-align: center;
+    }
+
+    &:hover {
+      .heart {
+        display: block;
+      }
     }
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { addSushi, deleteSushi, removeSushi } from '@/store/slices/cart.slice';
-import type { SushiCart } from '@/types';
+import type { SushiCart } from '@/types/sushi.types';
 
 import styles from './CartList.module.scss';
 

@@ -1,4 +1,5 @@
 import { ISushi } from '@/types/sushi.types';
+import { IResponseUser } from '@/types/user.types';
 
 import { api } from './api';
 
@@ -15,7 +16,22 @@ const userApi = api.injectEndpoints({
         },
       ],
     }),
+    toggleWishlistItem: builder.mutation<IResponseUser, string>({
+      query: (id) => ({
+        url: '/users/wishlist',
+        method: 'PATCH',
+        credentials: 'include',
+        body: {
+          sushiId: id,
+        },
+      }),
+      invalidatesTags: () => [
+        {
+          type: 'wishlist',
+        },
+      ],
+    }),
   }),
 });
 
-export const { useGetWishlistQuery } = userApi;
+export const { useGetWishlistQuery, useToggleWishlistItemMutation } = userApi;
