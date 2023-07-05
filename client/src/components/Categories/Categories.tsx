@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useGetAllCategoriesQuery } from '@/services/categories.service';
-import { ICategory } from '@/types';
+import { ICategory } from '@/types/options.types';
 import { convertCategoryId } from '@/utils/helpers/convertCategoryId';
 
 import styles from './Categories.module.scss';

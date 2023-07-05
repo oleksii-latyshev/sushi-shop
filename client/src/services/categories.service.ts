@@ -1,4 +1,4 @@
-import { CategoryFromServer } from '@/types';
+import { CategoryFromServer } from '@/types/options.types';
 
 import { api } from './api';
 

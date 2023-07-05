@@ -4,7 +4,7 @@ import { BASE_URL } from '@/utils/constants';
 
 export const api = createApi({
   reducerPath: 'api',
-  tagTypes: ['order'],
+  tagTypes: ['order', 'wishlist'],
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     instance: builder.query({

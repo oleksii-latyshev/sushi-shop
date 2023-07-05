@@ -32,11 +32,16 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
 
   return (
     <div className={conditionalClass}>
-      {/* <i className='fa-solid fa-moon' /> */}
       <button onClick={onClickThemeSwitcher} className={styles.icon}>
-        <i className='fa-solid fa-sun' />
+        {theme === 'light' ? (
+          <i className='fa-solid fa-moon' />
+        ) : (
+          <i className='fa-solid fa-sun' />
+        )}
       </button>
-      <i className={`${styles.icon} fa-solid fa-heart`} />
+      <NavLink to='/wishlist'>
+        <i className={`${styles.icon} fa-solid fa-heart`} />
+      </NavLink>
       <div className={styles.cart}>
         <NavLink to='/cart'>
           <span>{totalCount}</span>
@@ -44,9 +49,9 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
         </NavLink>
       </div>
       {user ? (
-        <Link to='/profile'>
+        <NavLink to='/profile'>
           <i className={`${styles.icon} fa-solid fa-user`} />
-        </Link>
+        </NavLink>
       ) : (
         <div className={styles.auth}>
           <Link to='/signIn'>

@@ -5,7 +5,7 @@ import Categories from '@/components/Categories/Categories';
 import Sort from '@/components/Sort/Sort';
 import { useAppDispatch } from '@/hooks';
 import { selectOptions, setCategory, setSortOption } from '@/store/slices/options.slice';
-import type { ICategory, ISort } from '@/types';
+import type { ICategory, ISort } from '@/types/options.types';
 
 import styles from './Options.module.scss';
 

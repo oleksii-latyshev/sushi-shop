@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import SushiVariants from '@/components/SushiVariants/SushiVariants';
 import { addSushi, selectSushiById } from '@/store/slices/cart.slice';
-import type { ISushi, SushiCart } from '@/types';
+import type { ISushi, SushiCart } from '@/types/sushi.types';
 
 import styles from './SushiList.module.scss';
 

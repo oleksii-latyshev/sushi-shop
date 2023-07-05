@@ -9,6 +9,9 @@ import MainLayout from '@/layouts/MainLayout';
 import { Home } from './pages';
 
 const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'));
+const Wishlist = React.lazy(
+  () => import(/* webpackChunkName: "Wishlist" */ './pages/Wishlist')
+);
 const Profile = React.lazy(() => import(/* webpackChunkName: "Profile" */ './pages/Profile'));
 const NotFound = React.lazy(
   () => import(/* webpackChunkName: "NotFound" */ './pages/NotFound')
@@ -25,6 +28,7 @@ const App = () => {
         <Route path='/' element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='wishlist' element={<Wishlist />} />
           <Route path='profile' element={<Profile />} />
           <Route path='sushi/:id' element={<Sushi />} />
           <Route path='*' element={<NotFound />} />

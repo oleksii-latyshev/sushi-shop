@@ -1,5 +1,5 @@
 import { QueryOptions } from '@/hooks';
-import { ISushi, ResponseSushi } from '@/types';
+import { ISushi, ResponseSushi } from '@/types/sushi.types';
 import { sushiLimitOnPage } from '@/utils/constants';
 
 import { api } from './api';
