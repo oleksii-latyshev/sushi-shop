@@ -16,7 +16,7 @@ import {
 
 const router = express.Router({ mergeParams: true });
 
-router.post('/', createOrderValidators, validation, isAuthenticated, createOrder);
+router.post('/', isAuthenticated, createOrderValidators, validation, createOrder);
 router.get('/', isAuthenticated, getOrders);
 router.get('/:id', isAuthenticated, getOrderById);
 router.delete('/:id', isAuthenticated, deleteOrderById);
