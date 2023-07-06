@@ -1,6 +1,11 @@
 @import '@/assets/styles/mixins/btn.mixins.scss';
 
+.header {
+  margin-bottom: 10px;
+}
+
 .list {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -98,10 +103,18 @@
         font-weight: bold;
       }
 
-      button {
-        @include main-btn;
-        width: fit-content;
-        padding: 10px;
+      div {
+        display: flex;
+        gap: 5px;
+        button {
+          @include main-btn;
+          width: fit-content;
+          padding: 10px;
+        }
+        .cancel {
+          @include activity-btn;
+          padding: 10px;
+        }
       }
     }
   }

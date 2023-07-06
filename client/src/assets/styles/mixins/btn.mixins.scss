@@ -16,6 +16,10 @@
   &:hover {
     opacity: var(--opacity-active);
   }
+
+  &:disabled {
+    background-color: var(--background-skeleton-out-color);
+  }
 }
 
 @mixin activity-btn {

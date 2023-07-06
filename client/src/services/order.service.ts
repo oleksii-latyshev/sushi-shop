@@ -35,7 +35,23 @@ const orderApi = api.injectEndpoints({
         },
       ],
     }),
+    confirmOrder: builder.mutation<IOrder, Pick<IOrder, '_id'> | string>({
+      query: (id) => ({
+        url: `/orders/${id}`,
+        method: 'PATCH',
+        credentials: 'include',
+        body: {
+          status: 'completed',
+        },
+      }),
+      invalidatesTags: () => [
+        {
+          type: 'order',
+        },
+      ],
+    }),
   }),
 });
 
-export const { useCreateOrderMutation, useGetAllOrdersQuery } = orderApi;
+export const { useCreateOrderMutation, useGetAllOrdersQuery, useConfirmOrderMutation } =
+  orderApi;

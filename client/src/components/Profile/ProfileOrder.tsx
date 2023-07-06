@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { FC, useState } from 'react';
 
+import { useConfirmOrderMutation } from '@/services/order.service';
 import { IOrder } from '@/types/order.types';
 
 import styles from './Profile.module.scss';
@@ -15,7 +16,12 @@ const ProfileOrder: FC<IOrder> = ({
   _id,
 }) => {
   const [isContentOpen, setIsContentOpen] = useState(false);
+  const [confirmOrder, { isLoading }] = useConfirmOrderMutation();
 
+  const onClickConfirm = () => {
+    confirmOrder(_id);
+  };
+  const onClickCancel = () => {};
   const onClickOpen = () => setIsContentOpen((prev) => !prev);
 
   const createdDate = new Date(createdAt);
@@ -58,7 +64,16 @@ const ProfileOrder: FC<IOrder> = ({
         <ProfileProducts products={products} />
         <div className={styles.footer}>
           <span>Загальна ціна: {totalPrice}</span>
-          <button className={styles.active}>Скасувати</button>
+          {status === 'accepted' && (
+            <div>
+              <button onClick={onClickConfirm} disabled={isLoading} className={styles.confirm}>
+                Підтвердити
+              </button>
+              <button onClick={onClickCancel} disabled={isLoading} className={styles.cancel}>
+                Скасувати
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </li>

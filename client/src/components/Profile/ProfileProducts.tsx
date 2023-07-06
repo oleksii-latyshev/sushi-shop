@@ -5,8 +5,8 @@ import { IOrder } from '@/types/order.types';
 import styles from './Profile.module.scss';
 
 const ProfileProducts: FC<Pick<IOrder, 'products'>> = ({ products }) => {
-  const productsList = products.map(({ sushiId: sushi, count, variant }) => (
-    <li key={sushi._id} className={styles.product}>
+  const productsList = products.map(({ sushiId: sushi, count, variant }, i) => (
+    <li key={i} className={styles.product}>
       <img src={sushi.variants[variant].img} alt={sushi.name} />
 
       <h3>{sushi.name}</h3>
