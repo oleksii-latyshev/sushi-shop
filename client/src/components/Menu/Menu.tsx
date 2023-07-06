@@ -12,7 +12,7 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = ({ className }) => {
   const { totalCount, cartSushi } = useAppSelector((state) => state.cart);
-  const { user } = useAppSelector((state) => state.user);
+  const { user } = useAppSelector((state) => state.settings);
   const conditionalClass = className ? `${styles.wrapper} ${className}` : styles.wrapper;
   const isMounted = useRef(false);
 

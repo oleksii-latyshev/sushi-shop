@@ -4,7 +4,7 @@ import SushiVariants from '@/components/SushiVariants/SushiVariants';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { useToggleWishlistItemMutation } from '@/services/user.service';
 import { addSushi } from '@/store/slices/cart.slice';
-import { setUser } from '@/store/slices/user.slice';
+import { setUser } from '@/store/slices/settings.slice';
 import type { ISushi, SushiCart } from '@/types/sushi.types';
 
 import styles from './SushiDescription.module.scss';
@@ -22,7 +22,7 @@ const SushiDescription: FC<ISushiDescriptionProps> = ({
   variant,
 }) => {
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.user);
+  const { user } = useAppSelector((state) => state.settings);
 
   const [selectedVariant, setSelectedVariant] = useState(variant);
   const [countInCart, setCountInCart] = useState(1);

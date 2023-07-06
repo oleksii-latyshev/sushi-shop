@@ -15,7 +15,7 @@ const CartBlock: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cartSushi, totalPrice, totalCount } = useAppSelector((state) => state.cart);
-  const { user } = useAppSelector((state) => state.user);
+  const { user } = useAppSelector((state) => state.settings);
 
   const [createOrder, { isSuccess }] = useCreateOrderMutation();
 

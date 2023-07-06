@@ -8,10 +8,10 @@ export interface QueryOptions {
   currentPage: number;
 }
 
-export const useQueryOptions: () => QueryOptions = () => {
-  const { activeCategory, activeSort, searchValue, currentPage } = useAppSelector(
-    (state) => state.options
-  );
+type IUseQueryOptions = (currentPage: number) => QueryOptions;
+
+export const useQueryOptions: IUseQueryOptions = (currentPage: number) => {
+  const { activeCategory, activeSort, searchValue } = useAppSelector((state) => state.options);
 
   const category = activeCategory.id.length > 1 ? `&category=${activeCategory.id}` : '';
   const order = activeSort.byProperty.includes('-') ? 'desc' : 'asc';

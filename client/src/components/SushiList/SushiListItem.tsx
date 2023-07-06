@@ -6,7 +6,7 @@ import SushiVariants from '@/components/SushiVariants/SushiVariants';
 import { useAppSelector } from '@/hooks';
 import { useToggleWishlistItemMutation } from '@/services/user.service';
 import { addSushi, selectSushiById } from '@/store/slices/cart.slice';
-import { setUser } from '@/store/slices/user.slice';
+import { setUser } from '@/store/slices/settings.slice';
 import type { ISushi, SushiCart } from '@/types/sushi.types';
 import { getAbsolutePath } from '@/utils/helpers/getAbsolutePath';
 
@@ -16,7 +16,7 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, rating, variants }) => {
   const heartRef = useRef<HTMLButtonElement>(null);
   const [selectVariant, setSelectVariant] = useState(0);
   const sushiInCart = useAppSelector(selectSushiById(_id));
-  const { user } = useAppSelector((state) => state.user);
+  const { user } = useAppSelector((state) => state.settings);
   const dispatch = useDispatch();
 
   const [toggleWishlistItem, { data, isLoading, isSuccess, isError }] =

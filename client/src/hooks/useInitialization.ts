@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useAuthMeQuery } from '@/services/auth.service';
-import { setUser } from '@/store/slices/user.slice';
+import { setUser } from '@/store/slices/settings.slice';
 
 import { useAppDispatch } from '.';
 

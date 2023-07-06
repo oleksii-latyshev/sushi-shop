@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 
+import Pagination from '@/components/Pagination/Pagination';
 import { useGetAllOrdersQuery } from '@/services/order.service';
 
 import styles from './Profile.module.scss';
@@ -21,12 +22,21 @@ const ProfileOrders: FC = () => {
     </ul>
   );
 
+  const onClickPage = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div>
       <h3>Ваші замовлення:</h3>
       {errorOrders}
       {loadingOrders}
       {successOrders}
+      <Pagination
+        currentPage={localCurrentPage}
+        totalPages={data?.totalPages || 1}
+        onChangePage={onClickPage}
+      />
     </div>
   );
 };

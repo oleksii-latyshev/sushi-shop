@@ -1,27 +1,24 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import Pagination from '@/components/Pagination/Pagination';
 import SushiList from '@/components/SushiList/SushiList';
 import SushiListSkeleton from '@/components/SushiList/SushiListSkeleton';
-import { useAppDispatch, useQueryOptions } from '@/hooks';
+import { useQueryOptions } from '@/hooks';
 import { useGetAllSushiQuery } from '@/services/sushi.service';
-import { setCurrentPage } from '@/store/slices/options.slice';
 import { ISushi } from '@/types/sushi.types';
 
 import styles from './Catalog.module.scss';
 
 const Catalog: FC = () => {
-  const dispatch = useAppDispatch();
+  const [localCurrentPage, setCurrentPage] = useState(1);
 
-  const queryOptions = useQueryOptions();
+  const queryOptions = useQueryOptions(localCurrentPage);
   const { isLoading, isError, data } = useGetAllSushiQuery(queryOptions);
 
   const sushi = data?.sushi as ISushi[];
-  const currentPage = data?.currentPage ?? 1;
-  const totalPages = data?.totalPages ?? 1;
 
   const onChangePage = (page: number) => {
-    dispatch(setCurrentPage(page));
+    setCurrentPage(page);
   };
 
   if (isLoading) return <SushiListSkeleton />;
@@ -31,8 +28,8 @@ const Catalog: FC = () => {
     <div className={styles.wrapper}>
       <SushiList sushi={sushi} />
       <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
+        currentPage={localCurrentPage}
+        totalPages={data?.totalPages ?? 1}
         onChangePage={onChangePage}
       />
     </div>
