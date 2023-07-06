@@ -1,7 +1,17 @@
 @import '@/assets/styles/mixins/btn.mixins.scss';
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 10px;
+
+  button {
+    @include activity-btn;
+    max-width: 200px;
+    padding: 10px;
+  }
 }
 
 .list {

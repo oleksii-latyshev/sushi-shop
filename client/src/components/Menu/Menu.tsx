@@ -39,9 +39,12 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
           <i className='fa-solid fa-sun' />
         )}
       </button>
-      <NavLink to='/wishlist'>
-        <i className={`${styles.icon} fa-solid fa-heart`} />
-      </NavLink>
+      {user && (
+        <NavLink to='/wishlist'>
+          <i className={`${styles.icon} fa-solid fa-heart`} />
+        </NavLink>
+      )}
+
       <div className={styles.cart}>
         <NavLink to='/cart'>
           <span>{totalCount}</span>

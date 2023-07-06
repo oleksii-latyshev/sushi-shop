@@ -11,7 +11,6 @@ const authApi = api.injectEndpoints({
         credentials: 'include',
         body,
       }),
-      // transformResponse: (response: { data: IResponseUser }) => response.data,
     }),
     authMe: builder.query<IResponseUser, null>({
       query: () => ({
@@ -19,7 +18,14 @@ const authApi = api.injectEndpoints({
         credentials: 'include',
       }),
     }),
+    logout: builder.mutation<undefined, null>({
+      query: () => ({
+        url: 'auth/logout',
+        method: 'POST',
+        credentials: 'include',
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useAuthMeQuery } = authApi;
+export const { useLoginMutation, useAuthMeQuery, useLogoutMutation } = authApi;

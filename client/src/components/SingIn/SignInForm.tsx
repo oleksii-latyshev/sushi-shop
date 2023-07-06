@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch } from '@/hooks';
 import { useLoginMutation } from '@/services/auth.service';
-import { setUser } from '@/store/slices/user.slice';
+import { setUser } from '@/store/slices/settings.slice';
 import { ILoginUser } from '@/types/user.types';
 
 import styles from './SignInForm.module.scss';

@@ -45,3 +45,18 @@ export const authMe = async (request: Request, response: Response): Promise<Resp
     });
   }
 };
+
+export const logout = async (request: Request, response: Response): Promise<void> => {
+  request.session.destroy((error: string) => {
+    if (error) {
+      console.error('logout', error);
+      CustomResponse.serverError(response, {
+        message: 'server error logout',
+      });
+    }
+
+    response.clearCookie('connect.sid');
+
+    CustomResponse.ok(response, null);
+  });
+};
