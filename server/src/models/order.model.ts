@@ -1,17 +1,16 @@
-import { ObjectId } from 'mongoose';
+import { ObjectId, SortOrder } from 'mongoose';
 
 import orderSchema from '@/db/schemas/order.schema';
-import { ICreateOrder, IOrder, IStatusOrder } from '@/types/order.types';
+import { ICreateOrder, IOrder } from '@/types/order.types';
 
 interface IOptionAllOrders {
   page: number;
   limit: number;
-  sort?: string | 'createdAt' | 'updatedAt' | 'totalPrice';
-  order?: string | 'asc' | 'desc';
-  status?: string | IStatusOrder;
+  sort: string | 'createdAt' | 'updatedAt' | 'totalPrice';
+  orderValue: SortOrder;
 }
 
-interface Query {
+export interface IQuery {
   status?: string;
   category?: string;
 }
@@ -34,18 +33,13 @@ export class Order {
   }
   public static findAllByUserId(
     user: ObjectId,
+    query: IQuery,
     options: IOptionAllOrders
   ): Promise<IOrder[]> | null {
-    const { page, limit, sort, order, status } = options;
+    const { page, limit, sort, orderValue } = options;
     try {
-      const orderValue = order === 'asc' ? 1 : order === 'desc' ? -1 : -1;
-      const query: Query = {};
-      if (status) {
-        query.status = status;
-      }
-
       return orderSchema
-        .find({ user })
+        .find({ user, ...query })
         .populate('products.sushiId')
         .sort({ [sort as string]: orderValue })
         .limit(limit)
@@ -76,9 +70,9 @@ export class Order {
     }
   }
 
-  public static totalCount(): Promise<number> | number {
+  public static count(query: IQuery): Promise<number> | number {
     try {
-      return orderSchema.countDocuments();
+      return orderSchema.countDocuments(query);
     } catch (error) {
       console.error('get total order', error);
       return 0;

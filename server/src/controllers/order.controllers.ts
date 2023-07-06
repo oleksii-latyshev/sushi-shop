@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { Order } from '@/models/order.model';
+import { IQuery, Order } from '@/models/order.model';
 import { Sushi } from '@/models/sushi.model';
 import { IProduct } from '@/types/order.types';
 import { CustomResponse } from '@/utils/helpers/customResponse';
@@ -37,14 +37,21 @@ export const getOrders = async (request: Request, response: Response): Promise<R
 
   try {
     if (request.user && request.user._id) {
-      const ordersTotalCount = await Order.totalCount();
-      const orders = await Order.findAllByUserId(request.user?._id, {
+      const orderValue = order === 'asc' ? 1 : order === 'desc' ? -1 : -1;
+      const query: IQuery = {};
+      if (status) {
+        query.status = status as string;
+      }
+
+      const ordersTotalCount = await Order.count(query);
+
+      const orders = await Order.findAllByUserId(request.user?._id, query, {
         page: +page,
         limit: +limit,
         sort: sort as string,
-        order: order as string,
-        status: status as string | undefined,
+        orderValue,
       });
+
       return CustomResponse.ok(response, {
         orders,
         totalPages: Math.ceil(ordersTotalCount / +limit),
