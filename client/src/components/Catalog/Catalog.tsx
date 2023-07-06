@@ -1,11 +1,11 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 
 import Pagination from '@/components/Pagination/Pagination';
 import SushiList from '@/components/SushiList/SushiList';
 import SushiListSkeleton from '@/components/SushiList/SushiListSkeleton';
 import { useAppDispatch, useQueryOptions } from '@/hooks';
 import { useGetAllSushiQuery } from '@/services/sushi.service';
-import { setCurrentPage, setTotalPages } from '@/store/slices/options.slice';
+import { setCurrentPage } from '@/store/slices/options.slice';
 import { ISushi } from '@/types/sushi.types';
 
 import styles from './Catalog.module.scss';
@@ -27,6 +27,8 @@ const Catalog: FC = () => {
   if (isLoading) return <SushiListSkeleton />;
   if (isError) return <div>error</div>;
 
+  console.log(sushi);
+  console.log(totalPages);
   return (
     <div className={styles.wrapper}>
       <SushiList sushi={sushi} />

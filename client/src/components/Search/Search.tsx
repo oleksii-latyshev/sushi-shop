@@ -2,8 +2,9 @@ import debounce from 'lodash.debounce';
 import React, { useCallback, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { useAppSelector } from '../../hooks';
-import { setSearchValue } from '../../store/slices/options.slice';
+import { useAppSelector } from '@/hooks';
+import { setSearchValue } from '@/store/slices/options.slice';
+
 import styles from './Search.module.scss';
 
 export interface SearchProps {
@@ -25,8 +26,6 @@ const Search: React.FC<SearchProps> = ({ className, placeholder }) => {
     inputRef.current?.focus();
   };
 
-  // ! нужно найти ошибку в debounceUpdateSearchValue, но предполагаю, что беда в реализации debounce
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceUpdateSearchValue = useCallback(
     debounce((inputText: string) => {
       dispatch(setSearchValue(inputText));

@@ -1,18 +1,13 @@
 import { Request, Response } from 'express';
 
-import Sushi from '@/db/schemas/sushi.schema';
+import { IQuery, Sushi } from '@/models/sushi.model';
 import { CustomResponse } from '@/utils/helpers/customResponse';
-
-interface Query {
-  name?: { $regex: RegExp } | string;
-  category?: string;
-}
 
 export const getAllSushi = async (request: Request, response: Response): Promise<Response> => {
   const { page = 1, limit = 9, sort = 'name', order = 'asc', name, category } = request.query;
   try {
     const orderValue = order === 'asc' ? 1 : order === 'desc' ? -1 : -1;
-    const query: Query = {};
+    const query: IQuery = {};
     if (name) {
       query.name = { $regex: new RegExp(`${name}`, 'i') };
     }
@@ -20,13 +15,15 @@ export const getAllSushi = async (request: Request, response: Response): Promise
       query.category = category as string;
     }
 
-    const sushi = await Sushi.find(query)
-      .sort({ [sort as string]: orderValue })
-      .limit(+limit * 1)
-      .skip((+page - 1) * +limit)
-      .exec();
+    const sushi = await Sushi.findAll(query, {
+      page: +page,
+      limit: +limit,
+      orderValue,
+      sort: sort as string,
+    });
 
-    const count = await Sushi.countDocuments();
+    const count = await Sushi.count(query);
+
     return CustomResponse.ok(response, {
       sushi,
       totalPages: Math.ceil(count / +limit),
