@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { FC, useState } from 'react';
 
-import { useConfirmOrderMutation } from '@/services/order.service';
+import { useCancelOrderMutation, useConfirmOrderMutation } from '@/services/order.service';
 import { IOrder } from '@/types/order.types';
 
 import styles from './Profile.module.scss';
@@ -16,12 +16,15 @@ const ProfileOrder: FC<IOrder> = ({
   _id,
 }) => {
   const [isContentOpen, setIsContentOpen] = useState(false);
-  const [confirmOrder, { isLoading }] = useConfirmOrderMutation();
+  const [confirmOrder, { isLoading: isConfirmLoading }] = useConfirmOrderMutation();
+  const [cancelOrder, { isLoading: isCancelLoading }] = useCancelOrderMutation();
 
-  const onClickConfirm = () => {
-    confirmOrder(_id);
+  const onClickConfirm = async () => {
+    await confirmOrder(_id);
   };
-  const onClickCancel = () => {};
+  const onClickCancel = async () => {
+    await cancelOrder(_id);
+  };
   const onClickOpen = () => setIsContentOpen((prev) => !prev);
 
   const createdDate = new Date(createdAt);
@@ -66,10 +69,18 @@ const ProfileOrder: FC<IOrder> = ({
           <span>Загальна ціна: {totalPrice}</span>
           {status === 'accepted' && (
             <div>
-              <button onClick={onClickConfirm} disabled={isLoading} className={styles.confirm}>
+              <button
+                onClick={onClickConfirm}
+                disabled={isConfirmLoading || isCancelLoading}
+                className={styles.confirm}
+              >
                 Підтвердити
               </button>
-              <button onClick={onClickCancel} disabled={isLoading} className={styles.cancel}>
+              <button
+                onClick={onClickCancel}
+                disabled={isConfirmLoading || isCancelLoading}
+                className={styles.cancel}
+              >
                 Скасувати
               </button>
             </div>

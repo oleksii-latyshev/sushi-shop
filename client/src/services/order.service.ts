@@ -50,8 +50,24 @@ const orderApi = api.injectEndpoints({
         },
       ],
     }),
+    cancelOrder: builder.mutation<null, Pick<IOrder, '_id'> | string>({
+      query: (id) => ({
+        url: `/orders/${id}`,
+        method: 'DELETE',
+        credentials: 'include',
+      }),
+      invalidatesTags: () => [
+        {
+          type: 'order',
+        },
+      ],
+    }),
   }),
 });
 
-export const { useCreateOrderMutation, useGetAllOrdersQuery, useConfirmOrderMutation } =
-  orderApi;
+export const {
+  useCreateOrderMutation,
+  useGetAllOrdersQuery,
+  useConfirmOrderMutation,
+  useCancelOrderMutation,
+} = orderApi;
