@@ -10,11 +10,15 @@
   border-radius: var(--rounded);
 
   &.active {
-    color: var(--font-color);
     background-color: var(--background-active-color);
   }
 
   &:hover {
     opacity: var(--opacity-active);
   }
+}
+
+@mixin activity-btn {
+  @include main-btn;
+  background: var(--background-active-color);
 }

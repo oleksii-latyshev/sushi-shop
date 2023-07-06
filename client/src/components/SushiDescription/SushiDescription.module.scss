@@ -10,6 +10,14 @@
     display: flex;
     gap: 10px;
     width: 100%;
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 300px;
+    }
+
     img {
       max-width: 100%;
       width: 400px;
@@ -18,12 +26,32 @@
       background-color: white;
     }
 
-    div {
-      max-width: 400px;
-      width: 100%;
+    .info {
+      justify-content: space-between;
       display: flex;
-      flex-direction: column;
-      gap: 5px;
+      flex-direction: row;
+
+      span {
+        display: block;
+      }
+
+      button {
+        border: none;
+        background-color: inherit;
+        &:disabled {
+          color: var(--background-skeleton-out-color);
+        }
+        cursor: pointer;
+        border: none;
+        background-color: inherit;
+        color: var(--active-color);
+        font-size: 2rem;
+
+        &:hover,
+        &:focus {
+          opacity: 0.8;
+        }
+      }
     }
 
     .control {

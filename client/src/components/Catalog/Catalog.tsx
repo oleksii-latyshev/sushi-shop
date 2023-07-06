@@ -27,8 +27,6 @@ const Catalog: FC = () => {
   if (isLoading) return <SushiListSkeleton />;
   if (isError) return <div>error</div>;
 
-  console.log(sushi);
-  console.log(totalPages);
   return (
     <div className={styles.wrapper}>
       <SushiList sushi={sushi} />

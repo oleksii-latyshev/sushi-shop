@@ -8,6 +8,7 @@ import { useToggleWishlistItemMutation } from '@/services/user.service';
 import { addSushi, selectSushiById } from '@/store/slices/cart.slice';
 import { setUser } from '@/store/slices/user.slice';
 import type { ISushi, SushiCart } from '@/types/sushi.types';
+import { getAbsolutePath } from '@/utils/helpers/getAbsolutePath';
 
 import styles from './SushiList.module.scss';
 
@@ -58,11 +59,11 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, rating, variants }) => {
     <li className={styles.item}>
       <Link
         onClick={onClickHeart}
-        to={`sushi/${_id}?variant=${selectVariant}`}
+        to={getAbsolutePath(`sushi/${_id}?variant=${selectVariant}`)}
         className={styles.header}
       >
         <button ref={heartRef} className={styles.heart} disabled={isLoading}>
-          {user?.favorites.includes(_id) ? (
+          {user && user?.favorites.includes(_id) ? (
             <i className='fa-solid fa-heart' />
           ) : (
             <i className='fa-regular fa-heart' />

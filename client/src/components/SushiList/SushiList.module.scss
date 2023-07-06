@@ -1,3 +1,5 @@
+@import '@/assets/styles/mixins/btn.mixins.scss';
+
 .list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -43,7 +45,12 @@
       font-size: 2rem;
 
       &:disabled {
-        color: var(--font-interactive-color);
+        color: var(--background-skeleton-out-color);
+      }
+
+      &:hover,
+      &:focus {
+        opacity: 0.8;
       }
     }
 
@@ -86,16 +93,11 @@
     }
 
     button {
+      @include activity-btn;
       position: relative;
-      min-height: 55px;
-      min-width: 130px;
-      cursor: pointer;
-      border: none;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 7px;
+
+      max-width: 200px;
       padding: 10px;
-      background: var(--background-active-color);
 
       &:hover {
         opacity: var(--opacity-active);
@@ -103,7 +105,8 @@
 
       span {
         position: absolute;
-        top: 0;
+        top: -5px;
+        right: -5px;
         display: inline-block;
         background: var(--background-content-color);
         border-radius: 50%;
