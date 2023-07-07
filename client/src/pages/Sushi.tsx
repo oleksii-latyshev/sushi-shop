@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
-import SushiDescription from '@/components/SushiDescription/SushiDescription';
-import SushiDescError from '@/components/SushiDescription/SushiDescriptionError';
-import SushiDescLoading from '@/components/SushiDescription/SushiDescriptionLoading';
+import SushiBlock from '@/components/Sushi/SushiBlock';
+import SushiBlockError from '@/components/Sushi/SushiBlockError';
+import SushiBlockLoading from '@/components/Sushi/SushiBlockLoading';
 import { useGetSushiByIdQuery } from '@/services/sushi.service';
 
 const Sushi: React.FC = () => {
@@ -17,9 +17,9 @@ const Sushi: React.FC = () => {
     skip: !id,
   });
 
-  const errorBlock = isError && <SushiDescError />;
-  const pending = isLoading && <SushiDescLoading />;
-  const succeeded = isSuccess && data && <SushiDescription {...data} variant={variant} />;
+  const errorBlock = isError && <SushiBlockError />;
+  const pending = isLoading && <SushiBlockLoading />;
+  const succeeded = isSuccess && data && <SushiBlock {...data} variant={variant} />;
 
   return (
     <>

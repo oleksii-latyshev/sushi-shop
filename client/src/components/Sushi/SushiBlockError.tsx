@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import emptyBox from '@/assets/img/emptyBox.png';
 
-import styles from './SushiDescription.module.scss';
+import styles from './SushiBlock.module.scss';
 
-const SushiDescError: React.FC = () => {
+const SushiBlockError: React.FC = () => {
   return (
     <div className={styles.errorWrapper}>
       <img src={emptyBox} alt='empty' />
@@ -17,4 +17,4 @@ const SushiDescError: React.FC = () => {
   );
 };
 
-export default SushiDescError;
+export default SushiBlockError;

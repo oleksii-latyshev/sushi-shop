@@ -12,7 +12,7 @@ import { getAbsolutePath } from '@/utils/helpers/getAbsolutePath';
 
 import styles from './SushiList.module.scss';
 
-const SushiListItem: React.FC<ISushi> = ({ _id, name, rating, variants }) => {
+const SushiListItem: React.FC<ISushi> = ({ _id, name, reviews, variants }) => {
   const heartRef = useRef<HTMLButtonElement>(null);
   const [selectVariant, setSelectVariant] = useState(0);
   const sushiInCart = useAppSelector(selectSushiById(_id));
@@ -55,6 +55,13 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, rating, variants }) => {
       <span>{sushiInCart.reduce((sumCount, item) => sumCount + item.inCartCount, 0)}</span>
     ) : null;
 
+  const avgRating =
+    reviews.length > 0
+      ? (
+          reviews.reduce((avgRat, review) => avgRat + review.rating, 0) / reviews.length
+        ).toFixed(2)
+      : null;
+
   return (
     <li className={styles.item}>
       <Link
@@ -84,7 +91,7 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, rating, variants }) => {
 
       <div className={styles.info}>
         <span>{variants[selectVariant].weight} г</span>
-        <span>{rating}/10⭐</span>
+        <span>{avgRating === null ? 'new' : `${avgRating}/10⭐`}</span>
       </div>
 
       <div className={styles.footer}>

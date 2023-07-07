@@ -2,9 +2,8 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 import type { RootState } from '@/store';
-import type { SushiCart } from '@/types';
+import { isSushiCart, SushiCart } from '@/types/sushi.types';
 import { calcTotalCount, calcTotalPrice, getCartFromLocalStorage } from '@/utils/helpers';
-import { isSushiCart } from '@/utils/typeGuards';
 
 export interface InitialStateCart {
   cartSushi: SushiCart[];
