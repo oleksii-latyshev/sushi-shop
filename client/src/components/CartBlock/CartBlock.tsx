@@ -17,11 +17,11 @@ const CartBlock: React.FC = () => {
   const { cartSushi, totalPrice, totalCount } = useAppSelector((state) => state.cart);
   const { user } = useAppSelector((state) => state.settings);
 
-  const [createOrder, { isSuccess }] = useCreateOrderMutation();
+  const [createOrder, { isSuccess, isLoading }] = useCreateOrderMutation();
 
   useEffect(() => {
     if (isSuccess) {
-      navigate('/');
+      navigate('/profile');
       dispatch(clearCart());
     }
   }, [isSuccess]);
@@ -86,7 +86,7 @@ const CartBlock: React.FC = () => {
           </Link>
 
           {user ? (
-            <button onClick={onClickOrder} className={styles.payBtn}>
+            <button onClick={onClickOrder} disabled={isLoading} className={styles.payBtn}>
               Замовити
             </button>
           ) : (

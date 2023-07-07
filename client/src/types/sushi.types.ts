@@ -30,11 +30,7 @@ export interface SushiCart extends Pick<ISushi, '_id' | 'name' | 'variants'> {
   inCartCount: number;
 }
 
-export interface ResponseSushi {
-  sushi: ISushi[];
-  totalPages: number;
-  currentPage: number;
-}
+export type ICreateSushiReview = Pick<ISushiReview, 'text' | 'rating'>;
 
 export const isSushiFromServer = (sushi: unknown): sushi is ISushi => {
   return Array.isArray(sushi);

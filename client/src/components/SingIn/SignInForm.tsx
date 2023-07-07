@@ -61,7 +61,7 @@ export const SignInForm: FC = () => {
         {errors.password?.message && <span>{errors.password.message}</span>}
       </label>
       {errorLogin && <span>{errorLogin}</span>}
-      <button type='submit'>sign in</button>
+      <button type='submit'>Авторизуватись</button>
     </form>
   );
 };

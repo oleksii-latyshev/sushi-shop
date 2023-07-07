@@ -77,13 +77,15 @@ const SushiMenu: FC<ISushiMenuProps> = ({
           <span>{variants[selectedVariant].weight} г</span>
           <span>{avgRating === null ? 'new' : `${avgRating}/10⭐`}</span>
         </div>
-        <button onClick={onClickHeart} disabled={isLoading}>
-          {user && user?.favorites.includes(_id) ? (
-            <i className='fa-solid fa-heart' />
-          ) : (
-            <i className='fa-regular fa-heart' />
-          )}
-        </button>
+        {user && (
+          <button onClick={onClickHeart} disabled={isLoading}>
+            {user.favorites.includes(_id) ? (
+              <i className='fa-solid fa-heart' />
+            ) : (
+              <i className='fa-regular fa-heart' />
+            )}
+          </button>
+        )}
       </div>
 
       <div className={styles.control}>
@@ -100,7 +102,7 @@ const SushiMenu: FC<ISushiMenuProps> = ({
         <div>
           <span>{variants[selectedVariant].price * countInCart} грн</span>
           <button onClick={onClickAddToCart} className={styles.active}>
-            купити
+            В корзину
           </button>
         </div>
       </div>

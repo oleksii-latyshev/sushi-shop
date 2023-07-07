@@ -19,9 +19,7 @@ const Header: React.FC = () => {
       <Link className={styles.logo} to='/'>
         sushi
       </Link>
-      {excludedPaths && (
-        <Search className={styles.search} placeholder='name of the sushi...' />
-      )}
+      {excludedPaths && <Search className={styles.search} placeholder='назва суші...' />}
       <Menu />
     </div>
   );

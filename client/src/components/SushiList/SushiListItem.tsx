@@ -97,7 +97,7 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, reviews, variants }) => {
       <div className={styles.footer}>
         <p>{variants[selectVariant].price} грн</p>
         <button onClick={onClickAddToCart}>
-          Добавить
+          В корзину
           {countInCart}
         </button>
       </div>

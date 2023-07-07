@@ -3,8 +3,6 @@ export interface ICategory {
   name: string;
 }
 
-export type CategoryFromServer = Omit<ICategory, 'id'> & { _id: string };
-
 export interface ISort {
   name: string;
   byProperty: 'rating' | 'name' | '-price' | 'price';

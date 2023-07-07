@@ -1,4 +1,5 @@
-import { ILoginUser, IResponseUser } from '@/types/user.types';
+import { IResponseUser } from '@/types/response.types';
+import { ILoginUser } from '@/types/user.types';
 
 import { api } from './api';
 

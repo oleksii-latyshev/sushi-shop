@@ -1,5 +1,5 @@
+import { IResponseUser } from '@/types/response.types';
 import { ISushi } from '@/types/sushi.types';
-import { IResponseUser } from '@/types/user.types';
 
 import { api } from './api';
 
@@ -10,7 +10,7 @@ const userApi = api.injectEndpoints({
         url: '/users/wishlist',
         credentials: 'include',
       }),
-      providesTags: (result, error) => [
+      providesTags: [
         {
           type: 'wishlist',
         },
@@ -25,7 +25,7 @@ const userApi = api.injectEndpoints({
           sushiId: id,
         },
       }),
-      invalidatesTags: () => [
+      invalidatesTags: [
         {
           type: 'wishlist',
         },

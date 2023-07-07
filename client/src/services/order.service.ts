@@ -1,9 +1,5 @@
-import {
-  IOrder,
-  IProduct,
-  IRequestAllOrder,
-  IResponseAllOrderRequest,
-} from '@/types/order.types';
+import { IOrder, IProduct, IRequestAllOrder } from '@/types/order.types';
+import { IResponseAllOrderRequest } from '@/types/response.types';
 
 import { api } from './api';
 
@@ -18,7 +14,7 @@ const orderApi = api.injectEndpoints({
           products,
         },
       }),
-      invalidatesTags: () => [
+      invalidatesTags: [
         {
           type: 'order',
         },
@@ -29,7 +25,7 @@ const orderApi = api.injectEndpoints({
         url: `/orders?page=${page}&limit=${limit}&sort=${sort}&order=${order}`,
         credentials: 'include',
       }),
-      providesTags: (result, error) => [
+      providesTags: [
         {
           type: 'order',
         },
@@ -44,7 +40,7 @@ const orderApi = api.injectEndpoints({
           status: 'completed',
         },
       }),
-      invalidatesTags: () => [
+      invalidatesTags: [
         {
           type: 'order',
         },
@@ -56,7 +52,7 @@ const orderApi = api.injectEndpoints({
         method: 'DELETE',
         credentials: 'include',
       }),
-      invalidatesTags: () => [
+      invalidatesTags: [
         {
           type: 'order',
         },

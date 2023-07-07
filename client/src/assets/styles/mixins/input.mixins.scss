@@ -1,0 +1,12 @@
+@mixin main-input {
+  background-color: var(--background-content-color);
+  padding: 10px 15px;
+  border: none;
+  border-radius: var(--rounded);
+  color: var(--text-color);
+
+  &::placeholder {
+    color: var(--font-color);
+    filter: opacity(0.9);
+  }
+}

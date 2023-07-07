@@ -1,7 +1,9 @@
 import { FC, useState } from 'react';
 
+import { useAppSelector } from '@/hooks';
 import type { ISushi } from '@/types/sushi.types';
 
+import SushiReviewForm from '../SushiReviews/SushiReviewForm';
 import SushiReviews from '../SushiReviews/SushiReviews';
 import styles from './SushiBlock.module.scss';
 import SushiInfo from './SushiInfo';
@@ -11,8 +13,9 @@ interface ISushiBlockProps extends ISushi {
   variant: number;
 }
 
-const SushiBlock: FC<ISushiBlockProps> = (props) => {
-  const { variants, variant, name, description, reviews } = props;
+const SushiBlock: FC<ISushiBlockProps> = ({ _id, ...data }) => {
+  const { variants, variant, name, description, reviews } = data;
+  const { user } = useAppSelector((state) => state.settings);
 
   const [selectedVariant, setSelectedVariant] = useState(variant);
 
@@ -27,10 +30,12 @@ const SushiBlock: FC<ISushiBlockProps> = (props) => {
         <SushiMenu
           selectedVariant={selectedVariant}
           onClickVariant={onClickVariant}
-          {...props}
+          _id={_id}
+          {...data}
         />
       </div>
       <SushiInfo description={description} />
+      {user && <SushiReviewForm _id={_id} />}
       <SushiReviews reviews={reviews} />
     </div>
   );

@@ -8,7 +8,7 @@ const CartEmpty: React.FC = () => {
     <div className={styles.wrapper}>
       <h2>Корзина пуста</h2>
       <Link to='/'>
-        <button>вернуться на главную</button>
+        <button>Повернутися на головну</button>
       </Link>
     </div>
   );

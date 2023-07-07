@@ -15,12 +15,10 @@ const ProfileOrders: FC = () => {
   const errorOrders = isError && <div>ошибка</div>;
   const loadingOrders = isLoading && <div>загрузка</div>;
 
-  const successOrders = isSuccess && (
-    <ul className={styles.list}>
-      {data?.orders.length > 0 &&
-        data.orders.map((order) => <ProfileOrder key={order._id} {...order} />)}
-    </ul>
-  );
+  const successOrders =
+    isSuccess &&
+    data?.orders.length > 0 &&
+    data.orders.map((order) => <ProfileOrder key={order._id} {...order} />);
 
   const onClickPage = (page: number) => {
     setCurrentPage(page);
@@ -31,12 +29,18 @@ const ProfileOrders: FC = () => {
       <h3>Ваші замовлення:</h3>
       {errorOrders}
       {loadingOrders}
-      {successOrders}
-      <Pagination
-        currentPage={localCurrentPage}
-        totalPages={data?.totalPages || 1}
-        onChangePage={onClickPage}
-      />
+      {isSuccess && data.orders.length > 0 ? (
+        <>
+          <ul className={styles.list}>{successOrders}</ul>
+          <Pagination
+            currentPage={localCurrentPage}
+            totalPages={data?.totalPages || 1}
+            onChangePage={onClickPage}
+          />
+        </>
+      ) : (
+        <p className={styles.emptyMessage}>У вас немає замовлень 😢</p>
+      )}
     </div>
   );
 };

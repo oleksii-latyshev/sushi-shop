@@ -11,8 +11,8 @@ export const SignInContent: FC = () => {
       <div className={styles.content}>
         <SignInForm />
         <div>
-          <Link to='/'>back</Link>
-          <Link to='/signUp'>sign up</Link>
+          <Link to='/'>Повернутись</Link>
+          <Link to='/signUp'>Створити акаунт</Link>
         </div>
       </div>
     </div>

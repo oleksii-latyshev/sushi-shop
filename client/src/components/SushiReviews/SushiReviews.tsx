@@ -10,8 +10,8 @@ interface ISushiReviewsProps {
 }
 
 const SushiReviews: FC<ISushiReviewsProps> = ({ reviews }) => {
-  const reviewsElement = reviews.map((review) => (
-    <SushiReview key={review.userId._id} {...review} />
+  const reviewsElement = reviews.map((review, i) => (
+    <SushiReview key={Date.now() + i} {...review} />
   ));
 
   return (

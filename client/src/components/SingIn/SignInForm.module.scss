@@ -1,3 +1,6 @@
+@import '@/assets/styles/mixins/btn.mixins.scss';
+@import '@/assets/styles/mixins/input.mixins.scss';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -12,18 +15,12 @@
   label {
     cursor: pointer;
     color: var(--font-color);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 
     input {
-      cursor: pointer;
-      display: block;
-      padding: 10px;
+      @include main-input;
       width: 100%;
-      color: var(--font-color);
-      font-size: 1.2rem;
-      border: none;
       background-color: var(--background-color);
-      border-radius: var(--rounded);
     }
 
     span {
@@ -32,10 +29,8 @@
   }
 
   button {
+    @include activity-btn;
     padding: 10px;
-    border: none;
-    border-radius: var(--rounded);
-    font-size: 1.4rem;
-    background-color: var(--background-active-color);
+    font-size: 1.2rem;
   }
 }

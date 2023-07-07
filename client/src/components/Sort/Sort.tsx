@@ -57,7 +57,7 @@ const Sort: React.FC<SortProps> = React.memo(({ sortOptions, selectedSort, onSel
               fill='#fff'
             />
           </svg>
-          <b>Сортировка по:</b>
+          <b>Сортування за:</b>
           <span>{selectedSort.name}</span>
         </button>
       </div>

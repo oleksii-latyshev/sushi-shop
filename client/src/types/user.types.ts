@@ -6,6 +6,4 @@ export interface IUser {
   favorites: string[];
 }
 
-export type IResponseUser = Omit<IUser, 'password'>;
-
 export type ILoginUser = Pick<IUser, 'username' | 'password'>;

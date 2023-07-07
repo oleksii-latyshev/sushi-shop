@@ -16,7 +16,11 @@ const SushiList: React.FC<SushiListProps> = ({ sushi }) => {
       return <SushiListItem key={sushiFromServer._id} {...sushiFromServer} />;
     });
 
-  return <ul className={styles.list}>{sushiListItemElements}</ul>;
+  return sushi.length > 0 ? (
+    <ul className={styles.list}>{sushiListItemElements}</ul>
+  ) : (
+    <p className={styles.emptyMessage}>Список пустий 😢</p>
+  );
 };
 
 export default SushiList;

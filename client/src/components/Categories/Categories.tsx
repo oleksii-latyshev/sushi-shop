@@ -38,7 +38,7 @@ const Categories: React.FC<CategoriesProps> = React.memo(
       <ul className={styles.list}>
         <Category
           key={0}
-          title='все'
+          title='всі'
           isActive={activeCategory.id === '0'}
           onClick={() => onClickCategory({ id: '0', name: 'все' })}
         />
