@@ -12,10 +12,6 @@ const sushiSchema: Schema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Category',
     },
-    rating: {
-      type: Number,
-      required: true,
-    },
     description: {
       type: String,
       required: true,
@@ -38,7 +34,15 @@ const sushiSchema: Schema = new Schema(
           type: String,
           required: true,
         },
-        _id: false, // это для отключения автоматической генерации идентификатора
+        _id: false,
+      },
+    ],
+    reviews: [
+      {
+        userId: { type: Schema.Types.ObjectId, ref: 'User' },
+        text: { type: String, required: true },
+        rating: { type: Number, required: true },
+        _id: false,
       },
     ],
   },

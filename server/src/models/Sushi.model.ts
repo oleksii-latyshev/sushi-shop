@@ -1,7 +1,7 @@
 import { SortOrder } from 'mongoose';
 
 import sushiSchema from '@/db/schemas/sushi.schema';
-import { ISushi } from '@/types/sushi.types';
+import { ISushi, ISushiReview } from '@/types/sushi.types';
 
 export interface IQuery {
   name?: { $regex: RegExp } | string;
@@ -29,9 +29,24 @@ export class Sushi {
   }
   public static findById(id: Pick<ISushi, '_id'> | string): Promise<ISushi | null> | null {
     try {
-      return sushiSchema.findById(id);
+      return sushiSchema.findById(id).populate('reviews.userId', 'name');
     } catch (error) {
       console.log('get sushi by id:', error);
+      return null;
+    }
+  }
+  public static async addReviewById(
+    id: Pick<ISushi, '_id'> | string,
+    review: ISushiReview
+  ): Promise<ISushi | null> {
+    try {
+      const existedSushi = (await Sushi.findById(id)) as ISushi;
+
+      existedSushi.reviews.push(review);
+
+      return existedSushi.save();
+    } catch (error) {
+      console.error('add review model: ', error);
       return null;
     }
   }

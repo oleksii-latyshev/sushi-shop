@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import { IQuery, Sushi } from '@/models/sushi.model';
+import { ISushiReview } from '@/types/sushi.types';
 import { CustomResponse } from '@/utils/helpers/customResponse';
 
 export const getAllSushi = async (request: Request, response: Response): Promise<Response> => {
@@ -48,6 +49,33 @@ export const getSushiById = async (
     console.log(`[GET] sushi by id ${id} unsuccessfully received`);
     return CustomResponse.serverError(response, {
       message: `failed to get sushi by id: ${id}`,
+    });
+  }
+};
+
+export const addReview = async (request: Request, response: Response): Promise<Response> => {
+  const { id } = request.params;
+  try {
+    const existedSushi = await Sushi.findById(id);
+
+    if (!existedSushi) {
+      return CustomResponse.notFound(response, {
+        message: `sushi with this id = ${id} does not exist`,
+      });
+    }
+
+    const review: ISushiReview = {
+      ...request.body,
+      userId: request.user?._id,
+    };
+
+    const updatedSushi = await Sushi.addReviewById(id, review);
+
+    return CustomResponse.created(response, updatedSushi);
+  } catch (error) {
+    console.error(`add review`);
+    return CustomResponse.serverError(response, {
+      message: `an error occurred while adding a review. order id = ${id}`,
     });
   }
 };
