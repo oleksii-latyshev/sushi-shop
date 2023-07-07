@@ -1,5 +1,5 @@
 import { IResponseUser } from '@/types/response.types';
-import { ILoginUser } from '@/types/user.types';
+import { ILoginUser, IRegisterUser } from '@/types/user.types';
 
 import { api } from './api';
 
@@ -8,6 +8,14 @@ const authApi = api.injectEndpoints({
     login: builder.mutation<IResponseUser, ILoginUser>({
       query: ({ ...body }) => ({
         url: 'auth/signIn',
+        method: 'POST',
+        credentials: 'include',
+        body,
+      }),
+    }),
+    register: builder.mutation<IResponseUser, IRegisterUser>({
+      query: ({ ...body }) => ({
+        url: 'auth/signUp',
         method: 'POST',
         credentials: 'include',
         body,
@@ -29,4 +37,5 @@ const authApi = api.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useAuthMeQuery, useLogoutMutation } = authApi;
+export const { useLoginMutation, useAuthMeQuery, useLogoutMutation, useRegisterMutation } =
+  authApi;

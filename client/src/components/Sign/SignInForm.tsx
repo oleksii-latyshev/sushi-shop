@@ -7,9 +7,9 @@ import { useLoginMutation } from '@/services/auth.service';
 import { setUser } from '@/store/slices/settings.slice';
 import { ILoginUser } from '@/types/user.types';
 
-import styles from './SignInForm.module.scss';
+import styles from './Sign.module.scss';
 
-export const SignInForm: FC = () => {
+const SignInForm: FC = () => {
   const {
     register,
     handleSubmit,
@@ -41,27 +41,37 @@ export const SignInForm: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.wrapper}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <label htmlFor='username'>
-        Enter your username:
+        Ведіть логін:
         <input
           id='username'
-          placeholder='username...'
-          {...register('username', { required: 'username is required filed' })}
+          placeholder='логін...'
+          {...register('username', {
+            required: 'логін є обовязковим полем',
+            minLength: { value: 2, message: 'мінімальна довжина логіна 2 символи' },
+          })}
         />
         {errors.username?.message && <span>{errors.username.message}</span>}
       </label>
       <label htmlFor='password'>
-        Enter your password:
+        Ведіть пароль:
         <input
           id='password'
-          placeholder='password...'
-          {...register('password', { required: 'password is required filed' })}
+          placeholder='пароль...'
+          {...register('password', {
+            required: 'пароль є обовязковим полем',
+            minLength: { value: 5, message: 'мінімальна довжина паролю 5 символів' },
+          })}
         />
         {errors.password?.message && <span>{errors.password.message}</span>}
       </label>
       {errorLogin && <span>{errorLogin}</span>}
-      <button type='submit'>Авторизуватись</button>
+      <button type='submit' disabled={isLoading}>
+        Авторизуватись
+      </button>
     </form>
   );
 };
+
+export default SignInForm;

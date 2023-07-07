@@ -1,10 +1,10 @@
 import type { ISort } from '@/types/options.types';
 
 export const sortOptions: ISort[] = [
-  { name: 'рейтингу', byProperty: 'rating' },
-  { name: 'алфавіту', byProperty: 'name' },
-  { name: 'спадання ціни', byProperty: '-price' },
-  { name: 'зростання ціни', byProperty: 'price' },
+  { name: 'рейтингом', byProperty: 'rating' },
+  { name: 'алфавітом', byProperty: 'name' },
+  { name: 'спаданням ціни', byProperty: '-price' },
+  { name: 'зростанням ціни', byProperty: 'price' },
 ];
 
 export const sushiLimitOnPage = 8;

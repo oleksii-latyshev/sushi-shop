@@ -19,8 +19,8 @@ const initialState: InitialStateOptions = {
     name: 'все',
   },
   activeSort: {
-    name: 'рейтингу',
-    byProperty: 'rating',
+    name: sortOptions[0].name,
+    byProperty: sortOptions[0].byProperty,
   },
   searchValue: '',
 };

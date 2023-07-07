@@ -57,9 +57,9 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, reviews, variants }) => {
 
   const avgRating =
     reviews.length > 0
-      ? (
+      ? Math.ceil(
           reviews.reduce((avgRat, review) => avgRat + review.rating, 0) / reviews.length
-        ).toFixed(2)
+        )
       : null;
 
   return (

@@ -7,3 +7,4 @@ export interface IUser {
 }
 
 export type ILoginUser = Pick<IUser, 'username' | 'password'>;
+export type IRegisterUser = Pick<IUser, 'username' | 'name' | 'password'>;

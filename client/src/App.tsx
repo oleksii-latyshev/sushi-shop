@@ -17,6 +17,7 @@ const NotFound = React.lazy(
 ); // ? одновременно полезно и бесполезно
 const Sushi = React.lazy(() => import(/* webpackChunkName: "Sushi" */ '@/pages/Sushi'));
 const SignIn = React.lazy(() => import(/* webpackChunkName: "SignIn" */ '@/pages/SignIn'));
+const SignUp = React.lazy(() => import(/* webpackChunkName: "SignUp" */ '@/pages/SignUp'));
 
 const App = () => {
   useInitialization();
@@ -33,6 +34,7 @@ const App = () => {
           <Route path='*' element={<NotFound />} />
         </Route>
         <Route path='/signIn' element={<SignIn />} />
+        <Route path='/signUp' element={<SignUp />} />
       </Routes>
     </Suspense>
   );

@@ -25,7 +25,19 @@ export const signUpUser = async (request: Request, response: Response): Promise<
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username, name, password: hashedPassword });
 
-    return CustomResponse.created(response, createResponseUser(newUser));
+    await newUser.save();
+
+    request.login(newUser, (err) => {
+      if (err) {
+        console.error('sign up: ', err);
+        return CustomResponse.serverError(response, {
+          message: 'an error occurred on the server side during registration',
+        });
+      }
+
+      return CustomResponse.created(response, createResponseUser(newUser));
+    });
+    return response;
   } catch (error) {
     console.error('sign up: ', error);
     return CustomResponse.serverError(response, {
