@@ -4,6 +4,7 @@ import { FC, useState } from 'react';
 import { useCancelOrderMutation, useConfirmOrderMutation } from '@/services/order.service';
 import { IOrder } from '@/types/order.types';
 
+import Popup from '../Popup/Popup';
 import styles from './Profile.module.scss';
 import ProfileProducts from './ProfileProducts';
 
@@ -16,8 +17,10 @@ const ProfileOrder: FC<IOrder> = ({
   _id,
 }) => {
   const [isContentOpen, setIsContentOpen] = useState(false);
-  const [confirmOrder, { isLoading: isConfirmLoading }] = useConfirmOrderMutation();
-  const [cancelOrder, { isLoading: isCancelLoading }] = useCancelOrderMutation();
+  const [confirmOrder, { isLoading: isConfirmLoading, isError: isConfirmError }] =
+    useConfirmOrderMutation();
+  const [cancelOrder, { isLoading: isCancelLoading, isError: isCancelError }] =
+    useCancelOrderMutation();
 
   const onClickConfirm = async () => {
     await confirmOrder(_id);
@@ -30,6 +33,8 @@ const ProfileOrder: FC<IOrder> = ({
   const createdDate = new Date(createdAt);
   return (
     <li className={styles.item}>
+      {isConfirmError && <Popup> ❌ Помилка під час підтвердження замовлення</Popup>}
+      {isCancelError && <Popup> ❌ Помилка під час скасування замовлення</Popup>}
       <div className={styles.header}>
         <div className={styles.info}>
           <span className={styles.desc}>

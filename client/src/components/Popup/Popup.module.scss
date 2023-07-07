@@ -1,0 +1,13 @@
+.wrapper {
+  position: fixed;
+  background-color: var(--background-content-color);
+  padding: 20px;
+  color: var(--font-color);
+  border-radius: var(--rounded);
+  font-size: 1rem;
+  font-weight: bold;
+
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

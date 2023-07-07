@@ -108,20 +108,7 @@
   }
 
   button {
-    cursor: pointer;
-    background-color: var(--background-active-color);
-    border: none;
-    padding: 10px 20px;
-
-    height: 100%;
-    width: 100%;
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--font-color);
-    border-radius: 10px;
-
-    &:hover {
-      opacity: var(--opacity-active);
-    }
+    @include activity-btn;
+    padding: 10px;
   }
 }

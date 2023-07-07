@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import CartList from '@/components/CartList/CartList';
+import Popup from '@/components/Popup/Popup';
 import { useAppSelector } from '@/hooks';
 import { useCreateOrderMutation } from '@/services/order.service';
 import { clearCart } from '@/store/slices/cart.slice';
@@ -17,7 +18,7 @@ const CartBlock: React.FC = () => {
   const { cartSushi, totalPrice, totalCount } = useAppSelector((state) => state.cart);
   const { user } = useAppSelector((state) => state.settings);
 
-  const [createOrder, { isSuccess, isLoading }] = useCreateOrderMutation();
+  const [createOrder, { isSuccess, isLoading, isError }] = useCreateOrderMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -40,6 +41,7 @@ const CartBlock: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      {isError && <Popup>❌ Помилка під час створення замовлення</Popup>}
       <div className={styles.top}>
         <h1 className={styles.title}>
           <i className='fa-solid fa-cart-shopping' />

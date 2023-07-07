@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import ErrorBlock from '@/components/ErrorBlock/ErrorBlock';
 import SushiList from '@/components/SushiList/SushiList';
 import SushiListSkeleton from '@/components/SushiList/SushiListSkeleton';
 import WishlistHeader from '@/components/Wishlist/WishlistHeader';
@@ -20,7 +21,9 @@ const Wishlist: FC = () => {
   const { data, isError, isLoading, isSuccess } = useGetWishlistQuery(null);
 
   const loadingWishlist = isLoading && <SushiListSkeleton />;
-  const errorWishlist = isError && <div>error</div>;
+  const errorWishlist = isError && (
+    <ErrorBlock> Помилка при завантаженні списку бажань</ErrorBlock>
+  );
   const successWishlist = isSuccess && data && <SushiList sushi={data} />;
 
   return (

@@ -9,9 +9,9 @@ const SushiBlockError: React.FC = () => {
   return (
     <div className={styles.errorWrapper}>
       <img src={emptyBox} alt='empty' />
-      <h2>Выбранная суши не существует 😥</h2>
+      <h2>Вибрана суші не існує 😥</h2>
       <Link to='/'>
-        <button>вернуться назад</button>
+        <button>Повернутись на голову</button>
       </Link>
     </div>
   );

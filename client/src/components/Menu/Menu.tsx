@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import { useAppSelector } from '@/hooks';
@@ -13,7 +13,6 @@ interface MenuProps {
 }
 
 const Menu: React.FC<MenuProps> = ({ className }) => {
-  const [isOpenMenu, SetIsOpenMenu] = useState(false);
   const { totalCount, cartSushi } = useAppSelector((state) => state.cart);
   const { user } = useAppSelector((state) => state.settings);
   const isMounted = useRef(false);
@@ -30,9 +29,6 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
 
   const onClickThemeSwitcher = () => {
     toggleTheme();
-  };
-  const onClickMobileMenu = () => {
-    SetIsOpenMenu((prev) => !prev);
   };
 
   return (
@@ -74,10 +70,8 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
           </div>
         )}
       </div>
-      <button onClick={onClickMobileMenu} className={styles.trigger}>
-        <i className='fa-solid fa-bars' />
-      </button>
-      {isOpenMenu && <MenuMobile />}
+
+      <MenuMobile />
     </div>
   );
 };

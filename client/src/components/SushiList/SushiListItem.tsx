@@ -10,6 +10,7 @@ import { setUser } from '@/store/slices/settings.slice';
 import type { ISushi, SushiCart } from '@/types/sushi.types';
 import { getAbsolutePath } from '@/utils/helpers/getAbsolutePath';
 
+import Popup from '../Popup/Popup';
 import styles from './SushiList.module.scss';
 
 const SushiListItem: React.FC<ISushi> = ({ _id, name, reviews, variants }) => {
@@ -64,6 +65,17 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, reviews, variants }) => {
 
   return (
     <li className={styles.item}>
+      {isSuccess && data && (
+        <Popup>
+          ✔ {name} {user?.favorites.includes(_id) ? 'додано до' : 'прибрано з'} списку бажань
+        </Popup>
+      )}
+      {isError && data && (
+        <Popup>
+          ❌ {name} помилка {user?.favorites.includes(_id) ? 'додаванні до ' : 'прибрані з '}
+          списку бажань
+        </Popup>
+      )}
       <Link
         onClick={onClickHeart}
         to={getAbsolutePath(`sushi/${_id}?variant=${selectVariant}`)}

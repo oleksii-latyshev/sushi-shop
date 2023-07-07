@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 
+import ErrorBlock from '@/components/ErrorBlock/ErrorBlock';
 import Pagination from '@/components/Pagination/Pagination';
 import SushiList from '@/components/SushiList/SushiList';
 import SushiListSkeleton from '@/components/SushiList/SushiListSkeleton';
@@ -22,7 +23,7 @@ const Catalog: FC = () => {
   };
 
   if (isLoading) return <SushiListSkeleton />;
-  if (isError) return <div>error</div>;
+  if (isError) return <ErrorBlock>Помилка при завантаженні каталогу</ErrorBlock>;
 
   return (
     <div className={styles.wrapper}>
