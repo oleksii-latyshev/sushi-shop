@@ -62,13 +62,16 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, rating, variants }) => {
         to={getAbsolutePath(`sushi/${_id}?variant=${selectVariant}`)}
         className={styles.header}
       >
-        <button ref={heartRef} className={styles.heart} disabled={isLoading}>
-          {user && user?.favorites.includes(_id) ? (
-            <i className='fa-solid fa-heart' />
-          ) : (
-            <i className='fa-regular fa-heart' />
-          )}
-        </button>
+        {user && (
+          <button ref={heartRef} className={styles.heart} disabled={isLoading}>
+            {user?.favorites.includes(_id) ? (
+              <i className='fa-solid fa-heart' />
+            ) : (
+              <i className='fa-regular fa-heart' />
+            )}
+          </button>
+        )}
+
         <img src={variants[selectVariant].img} alt={name} />
         <h3>{name}</h3>
       </Link>

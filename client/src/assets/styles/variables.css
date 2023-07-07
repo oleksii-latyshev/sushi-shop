@@ -33,7 +33,7 @@ html[data-theme='dark'] {
   --background-interactive-color: #fff;
   --background-active-color: var(--active-color);
 
-  --background-skeleton-in-color: var(--background-content);
+  --background-skeleton-in-color: var(--background-content-color);
   --background-skeleton-out-color: #404040;
 
   --font-color: #fff;

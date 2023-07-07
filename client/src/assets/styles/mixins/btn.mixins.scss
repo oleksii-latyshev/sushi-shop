@@ -26,3 +26,9 @@
   @include main-btn;
   background: var(--background-active-color);
 }
+
+@mixin interactive-btn {
+  @include main-btn;
+  color: var(--font-color);
+  background: var(--background-content-color);
+}

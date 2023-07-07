@@ -86,11 +86,11 @@ const CartBlock: React.FC = () => {
           </Link>
 
           {user ? (
-            <button onClick={onClickOrder} className={clsx(styles.button, styles.payBtn)}>
+            <button onClick={onClickOrder} className={styles.payBtn}>
               Замовити
             </button>
           ) : (
-            <Link className={clsx(styles.button, styles.payBtn)} to='/signIn'>
+            <Link className={styles.payBtn} to='/signIn'>
               Замовити
             </Link>
           )}

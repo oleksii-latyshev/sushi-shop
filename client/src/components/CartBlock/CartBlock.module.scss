@@ -1,6 +1,10 @@
 @import '@/assets/styles/mixins/btn.mixins.scss';
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
   .top {
     display: flex;
     justify-content: space-between;
@@ -13,7 +17,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 32px;
+    font-size: 1.5rem;
 
     svg {
       position: relative;
@@ -31,17 +35,19 @@
   .clearBtn {
     color: var(--font-color);
 
+    @media (max-width: 730px) {
+      span {
+        display: none;
+      }
+    }
+
     button {
-      background: var(--background-content-color);
-      padding: 12px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      border: none;
-      color: var(--font-color);
-      font-size: 1.2rem;
+      @include interactive-btn;
+      display: flex;
+      gap: 5px;
+      padding: 15px;
 
       i {
-        padding-right: 10px;
         color: var(--font-active-color);
       }
 
@@ -56,6 +62,15 @@
   }
 
   .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @media (max-width: 730px) {
+      .details {
+        flex-direction: column;
+      }
+    }
+
     .details {
       display: flex;
       justify-content: space-between;
@@ -74,7 +89,6 @@
     .buttons {
       display: flex;
       justify-content: space-between;
-      margin-top: 40px;
 
       .button {
         @include main-btn;
@@ -84,7 +98,9 @@
       }
 
       .goBackBtn {
-        background: var(--background-content-color);
+        @include interactive-btn;
+        width: fit-content;
+        padding: 15px;
 
         span {
           color: var(--font-color);
@@ -100,13 +116,10 @@
       }
 
       .payBtn {
+        @include activity-btn;
+        max-width: 150px;
+        padding: 15px;
         text-align: center;
-        background: var(--background-active-color);
-
-        &:hover,
-        &:active {
-          opacity: var(--opacity-active);
-        }
       }
     }
   }

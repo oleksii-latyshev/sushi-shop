@@ -15,12 +15,15 @@ const CartListItem: React.FC<SushiCart> = ({ _id, inCartCount, name, variant, va
 
   return (
     <li className={styles.item}>
-      <img className={styles.img} src={variants[variant].img} alt={name} />
+      <div className={styles.header}>
+        <img className={styles.img} src={variants[variant].img} alt={name} />
 
-      <div className={styles.info}>
-        <h3>{name}</h3>
-        <p>у кількості: {variants[variant].count}</p>
+        <div className={styles.info}>
+          <h3>{name}</h3>
+          <p>у кількості: {variants[variant].count}</p>
+        </div>
       </div>
+
       <div className={styles.count}>
         <button
           disabled={inCartCount <= 1}
@@ -35,11 +38,10 @@ const CartListItem: React.FC<SushiCart> = ({ _id, inCartCount, name, variant, va
         </button>
       </div>
       <b className={styles.price}>{variants[variant].price * inCartCount} грн</b>
-      <div className={styles.remove}>
-        <button onClick={onClickDelete} className={styles.circleButton}>
-          <i className='fa-solid fa-xmark' />
-        </button>
-      </div>
+
+      <button onClick={onClickDelete} className={styles.circleButton}>
+        <i className='fa-solid fa-xmark' />
+      </button>
     </li>
   );
 };

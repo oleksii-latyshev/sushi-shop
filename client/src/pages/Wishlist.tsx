@@ -9,7 +9,7 @@ import { useGetWishlistQuery } from '@/services/user.service';
 
 const Wishlist: FC = () => {
   const navigate = useNavigate();
-  const { user } = useAppSelector((state) => state.user);
+  const { user } = useAppSelector((state) => state.settings);
 
   useEffect(() => {
     if (!user) {

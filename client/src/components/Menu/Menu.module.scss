@@ -1,6 +1,7 @@
 @import '@/assets/styles/mixins/btn.mixins.scss';
 
 .wrapper {
+  position: relative;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -51,6 +52,79 @@
 
     a button {
       @include main-btn;
+    }
+  }
+
+  .mobile {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: 730px) {
+      display: none;
+    }
+  }
+
+  .trigger {
+    display: none;
+    border: none;
+    background: initial;
+    color: var(--font-color);
+
+    @media (max-width: 730px) {
+      display: block;
+    }
+  }
+}
+
+.mobileMenu {
+  display: none;
+
+  @media (max-width: 730px) {
+    display: flex;
+  }
+
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  border-radius: var(--rounded);
+  width: 200px;
+  top: 50px;
+  right: 0;
+  padding: 10px;
+  background-color: var(--background-content-color);
+  z-index: 10;
+  gap: 5px;
+
+  a {
+    display: flex;
+    gap: 5px;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+
+    &:hover span,
+    &:hover i,
+    &:focus span,
+    &:focus i {
+      color: var(--active-color);
+    }
+  }
+
+  .cart {
+    display: flex;
+    gap: 5px;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+
+    span {
+      top: -10px;
+      left: 25px;
     }
   }
 }

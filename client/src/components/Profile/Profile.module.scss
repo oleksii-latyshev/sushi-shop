@@ -11,6 +11,11 @@
     @include activity-btn;
     max-width: 200px;
     padding: 10px;
+
+    @media (max-width: 730px) {
+      width: fit-content;
+      padding: 5px;
+    }
   }
 }
 
@@ -39,6 +44,10 @@
       gap: 5px;
       font-size: 1rem;
       font-weight: bold;
+
+      @media (max-width: 730px) {
+        font-size: 0.8rem;
+      }
 
       .desc {
         opacity: 0.75;
@@ -125,6 +134,17 @@
           @include activity-btn;
           padding: 10px;
         }
+      }
+      @media (max-width: 730px) {
+        span {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    @media (max-width: 730px) {
+      h2 {
+        font-size: 1rem;
       }
     }
   }
