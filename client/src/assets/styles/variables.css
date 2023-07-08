@@ -14,15 +14,15 @@
 /* TODO цветовую палитру для светлой темы */
 
 html[data-theme='light'] {
-  --background-color: #ffffff;
-  --background-content-color: #e3e3e3;
-  --background-interactive-color: #3c3c3c;
+  --background-color: #ededed;
+  --background-content-color: #fff;
+  --background-interactive-color: #adadad;
   --background-active-color: var(--active-color);
 
   --background-skeleton-in-color: var(--background-content-color);
-  --background-skeleton-out-color: #404040;
+--background-skeleton-out-color: #404040;
 
-  --font-color: #000;
+  --font-color: #242424;
   --font-active-color: var(--active-color);
   --font-interactive-color: #242424;
 }

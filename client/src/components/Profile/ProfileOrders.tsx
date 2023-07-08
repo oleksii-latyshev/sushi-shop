@@ -1,3 +1,4 @@
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { FC, useState } from 'react';
 
 import Pagination from '@/components/Pagination/Pagination';
@@ -7,6 +8,8 @@ import styles from './Profile.module.scss';
 import ProfileOrder from './ProfileOrder';
 
 const ProfileOrders: FC = () => {
+  const [parent] = useAutoAnimate();
+
   const [localCurrentPage, setCurrentPage] = useState(1);
   const { data, isLoading, isSuccess, isError } = useGetAllOrdersQuery({
     page: localCurrentPage,
@@ -31,7 +34,9 @@ const ProfileOrders: FC = () => {
       {loadingOrders}
       {isSuccess && data.orders.length > 0 ? (
         <>
-          <ul className={styles.list}>{successOrders}</ul>
+          <ul ref={parent} className={styles.list}>
+            {successOrders}
+          </ul>
           <Pagination
             currentPage={localCurrentPage}
             totalPages={data?.totalPages || 1}

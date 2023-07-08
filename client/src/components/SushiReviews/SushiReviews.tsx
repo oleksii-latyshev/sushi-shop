@@ -1,3 +1,4 @@
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { FC } from 'react';
 
 import { ISushiReview } from '@/types/sushi.types';
@@ -10,6 +11,7 @@ interface ISushiReviewsProps {
 }
 
 const SushiReviews: FC<ISushiReviewsProps> = ({ reviews }) => {
+  const [parent] = useAutoAnimate();
   const reviewsElement = reviews.map((review, i) => (
     <SushiReview key={Date.now() + i} {...review} />
   ));
@@ -18,7 +20,9 @@ const SushiReviews: FC<ISushiReviewsProps> = ({ reviews }) => {
     <div className={styles.wrapper}>
       <h2>Відгуки: </h2>
       {reviews.length > 0 ? (
-        <ul className={styles.list}>{reviewsElement}</ul>
+        <ul ref={parent} className={styles.list}>
+          {reviewsElement}
+        </ul>
       ) : (
         <p className={styles.emptyMessage}>Ти можеш стати першим, хто оцінив 😎</p>
       )}

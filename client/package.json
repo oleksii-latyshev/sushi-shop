@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.7.0",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/lodash.debounce": "^4.0.7",
     "@types/qs": "^6.9.7",

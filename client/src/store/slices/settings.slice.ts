@@ -1,7 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { IResponseUser } from '@/types/user.types';
+import { IResponseUser } from '@/types/response.types';
 
 export interface InitialStateSettings {
   theme: 'dark' | 'light';
