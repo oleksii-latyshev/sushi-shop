@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { IQuery, Sushi } from '@/models/sushi.model';
+import { IQuery, ISortSushi, Sushi } from '@/models/sushi.model';
 import { ISushiReview } from '@/types/sushi.types';
 import { CustomResponse } from '@/utils/helpers/customResponse';
 
@@ -16,11 +16,20 @@ export const getAllSushi = async (request: Request, response: Response): Promise
       query.category = category as string;
     }
 
-    const sushi = await Sushi.findAll(query, {
+    const sortQuery: ISortSushi = {};
+    if (sort === 'price') {
+      sortQuery['averagePrice'] = orderValue;
+    } else if (sort === 'rating') {
+      sortQuery['averageRating'] = orderValue;
+    } else {
+      sortQuery['name'] = orderValue;
+    }
+
+    const sushi = await Sushi.findAll({
+      query,
       page: +page,
       limit: +limit,
-      orderValue,
-      sort: sort as string,
+      sort: sortQuery,
     });
 
     const count = await Sushi.count(query);

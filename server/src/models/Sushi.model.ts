@@ -1,5 +1,3 @@
-import { SortOrder } from 'mongoose';
-
 import sushiSchema from '@/db/schemas/sushi.schema';
 import { ISushi, ISushiReview } from '@/types/sushi.types';
 
@@ -9,23 +7,38 @@ export interface IQuery {
 }
 
 export interface IFindAllArg {
-  sort: string;
-  orderValue: SortOrder;
+  query: IQuery;
+  sort: ISortSushi;
   limit: number;
   page: number;
 }
 
+export interface ISortSushi {
+  [key: string]: 1 | -1;
+}
+
 export class Sushi {
-  public static async findAll(
-    query: IQuery,
-    { sort, orderValue, limit, page }: IFindAllArg
-  ): Promise<ISushi[]> {
-    return sushiSchema
-      .find(query)
-      .sort({ [sort as string]: orderValue })
-      .limit(+limit * 1)
-      .skip((+page - 1) * +limit)
-      .exec();
+  public static async findAll({ query, sort, limit, page }: IFindAllArg): Promise<ISushi[]> {
+    return await sushiSchema.aggregate([
+      {
+        $match: query,
+      },
+      {
+        $addFields: {
+          averageRating: { $avg: '$reviews.rating' },
+          averagePrice: { $avg: '$variants.price' },
+        },
+      },
+      {
+        $sort: sort,
+      },
+      {
+        $skip: (+page - 1) * +limit,
+      },
+      {
+        $limit: +limit * 1,
+      },
+    ]);
   }
   public static findById(id: Pick<ISushi, '_id'> | string): Promise<ISushi | null> | null {
     try {
