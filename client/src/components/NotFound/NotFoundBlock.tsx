@@ -6,7 +6,7 @@ const NotFoundBlock: FC = () => {
   return (
     <div className={styles.wrapper}>
       <h2>🤔</h2>
-      <p>такої сторінки не має</p>
+      <p>такої сторінки немає</p>
     </div>
   );
 };

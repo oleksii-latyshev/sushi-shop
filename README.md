@@ -63,7 +63,12 @@ yarn dev / npm run dev
 
 ### Catalog and work with it
 
-The catalog consists of 8 sushi, the list of which can be scrolled using the pagination below
+The catalog consists of 8 sushi, the list of which can be scrolled through using the pagination below. Also, if the sushi has no reviews, then its rating value will be visually displayed as "new". When choosing one of the sushi options, its parameters will be changed, including: picture, price, weight.
+
+#### Search by catalog
+
+The search is not strict and occurs only by name. Also, to ensure less load on the server, a debounce was added using the [lodash debounce library](https://www.npmjs.com/package/lodash.debounce)
+![catalog-search](./resources/screenshots/catalog-search.jpg)
 
 #### Catalog sorting 
 
@@ -87,7 +92,7 @@ Price sorting is based on the minimum price of the sushi variation
 
 ### Product specific page
 
-A special sushi page provides exactly the same functionality as in the catalog, namely: adding a certain amount of a certain variation of sushi to the basket, adding it to the wishlist (if the user is authorized) and is complemented by the functionality of viewing reviews and creating a review (if the user is authorized)
+A special sushi page provides exactly the same functionality as in the catalog, namely: adding a certain amount of a certain variation of sushi to the cart, adding to the wish list (if the user is authorized) and is complemented by the functionality of viewing reviews and creating a review (if the user is authorized). The review itself is added as not to a variation of sushi, but to the product as a whole.
 
 #### With an authorized user
 ![product-page](./resources/screenshots/specific%20page%20auth.jpg)
@@ -106,10 +111,17 @@ A special sushi page provides exactly the same functionality as in the catalog, 
 
 ### A wish list
 
+#### Adding and removing from a wish list
+
 Adding to the wishlist is possible only for authorized users, namely by hovering the cursor over a product in the catalog or on the personal page of the product, and there are such states where a filled heart means the presence of a wishlist in the wishlist, and not a filled-in absence:
 
 ![in-wishlist-product](./resources/screenshots/in%20wishlist.jpg)
 ![not-in-wishlist-product](./resources/screenshots/not%20in%20wishlist.jpg)
+
+#### Wishlist page
+
+From the wish list page, following the same principle as described above, we can remove added sushi, but not add
+![wishlist](./resources/screenshots/wishlist.jpg)
 
 [Back to contents ⬆](#implemented-features)
 
@@ -127,6 +139,9 @@ The number of items added is displayed next to the cart icon in the menu and dep
 On this page, you can see the total cost of the order, clear it, and also change the amount of sushi of those options that we have already added to the basket (the total price is only a visual part and on the server side it will be calculated as the final one)
 
 ![cart-page](./resources/screenshots/cart.jpg)
+
+if there were no items added to the cart, the following page will be displayed:
+![cart-empty](./resources/screenshots/cart-empty.jpg)
 
 #### Mobile adaptation
 
