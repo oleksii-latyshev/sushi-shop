@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import mongoose, { Types } from 'mongoose';
 
 import { IQuery, ISortSushi, Sushi } from '@/models/sushi.model';
 import { ISushiReview } from '@/types/sushi.types';
@@ -13,7 +14,7 @@ export const getAllSushi = async (request: Request, response: Response): Promise
       query.name = { $regex: new RegExp(`${name}`, 'i') };
     }
     if (category) {
-      query.category = category as string;
+      query.category = new mongoose.Types.ObjectId(category as string);
     }
 
     const sortQuery: ISortSushi = {};

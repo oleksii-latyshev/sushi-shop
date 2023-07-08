@@ -5,7 +5,7 @@ export interface ICategory {
 
 export interface ISort {
   name: string;
-  byProperty: 'rating' | 'name' | '-price' | 'price';
+  byProperty: '-rating' | 'name' | '-price' | 'price';
 }
 
 export interface QueryParams {

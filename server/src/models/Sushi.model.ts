@@ -1,9 +1,11 @@
+import { Types } from 'mongoose';
+
 import sushiSchema from '@/db/schemas/sushi.schema';
 import { ISushi, ISushiReview } from '@/types/sushi.types';
 
 export interface IQuery {
   name?: { $regex: RegExp } | string;
-  category?: string;
+  category?: Types.ObjectId | string;
 }
 
 export interface IFindAllArg {
@@ -26,7 +28,7 @@ export class Sushi {
       {
         $addFields: {
           averageRating: { $avg: '$reviews.rating' },
-          averagePrice: { $avg: '$variants.price' },
+          averagePrice: { $min: '$variants.price' },
         },
       },
       {
