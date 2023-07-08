@@ -12,12 +12,12 @@
 
 ## Implemented features
 
-- [Catalog and work with it](#catalog)
-- [Product specific page](#product-page)
-- [A wish list](#wishlist)
-- [Cart and working with it](#cart)
-- [Profile page and work with orders](#profile)
-- [Authorization and registration](#auth)
+- [Catalog and work with it](#catalog-and-work-with-it)
+- [Product specific page](#product-specific-page)
+- [A wish list](#a-wish-list)
+- [Cart and working with it](#cart-and-working-with-it)
+- [Profile and work with orders](#profile-and-work-with-orders)
+- [Authorization and registration](#authorization-and-registration)
 
 ## Installation
 
@@ -61,7 +61,7 @@ yarn dev / npm run dev
 
 ## Project demo
 
-### [Catalog and work with it](#catalog)
+### Catalog and work with it
 
 The catalog consists of 8 sushi, the list of which can be scrolled using the pagination below
 
@@ -83,7 +83,9 @@ Price sorting is based on the minimum price of the sushi variation
 #### Light theme
 ![light-theme](./resources/screenshots/catalog%20light%20theme.jpg)
 
-### [Product specific page](#product-page)
+[Back to contents ⬆](#implemented-features)
+
+### Product specific page
 
 A special sushi page provides exactly the same functionality as in the catalog, namely: adding a certain amount of a certain variation of sushi to the basket, adding it to the wishlist (if the user is authorized) and is complemented by the functionality of viewing reviews and creating a review (if the user is authorized)
 
@@ -100,14 +102,18 @@ A special sushi page provides exactly the same functionality as in the catalog, 
 #### Light theme
 ![light-theme](./resources/screenshots/specific%20page%20light%20theme.jpg)
 
-### [A wish list](#wishlist)
+[Back to contents ⬆](#implemented-features)
+
+### A wish list
 
 Adding to the wishlist is possible only for authorized users, namely by hovering the cursor over a product in the catalog or on the personal page of the product, and there are such states where a filled heart means the presence of a wishlist in the wishlist, and not a filled-in absence:
 
 ![in-wishlist-product](./resources/screenshots/in%20wishlist.jpg)
 ![not-in-wishlist-product](./resources/screenshots/not%20in%20wishlist.jpg)
 
-### [Cart and working with it](#cart)
+[Back to contents ⬆](#implemented-features)
+
+### Cart and working with it
 
 Adding is a local state, therefore this operation can be performed by both an authorized and unauthorized user, this state is also saved at the Local Storage level and therefore will be relevant even after a reboot.
 
@@ -130,7 +136,9 @@ On this page, you can see the total cost of the order, clear it, and also change
 
 ![cart-light-theme](./resources/screenshots/cart-light-theme.jpg)
 
-### [Profile page and work with orders](#profile)
+[Back to contents ⬆](#implemented-features)
+
+### Profile and work with orders
 
 This page is a private route and if an unauthorized user tries to access it, it will be redirected to the main one. On this page, the user can log out of the account, see their orders, and interact with them
 
@@ -160,7 +168,9 @@ Confirmed order:
 
 ![profile-light-theme](./resources/screenshots/profile-light.jpg)
 
-### [Sign In](#singIn) 
+[Back to contents ⬆](#implemented-features)
+
+### Authorization and registration
 
 Authorization occurs with the help of PassportJS technology, namely its local strategy using sessions. And during registration, the Bcrypt technology was used to encrypt passwords, as well as verify them during authorization
 
@@ -188,3 +198,5 @@ The validation itself consists of checking for an empty field, as well as for th
 
 ![signIn-light-theme](./resources/screenshots/signIn-light.jpg)
 ![signUp-light-theme](./resources/screenshots/signup-light.jpg)
+
+[Back to contents ⬆](#implemented-features)
