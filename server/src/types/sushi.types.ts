@@ -11,6 +11,7 @@ export interface ISushiReview {
   userId: string;
   text: string;
   rating: number;
+  createdAt: number;
 }
 
 export interface ISushi extends Document {

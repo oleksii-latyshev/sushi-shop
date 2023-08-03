@@ -42,9 +42,15 @@ export class Sushi {
       },
     ]);
   }
-  public static findById(id: Pick<ISushi, '_id'> | string): Promise<ISushi | null> | null {
+  public static async findById(id: Pick<ISushi, '_id'> | string): Promise<ISushi | null> {
     try {
-      return sushiSchema.findById(id).populate('reviews.userId', 'name');
+      const sushi = await sushiSchema.findById(id).populate('reviews.userId', 'name');
+      if (sushi) {
+        sushi.reviews.sort((a, b) => b.createdAt - a.createdAt); // Сортировка от новых к старым
+        return sushi;
+      } else {
+        return null;
+      }
     } catch (error) {
       console.log('get sushi by id:', error);
       return null;

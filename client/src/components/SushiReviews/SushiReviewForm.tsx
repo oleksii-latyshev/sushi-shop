@@ -46,7 +46,17 @@ const SushiReviewForm: FC<ISushiReviewFormProps> = ({ _id }) => {
             max={10}
             min={1}
             defaultValue={10}
-            {...register('rating', { required: 'rating is required filed' })}
+            {...register('rating', {
+              required: 'рейтинг обовязкове поле',
+              max: {
+                value: 10,
+                message: 'оцінка не може бути вище 10',
+              },
+              min: {
+                value: 1,
+                message: 'оцінка не може бути нижчою ніж 1',
+              },
+            })}
             className={styles.markInput}
           />
           {errors.rating?.message && <span>{errors.rating.message}</span>}
@@ -57,7 +67,11 @@ const SushiReviewForm: FC<ISushiReviewFormProps> = ({ _id }) => {
             id='text'
             {...register('text', {
               required: 'поле текст обовязкове для заповнення',
-              minLength: { value: 2, message: 'мінімальна довжина 2 символи' },
+              minLength: { value: 2, message: 'мінімальна довжина тексту відгуку 2 символи' },
+              maxLength: {
+                value: 190,
+                message: 'максимальна довжина тексту відгуку 190 символів',
+              },
             })}
             className={styles.textInput}
           />

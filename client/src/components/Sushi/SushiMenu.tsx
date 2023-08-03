@@ -45,6 +45,7 @@ const SushiMenu: FC<ISushiMenuProps> = ({
       inCartCount: countInCart,
     };
     dispatch(addSushi(item));
+    setCountInCart(1);
   };
 
   const onClickHeart = async () => {
@@ -95,7 +96,7 @@ const SushiMenu: FC<ISushiMenuProps> = ({
             id='cart-count'
             value={countInCart || ''}
             onChange={onChangeCount}
-            min={0}
+            min={1}
             type='number'
           />
         </label>
