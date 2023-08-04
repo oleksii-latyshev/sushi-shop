@@ -9,8 +9,8 @@ import styles from './CartList.module.scss';
 const CartListItem: React.FC<SushiCart> = ({ _id, inCartCount, name, variant, variants }) => {
   const dispatch = useDispatch();
 
-  const onClickRemove = () => dispatch(removeSushi({ _id, variant }));
-  const onClickAdd = () => dispatch(addSushi({ _id, variant }));
+  const onClickRemove = () => dispatch(removeSushi({ _id, variant, inCartCount: 1 }));
+  const onClickAdd = () => dispatch(addSushi({ _id, variant, inCartCount: 1 }));
   const onClickDelete = () => dispatch(deleteSushi({ _id, variant }));
 
   return (

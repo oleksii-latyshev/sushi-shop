@@ -30,20 +30,26 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, '_id' | 'variant'>>) {
+    addSushi(
+      state,
+      action: PayloadAction<SushiCart | Pick<SushiCart, '_id' | 'variant' | 'inCartCount'>>
+    ) {
       const findItem = state.cartSushi.find(
         (item) => item._id === action.payload._id && item.variant === action.payload.variant
       );
 
       if (findItem) {
-        findItem.inCartCount += 1;
+        findItem.inCartCount += action.payload.inCartCount;
       } else if (isSushiCart(action.payload)) {
         state.cartSushi.push(action.payload);
       }
 
       state = calcTotals(state);
     },
-    removeSushi(state, action: PayloadAction<SushiCart | Pick<SushiCart, '_id' | 'variant'>>) {
+    removeSushi(
+      state,
+      action: PayloadAction<SushiCart | Pick<SushiCart, '_id' | 'variant' | 'inCartCount'>>
+    ) {
       const findItem = state.cartSushi.find(
         (item) => item._id === action.payload._id && item.variant === action.payload.variant
       );
