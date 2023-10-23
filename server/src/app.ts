@@ -12,16 +12,17 @@ import checkFullnessDB from '@/utils/helpers/checkFullnessDB';
 env.config();
 
 const PORT = process.env.PORT || 3001;
-const secretSession = process.env.PORT || 'secretSession';
+const SECRET_SESSION = process.env.PORT || 'secretSession';
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: CLIENT_URL, credentials: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
-    secret: secretSession,
+    secret: SECRET_SESSION,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -44,7 +45,7 @@ const start = async (): Promise<void> => {
 
     const mongoURI = process.env.mongoURI;
     if (mongoURI) await mongoose.connect(mongoURI);
-    else throw new Error('[mongoDB] Отсутствует файл env или  значение mongoURI в нём');
+    else throw new Error('[mongoDB] Env file or mongoURI value is missing');
 
     app.listen(PORT, () => console.log(`[server] server has been started on port ${PORT}`));
   } catch (error) {
