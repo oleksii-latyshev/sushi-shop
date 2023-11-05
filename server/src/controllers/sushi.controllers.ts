@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import mongoose, { Types } from 'mongoose';
+import mongoose from 'mongoose';
 
 import { IQuery, ISortSushi, Sushi } from '@/models/sushi.model';
 import { ISushiReview } from '@/types/sushi.types';

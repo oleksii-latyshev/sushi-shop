@@ -3,10 +3,7 @@ import { Request, Response } from 'express';
 import Category from '@/db/schemas/category.schema';
 import { CustomResponse } from '@/utils/helpers/customResponse';
 
-export const getAllCategories = async (
-  request: Request,
-  response: Response
-): Promise<Response> => {
+export const getAllCategories = async (_: Request, response: Response): Promise<Response> => {
   try {
     const category = await Category.find();
 

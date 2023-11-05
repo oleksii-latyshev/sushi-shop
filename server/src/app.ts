@@ -11,9 +11,12 @@ import checkFullnessDB from '@/utils/helpers/checkFullnessDB';
 
 env.config();
 
-const PORT = process.env.PORT || 3001;
-const SECRET_SESSION = process.env.PORT || 'secretSession';
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+const PORT = process.env.PORT;
+const SECRET_SESSION = process.env.PORT || '123321';
+const CLIENT_URL = process.env.CLIENT_URL;
+const NODE_ENV = process.env.NODE_ENV;
+const VERSION = process.env.npm_package_version;
+const DESCRIPTION = process.env.npm_package_description;
 
 const app = express();
 
@@ -36,6 +39,14 @@ app.use(passport.session());
 initializePassport(passport);
 
 app.use('/api', routes);
+
+app.get('/', (_, res) => {
+  res.send({
+    mode: NODE_ENV,
+    version: VERSION,
+    description: DESCRIPTION,
+  });
+});
 
 const start = async (): Promise<void> => {
   try {
