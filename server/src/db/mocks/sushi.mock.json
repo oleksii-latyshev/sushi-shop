@@ -1,148 +1,139 @@
 [
   {
     "name": "Love ua",
-    "category": "646394f563f308d8ee0e3beb",
     "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
     "variants": [
       {
         "count": 10,
         "price": 120,
         "weight": 100,
-        "img": "https://rocosushi.com/web/uploads/products/8c540035c8a0257de77b-%D0%A4%D1%96%D0%BB%D0%B0%D0%B4%D0%B5%D0%BB%D1%8C%D1%84%D1%96%D1%8F-%D0%B7-%D0%BB%D0%BE%D1%81%D0%BE%D1%81%D0%B5%D0%BC-%D1%96-%D0%B0%D0%B2%D0%BE%D0%BA%D0%B0%D0%B4%D0%BE.jpg"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348792/sushi-shop/lypg221h323clr3fd2rp.jpg"
       },
       {
         "count": 15,
         "price": 180,
         "weight": 200,
-        "img": "https://roll-club.kh.ua/wp-content/uploads/2023/02/22.jpg"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348793/sushi-shop/na2glogxbddlns9d6y0l.jpg"
       },
       {
         "count": 20,
         "price": 220,
         "weight": 300,
-        "img": "https://roll-club.kh.ua/wp-content/uploads/2023/04/krevetka-h3-900h600.jpg.webp"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348793/sushi-shop/qk8ovsbnwbsraru4cg8v.jpg"
       }
     ]
   },
   {
     "name": "Сан сет",
-    "category": "646394f563f308d8ee0e3bec",
     "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
     "variants": [
       {
         "count": 10,
         "price": 200,
         "weight": 70,
-        "img": "https://images.pizza33.ua/products/product/M3q6Qk8KBHQUsUnzGNscytt2mB9SD4SF.jpg"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348792/sushi-shop/smg0ciyh4wx8zet8vl4o.jpg"
       },
       {
         "count": 15,
         "price": 250,
         "weight": 120,
-        "img": "https://i1.stat01.com/2/8559/185583491/075a3e/tajfun.jpg"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348792/sushi-shop/qvjonuza72xyx0gxegsk.jpg"
       }
     ]
   },
   {
     "name": "Сушіманія",
-    "category": "646394f563f308d8ee0e3bec",
     "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
     "variants": [
       {
         "count": 10,
         "price": 300,
         "weight": 60,
-        "img": "https://img.freepik.com/premium-photo/pyramid-of-sushi-on-white-background_256588-22.jpg?w=2000"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348792/sushi-shop/ysxc9c2mxqrnurbqjegm.jpg"
       }
     ]
   },
   {
     "name": "Кіото",
-    "category": "646394f563f308d8ee0e3beb",
     "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
     "variants": [
       {
         "count": 10,
         "price": 120,
         "weight": 100,
-        "img": "https://dasushi.od.ua/storage/product-preview/app-product/72/origin/roll-syrnyi1637781056.jpg?t=1637781056"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348792/sushi-shop/ia35jvrulvprpe7wlozr.jpg"
       },
       {
         "count": 20,
         "price": 220,
         "weight": 300,
-        "img": "https://storage.yandexcloud.net/sushi-market/products/product_1521/64195b51c0586-800x800.png"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348792/sushi-shop/xsextedobns9krjxqaut.jpg"
       }
     ]
   },
   {
     "name": "Океанік",
-    "category": "646394f563f308d8ee0e3bec",
     "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
     "variants": [
       {
-        "count": 20,
-        "price": 300,
-        "weight": 210,
-        "img": "https://images.pizza33.ua/products/product/M3q6Qk8KBHQUsUnzGNscytt2mB9SD4SF.jpg"
+        "count": 15,
+        "price": 180,
+        "weight": 200,
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348793/sushi-shop/na2glogxbddlns9d6y0l.jpg"
       },
       {
-        "count": 30,
-        "price": 400,
-        "weight": 320,
-        "img": "https://roll-club.kh.ua/wp-content/uploads/2023/02/22.jpg"
+        "count": 20,
+        "price": 220,
+        "weight": 300,
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348793/sushi-shop/qk8ovsbnwbsraru4cg8v.jpg"
       }
     ]
   },
   {
     "name": "Френдлі",
-    "category": "646394f563f308d8ee0e3bec",
     "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
     "variants": [
       {
         "count": 20,
         "price": 280,
         "weight": 260,
-        "img": "https://i1.stat01.com/2/8559/185583491/075a3e/tajfun.jpg"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348792/sushi-shop/lypg221h323clr3fd2rp.jpg"
       }
     ]
   },
   {
     "name": "Тонхе",
-    "category": "646394f563f308d8ee0e3beb",
     "description": "Eligendi sit ducimus praesentium quia quo minus pariatur quo. Illo suscipit tempore et mollitia vero vitae consequuntur qui modi. Sunt veritatis blanditiis aliquid qui et soluta nulla. Ratione qui voluptas vel inventore aperiam eligendi rerum et consequuntur.",
     "variants": [
       {
         "count": 50,
         "price": 700,
         "weight": 500,
-        "img": "https://storage.yandexcloud.net/sushi-market/products/product_1300/64184394131c4-450x450.png"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348793/sushi-shop/qk8ovsbnwbsraru4cg8v.jpg"
       }
     ]
   },
   {
     "name": "Морський мікс",
-    "category": "646394f563f308d8ee0e3bec",
     "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
     "variants": [
       {
         "count": 30,
         "price": 350,
         "weight": 280,
-        "img": "https://storage.yandexcloud.net/sushi-market/products/product_1521/64195b51c0586-800x800.png"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348793/sushi-shop/na2glogxbddlns9d6y0l.jpg"
       }
     ]
   },
   {
     "name": "Фелікс рол з масляною",
-    "category": "646394f563f308d8ee0e3bec",
     "description": "Quia eveniet temporibus autem. Vitae nobis quae et et possimus distinctio aut. Sed neque qui nam ullam. Ratione dolores incidunt nihil temporibus dolore vitae sed incidunt velit. Ea numquam et fugit officia accusamus quasi.",
     "variants": [
       {
         "count": 15,
         "price": 189,
         "weight": 120,
-        "img": "https://i1.stat01.com/2/8559/185583491/075a3e/tajfun.jpg"
+        "img": "https://res.cloudinary.com/dawo6hy0i/image/upload/v1699348792/sushi-shop/lypg221h323clr3fd2rp.jpg"
       }
     ]
   }
