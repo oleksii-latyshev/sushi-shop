@@ -3,7 +3,7 @@ import { IOrder } from './order.types';
 import { ISushi } from './sushi.types';
 import { IUser } from './user.types';
 
-export interface ResponseSushi {
+export interface IResponseSushi {
   sushi: ISushi[];
   totalPages: number;
   currentPage: number;

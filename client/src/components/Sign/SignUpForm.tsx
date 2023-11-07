@@ -20,7 +20,7 @@ const SignUpForm: FC = () => {
 
   const [errorLogin, setErrorLogin] = useState<string | null>(null);
 
-  const [registerUser, { isError, isLoading, isSuccess }] = useRegisterMutation();
+  const [registerUser, { isLoading, isSuccess }] = useRegisterMutation();
 
   useEffect(() => {
     if (isSuccess) {

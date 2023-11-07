@@ -1,5 +1,5 @@
 import type { InitialStateCart } from '@/store/slices/cart.slice';
-import type { SushiCart } from '@/types';
+import { SushiCart } from '@/types/sushi.types';
 
 import { calcTotalCount, calcTotalPrice } from './calcTotals';
 

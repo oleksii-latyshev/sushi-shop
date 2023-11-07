@@ -20,7 +20,7 @@ const SignInForm: FC = () => {
 
   const [errorLogin, setErrorLogin] = useState<string | null>(null);
 
-  const [loginUser, { isError, isLoading, isSuccess }] = useLoginMutation();
+  const [loginUser, { isLoading, isSuccess }] = useLoginMutation();
 
   useEffect(() => {
     if (isSuccess) {

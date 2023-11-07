@@ -3,15 +3,19 @@ import { ISushi } from './sushi.types';
 export type IStatusOrder = 'accepted' | 'completed';
 
 export interface IProduct {
-  sushiId: ISushi | string;
+  sushiId: string;
   variant: number;
   count: number;
+}
+
+export interface IResponseProduct extends Omit<IProduct, 'sushiId'> {
+  sushiId: ISushi;
 }
 
 export interface IOrder {
   _id: string;
   user: string;
-  products: IProduct[];
+  products: IResponseProduct[];
   totalPrice: number;
   status: IStatusOrder;
   createdAt: string;

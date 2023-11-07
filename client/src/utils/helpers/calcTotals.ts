@@ -1,4 +1,4 @@
-import type { SushiCart } from '../../types';
+import { SushiCart } from '@/types/sushi.types';
 
 export const calcTotalPrice = (items: SushiCart[]) => {
   return items.reduce(

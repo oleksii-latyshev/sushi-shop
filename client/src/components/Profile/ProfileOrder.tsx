@@ -1,21 +1,13 @@
 import clsx from 'clsx';
 import { FC, useState } from 'react';
 
+import Popup from '@/components/Popup/Popup';
+import styles from '@/components/Profile/Profile.module.scss';
+import ProfileProducts from '@/components/Profile/ProfileProducts';
 import { useCancelOrderMutation, useConfirmOrderMutation } from '@/services/order.service';
 import { IOrder } from '@/types/order.types';
 
-import Popup from '../Popup/Popup';
-import styles from './Profile.module.scss';
-import ProfileProducts from './ProfileProducts';
-
-const ProfileOrder: FC<IOrder> = ({
-  createdAt,
-  products,
-  status,
-  totalPrice,
-  updatedAt,
-  _id,
-}) => {
+const ProfileOrder: FC<IOrder> = ({ createdAt, products, status, totalPrice, _id }) => {
   const [isContentOpen, setIsContentOpen] = useState(false);
   const [confirmOrder, { isLoading: isConfirmLoading, isError: isConfirmError }] =
     useConfirmOrderMutation();

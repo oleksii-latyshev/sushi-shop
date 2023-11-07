@@ -27,8 +27,7 @@ const SushiMenu: FC<ISushiMenuProps> = ({
 
   const [countInCart, setCountInCart] = useState(1);
 
-  const [toggleWishlistItem, { data, isLoading, isSuccess, isError }] =
-    useToggleWishlistItemMutation();
+  const [toggleWishlistItem, { data, isLoading, isSuccess }] = useToggleWishlistItemMutation();
 
   useEffect(() => {
     if (isSuccess && data) {

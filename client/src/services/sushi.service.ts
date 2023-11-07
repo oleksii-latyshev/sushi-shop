@@ -1,5 +1,5 @@
 import { QueryOptions } from '@/hooks';
-import { IBadResponse, ResponseSushi } from '@/types/response.types';
+import { IBadResponse, IResponseSushi } from '@/types/response.types';
 import { ICreateSushiReview, ISushi } from '@/types/sushi.types';
 import { sushiLimitOnPage } from '@/utils/constants';
 
@@ -12,7 +12,7 @@ interface IAddReviewArg {
 
 export const categoriesApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getAllSushi: builder.query<ResponseSushi, QueryOptions>({
+    getAllSushi: builder.query<IResponseSushi, QueryOptions>({
       query: ({ category, currentPage, order, search, sort }) =>
         `sushi?page=${currentPage}&limit=${sushiLimitOnPage}&sort=${sort}&order=${order}${category}${search}`,
       providesTags: [

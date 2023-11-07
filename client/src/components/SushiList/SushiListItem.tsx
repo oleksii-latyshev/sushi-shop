@@ -91,7 +91,7 @@ const SushiListItem: React.FC<ISushi> = ({ _id, name, reviews, variants }) => {
           </button>
         )}
 
-        <img src={variants[selectVariant].img} alt={name} />
+        <img src={variants[selectVariant].img} alt={name} className='' />
         <h3>{name}</h3>
       </Link>
 
