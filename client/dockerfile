@@ -1,0 +1,25 @@
+# Assembly stage
+FROM node:18-alpine AS build
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN yarn
+
+COPY . .
+
+RUN yarn build
+
+# Execution stage
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/dist ./dist
+
+RUN yarn global add serve
+
+EXPOSE $PORT
+
+CMD [ "serve", "-s", "dist" ]

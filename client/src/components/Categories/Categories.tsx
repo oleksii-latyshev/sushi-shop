@@ -30,8 +30,8 @@ const Categories: React.FC<CategoriesProps> = React.memo(
         })
       : [];
 
-    const loading = isLoading && <div>загрузка</div>;
-    const error = isError && <div>не удалось получить остальные категории 😱</div>;
+    const loading = isLoading && <div>завантаження</div>;
+    const error = isError && <div>не вдалося отримати інші категорії 😱</div>;
     const success = isSuccess && categoriesElements;
 
     const content = !isLoading && (

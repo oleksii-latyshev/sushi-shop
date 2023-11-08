@@ -1,0 +1,29 @@
+# Assembly stage
+FROM node:18-alpine AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+COPY yarn.lock ./
+
+RUN yarn
+
+COPY . .
+
+RUN yarn build
+
+# Execution stage
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+COPY yarn.lock ./
+
+RUN yarn --production
+
+COPY --from=build /app/dist ./
+
+EXPOSE $PORT
+
+CMD [ "node", "app.js" ]

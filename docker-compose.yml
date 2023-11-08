@@ -1,0 +1,62 @@
+version: '3'
+
+# docker compose up -d
+
+services:
+  db:
+    image: mongo:5.0.2
+    restart: unless-stopped
+    container_name: db-con
+    ports:
+      - '27017:27017'
+    expose:
+      - 27017
+    volumes:
+      - db_data:/data/db
+    networks:
+      - private
+
+  api:
+    build: ./server
+    container_name: api-con
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    expose:
+      - 3001
+    environment:
+      PORT: 3001
+      CLIENT_URL: http://localhost:3000
+    env_file:
+      - ./server/.env
+    depends_on:
+      - db
+    networks:
+      - private
+      - public
+
+  web:
+    build: ./client
+    container_name: web-con
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    expose:
+      - 3000
+    stdin_open: true
+    tty: true
+    environment:
+      PORT: 3000
+    depends_on:
+      - api
+    networks:
+      - public
+
+volumes:
+  db_data:
+
+networks:
+  private:
+    driver: bridge
+  public:
+    driver: bridge
