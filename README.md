@@ -1,16 +1,114 @@
+# [sushi-shop](https://sushi-shop.azurewebsites.net/)
+
+This personal project is a sushi store where the core business functions of online stores have been implemented. The goal for this project was to learn how to create a React application using TypeScript, Redux Toolkit, and several other technologies.
+
+[![sushi-shop](./resources/screenshots/preview.webp)](https://sushi-shop.azurewebsites.net/)
+
 ## Tech Stack
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [SCSS](https://sass-lang.com/)
-- [React](https://react.dev/)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-- [NodeJS](https://nodejs.org/en)
-- [ExpressJS](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/)
-- [Mongoose ODM](https://mongoosejs.com/)
-- [PassportJS](https://www.passportjs.org/)
+- **Client Framework:** [React](https://react.dev/)
+- **Server Framework:** [Express.js](https://expressjs.com/)
+- **Styling:** [Sass](https://sass-lang.com/)
+- **ODM:** [Mongoose](https://mongoosejs.com/)
+- **State Management:** [Redux Toolkit](https://redux-toolkit.js.org/)
+- **Server Auth Management:** [PassportJS](https://www.passportjs.org/)
+- **Database:** [MongoDB](https://www.mongodb.com/)
 
-## Implemented features
+## Features to be implemented
+
+- [x] Authentication flow using sessions created with **[PassportJS](https://www.passportjs.org/)** and **[RTK Query](https://redux-toolkit.js.org/rtk-query/overview)**
+- [x] Using **[RTK Query](https://redux-toolkit.js.org/rtk-query/overview)** on the client
+- [x] Containerize an application using **[Docker](https://www.docker.com/)**
+
+## Running Locally with Docker
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/EDMIGHT/sushi-shop
+   ```
+
+2. Copy the `.env.example` to `.env` and update the variables **(relative to root)**.
+
+   ```bash
+   cd server
+   cp .env.example .env
+   ```
+
+3. Copy the `.env.example` to `.env` and update the variables **(relative to root)**.
+
+   ```bash
+   cd client
+   cp .env.example .env
+   ```
+
+4. Running a container **(relative to root)**
+
+   ```bash
+   docker compose up -d
+   ```
+
+## Running Locally
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/EDMIGHT/sushi-shop
+   ```
+
+2. Install dependencies to server folder **(relative to root)**
+
+   ```bash
+   cd server
+   yarn
+   ```
+
+3. Copy the `.env.example` to `.env` and update the variables **(server folder)**.
+
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Start the development server **(server folder)**
+
+   ```bash
+   yarn dev
+   ```
+
+5. Install dependencies to client folder **(relative to root)**
+
+   ```bash
+   cd client
+   yarn
+   ```
+
+6. Copy the `.env.example` to `.env` and update the variables **(client folder)**.
+
+   ```bash
+   cp .env.example .env
+   ```
+
+7. Start the development server **(client folder)**
+
+   ```bash
+   yarn dev
+   ```
+
+## How do I deploy this?
+
+- **The application is hosted on:** [Microsoft Azure](https://azure.microsoft.com/en-us)
+- **The database is hosted on:** [MongoDB Atlas](https://www.mongodb.com/atlas/database)
+- **Media files are hosted on:** [Cloudinary](https://cloudinary.com/documentation/node_integration)
+
+## Known, yet unresolved issues
+
+1. I couldn't find a proper way to add ENV variables to the client-side during container build since, for security reasons, Vite prohibits doing so. This results in the inability to specify the API address to which requests should be sent without predefining it in .env in advance
+
+## License
+
+Licensed under the MIT License. Check the [LICENSE](./LICENSE.md) file for details.
+
+## More about applications
 
 - [Catalog and work with it](#catalog-and-work-with-it)
 - [Product specific page](#product-specific-page)
@@ -18,46 +116,6 @@
 - [Cart and working with it](#cart-and-working-with-it)
 - [Profile and work with orders](#profile-and-work-with-orders)
 - [Authorization and registration](#authorization-and-registration)
-
-## Installation
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/EDMIGHT/sushi-shop
-```
-
-### 2. Install dependencies to server folder (relative to root)
-
-```bash
-cd server
-yarn / npm install
-```
-
-### 3. Install dependencies in the client folder (relative to root)
-
-```bash
-cd client
-yarn / npm install
-```
-
-### 4. Create a `.env` file in the server folder
-
-Create a `.env` file in the root directory and add the environment variables as shown in the `.env.example` file.
-
-### 5. Run the server (relative to root)
-
-```bash
-cd server
-yarn dev / npm run dev
-```
-
-### 6. Run the client (relative to root)
-
-```bash
-cd client
-yarn dev / npm run dev
-```
 
 ## Project demo
 
@@ -70,7 +128,7 @@ The catalog consists of 8 sushi, the list of which can be scrolled through using
 The search is not strict and occurs only by name. Also, to ensure less load on the server, a debounce was added using the [lodash debounce library](https://www.npmjs.com/package/lodash.debounce)
 ![catalog-search](./resources/screenshots/catalog-search.jpg)
 
-#### Catalog sorting 
+#### Catalog sorting
 
 Sorting such as rating is based on the average rating among the reviews of this sushi.
 
@@ -79,35 +137,42 @@ Price sorting is based on the minimum price of the sushi variation
 ![catalog-sort](./resources/screenshots/catalog%201.jpg)
 
 #### Filter by category
+
 ![catalog-filter](./resources/screenshots/catalog%202.jpg)
 
 #### Mobile adaptation
+
 ![catalog-mobileAdaptation](./resources/screenshots/catalog%20mobile%201.jpg)
 ![catalog-mobileAdaptation](./resources/screenshots/catalog%20mobile%202.jpg)
 
 #### Light theme
+
 ![light-theme](./resources/screenshots/catalog%20light%20theme.jpg)
 
-[Back to contents ⬆](#implemented-features)
+[Back to contents ⬆](#more-about-applications)
 
 ### Product specific page
 
 A special sushi page provides exactly the same functionality as in the catalog, namely: adding a certain amount of a certain variation of sushi to the cart, adding to the wish list (if the user is authorized) and is complemented by the functionality of viewing reviews and creating a review (if the user is authorized). The review itself is added as not to a variation of sushi, but to the product as a whole.
 
 #### With an authorized user
+
 ![product-page](./resources/screenshots/specific%20page%20auth.jpg)
 
 #### With an unauthorized user
+
 ![product-page](./resources/screenshots/specific%20page%20unauth.jpg)
 
 #### Mobile adaptation
+
 ![product-page-mobile-auth](./resources/screenshots/specific%20page%20mobile%20auth.jpg)
 ![product-page-mobile-unauth](./resources/screenshots/specific%20page%20mobile%20unauth.jpg)
 
 #### Light theme
+
 ![light-theme](./resources/screenshots/specific%20page%20light%20theme.jpg)
 
-[Back to contents ⬆](#implemented-features)
+[Back to contents ⬆](#more-about-applications)
 
 ### A wish list
 
@@ -123,7 +188,7 @@ Adding to the wishlist is possible only for authorized users, namely by hovering
 From the wish list page, following the same principle as described above, we can remove added sushi, but not add
 ![wishlist](./resources/screenshots/wishlist.jpg)
 
-[Back to contents ⬆](#implemented-features)
+[Back to contents ⬆](#more-about-applications)
 
 ### Cart and working with it
 
@@ -151,7 +216,7 @@ if there were no items added to the cart, the following page will be displayed:
 
 ![cart-light-theme](./resources/screenshots/cart-light-theme.jpg)
 
-[Back to contents ⬆](#implemented-features)
+[Back to contents ⬆](#more-about-applications)
 
 ### Profile and work with orders
 
@@ -163,7 +228,7 @@ This page is a private route and if an unauthorized user tries to access it, it 
 
 #### Order interaction
 
-We can also expand the order by clicking the arrow at the end of it to see the contents of this order, as well as the buttons for managing it. An order has 2 statuses, namely as accepted and as completed. 
+We can also expand the order by clicking the arrow at the end of it to see the contents of this order, as well as the buttons for managing it. An order has 2 statuses, namely as accepted and as completed.
 
 When creating an order, the status automatically becomes accepted and the user in the list of orders can either mark it as completed or cancel it, which will be tantamount to deleting it. Interaction ceases to be available after the order becomes Confirmed, that is, it is no longer possible to cancel after its execution
 
@@ -183,7 +248,7 @@ Confirmed order:
 
 ![profile-light-theme](./resources/screenshots/profile-light.jpg)
 
-[Back to contents ⬆](#implemented-features)
+[Back to contents ⬆](#more-about-applications)
 
 ### Authorization and registration
 
@@ -214,4 +279,4 @@ The validation itself consists of checking for an empty field, as well as for th
 ![signIn-light-theme](./resources/screenshots/signIn-light.jpg)
 ![signUp-light-theme](./resources/screenshots/signup-light.jpg)
 
-[Back to contents ⬆](#implemented-features)
+[Back to contents ⬆](#more-about-applications)
