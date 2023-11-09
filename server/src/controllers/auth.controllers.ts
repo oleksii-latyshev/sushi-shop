@@ -6,8 +6,43 @@ import { IUser } from '@/types/user.types';
 import { createResponseUser } from '@/utils/helpers/createResponseUser';
 import { CustomResponse } from '@/utils/helpers/customResponse';
 
-export const signInUser = (request: Request, response: Response): Response => {
-  return CustomResponse.ok(response, createResponseUser(request.user as IUser));
+export const signInUser = async (request: Request, response: Response): Promise<Response> => {
+  const { username, password } = request.body;
+
+  try {
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return CustomResponse.notFound(response, {
+        message: 'User not found',
+      });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return CustomResponse.conflict(response, {
+        message: 'Incorrect password.',
+      });
+    }
+
+    request.login(user, (err) => {
+      if (err) {
+        console.error('sign in: ', err);
+        return CustomResponse.serverError(response, {
+          message: 'An error occurred on the server side during sign in',
+        });
+      }
+
+      return CustomResponse.ok(response, createResponseUser(user));
+    });
+    return response;
+  } catch (error) {
+    console.error('sign in: ', error);
+    return CustomResponse.serverError(response, {
+      message: 'An error occurred on the server side during sign in',
+    });
+  }
 };
 
 export const signUpUser = async (request: Request, response: Response): Promise<Response> => {

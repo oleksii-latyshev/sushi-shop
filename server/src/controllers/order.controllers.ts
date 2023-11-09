@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import { IQuery, Order } from '@/models/order.model';
-import { Sushi } from '@/models/sushi.model';
+import { Sushi } from '@/models/sushi.models';
 import { IProduct } from '@/types/order.types';
 import { CustomResponse } from '@/utils/helpers/customResponse';
 

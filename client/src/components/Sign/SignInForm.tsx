@@ -1,10 +1,11 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch } from '@/hooks';
 import { useLoginMutation } from '@/services/auth.service';
 import { setUser } from '@/store/slices/settings.slice';
+import { isResponseError } from '@/types/response.types';
 import { ILoginUser } from '@/types/user.types';
 
 import styles from './Sign.module.scss';
@@ -20,23 +21,21 @@ const SignInForm: FC = () => {
 
   const [errorLogin, setErrorLogin] = useState<string | null>(null);
 
-  const [loginUser, { isLoading, isSuccess }] = useLoginMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      navigate('/');
-    }
-  }, [isSuccess]);
+  const [loginUser, { isLoading }] = useLoginMutation();
 
   const onSubmit = async (fields: ILoginUser) => {
-    const response = await loginUser(fields);
+    try {
+      const response = await loginUser(fields).unwrap();
 
-    if ('data' in response) {
-      dispatch(setUser(response.data));
-    } else if ('error' in response && 'data' in response.error) {
-      setErrorLogin(response.error.data as string);
-    } else {
-      setErrorLogin('something is wrong');
+      dispatch(setUser(response));
+
+      navigate('/');
+    } catch (error) {
+      if (isResponseError(error)) {
+        setErrorLogin(error.data.message);
+      } else {
+        setErrorLogin('something is wrong');
+      }
     }
   };
 

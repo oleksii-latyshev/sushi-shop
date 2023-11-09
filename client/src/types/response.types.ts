@@ -17,6 +17,11 @@ export interface IBadResponse {
   message: string;
 }
 
+export interface IResponseError {
+  data: IBadResponse;
+  status: number;
+}
+
 export interface IResponseAllOrderRequest {
   orders: IOrder[];
   totalPages: number;
@@ -28,4 +33,16 @@ export const isBadResponse = (arg: unknown): arg is IBadResponse => {
     return 'message' in arg;
   }
   return false;
+};
+
+export const isResponseError = (error: unknown): error is IResponseError => {
+  return (
+    error !== null &&
+    typeof error === 'object' &&
+    'data' in error &&
+    error.data !== null &&
+    typeof error.data === 'object' &&
+    'message' in error.data &&
+    typeof error.data.message === 'string'
+  );
 };

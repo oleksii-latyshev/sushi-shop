@@ -1,10 +1,11 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch } from '@/hooks';
 import { useRegisterMutation } from '@/services/auth.service';
 import { setUser } from '@/store/slices/settings.slice';
+import { isResponseError } from '@/types/response.types';
 import { IRegisterUser } from '@/types/user.types';
 
 import styles from './Sign.module.scss';
@@ -20,23 +21,21 @@ const SignUpForm: FC = () => {
 
   const [errorLogin, setErrorLogin] = useState<string | null>(null);
 
-  const [registerUser, { isLoading, isSuccess }] = useRegisterMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      navigate('/');
-    }
-  }, [isSuccess]);
+  const [registerUser, { isLoading }] = useRegisterMutation();
 
   const onSubmit = async (fields: IRegisterUser) => {
-    const response = await registerUser(fields);
+    try {
+      const response = await registerUser(fields).unwrap();
 
-    if ('data' in response) {
-      dispatch(setUser(response.data));
-    } else if ('error' in response && 'data' in response.error) {
-      setErrorLogin(response.error.data as string);
-    } else {
-      setErrorLogin('щось сталось 🤔');
+      dispatch(setUser(response));
+
+      navigate('/');
+    } catch (error) {
+      if (isResponseError(error)) {
+        setErrorLogin(error.data.message);
+      } else {
+        setErrorLogin('something is wrong');
+      }
     }
   };
 
@@ -64,7 +63,7 @@ const SignUpForm: FC = () => {
             minLength: { value: 2, message: 'мінімальна довжина імя 2 символи' },
           })}
         />
-        {errors.username?.message && <span>{errors.username.message}</span>}
+        {errors.name?.message && <span>{errors.name.message}</span>}
       </label>
       <label htmlFor='password'>
         Ведіть пароль:

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 
-import { IQuery, ISortSushi, Sushi } from '@/models/sushi.model';
+import { IQuery, ISortSushi, Sushi } from '@/models/sushi.models';
 import { ISushiReview } from '@/types/sushi.types';
 import { CustomResponse } from '@/utils/helpers/customResponse';
 
