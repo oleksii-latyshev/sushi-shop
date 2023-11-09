@@ -6,6 +6,8 @@ import { useGetAllOrdersQuery } from '@/services/order.service';
 
 import styles from './Profile.module.scss';
 import ProfileOrder from './ProfileOrder';
+import LoadingBlock from '@/components/Loading/LoadingBlock';
+import Popup from '@/components/Popup/Popup';
 
 const ProfileOrders: FC = () => {
   const [parent] = useAutoAnimate();
@@ -14,9 +16,6 @@ const ProfileOrders: FC = () => {
   const { data, isLoading, isSuccess, isError } = useGetAllOrdersQuery({
     page: localCurrentPage,
   });
-
-  const errorOrders = isError && <div>ошибка</div>;
-  const loadingOrders = isLoading && <div>загрузка</div>;
 
   const successOrders =
     isSuccess &&
@@ -30,22 +29,25 @@ const ProfileOrders: FC = () => {
   return (
     <div>
       <h3>Ваші замовлення:</h3>
-      {errorOrders}
-      {loadingOrders}
-      {isSuccess && data.orders.length > 0 ? (
-        <>
-          <ul ref={parent} className={styles.list}>
-            {successOrders}
-          </ul>
-          <Pagination
-            currentPage={localCurrentPage}
-            totalPages={data?.totalPages || 1}
-            onChangePage={onClickPage}
-          />
-        </>
-      ) : (
-        <p className={styles.emptyMessage}>У вас немає замовлень 😢</p>
-      )}
+      {isError && <Popup> ❌ Помилка при отриманні замовлень</Popup>}
+      {isLoading && <LoadingBlock />}
+      {isSuccess &&
+        (data.orders.length > 0 ? (
+          <>
+            <ul ref={parent} className={styles.list}>
+              {successOrders}
+            </ul>
+            {data.totalPages > 1 && (
+              <Pagination
+                currentPage={localCurrentPage}
+                totalPages={data?.totalPages || 1}
+                onChangePage={onClickPage}
+              />
+            )}
+          </>
+        ) : (
+          <p className={styles.emptyMessage}>У вас немає замовлень 😢</p>
+        ))}
     </div>
   );
 };

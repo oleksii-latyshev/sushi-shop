@@ -3,9 +3,9 @@ import env from 'dotenv';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import session from 'express-session';
-import helmet from 'helmet';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import path from 'path';
 
 import initializePassport from '@/lib/passport';
 import routes from '@/routes';
@@ -13,19 +13,15 @@ import checkFullnessDB from '@/utils/helpers/checkFullnessDB';
 
 env.config();
 
-const PORT = process.env.PORT;
-const SECRET_SESSION = process.env.PORT || '123321';
-const CLIENT_URL = process.env.CLIENT_URL;
-const MAX_REQUEST_PER_WINDOW = process.env.MAX_REQUEST_PER_WINDOW;
-const NODE_ENV = process.env.NODE_ENV;
-const VERSION = process.env.npm_package_version;
-const DESCRIPTION = process.env.npm_package_description;
+const PORT = process.env.PORT || 8080;
+const SECRET_SESSION = process.env.COOKIE_KEY || '123321';
+const MAX_REQUEST_PER_WINDOW = process.env.MAX_REQUEST_PER_WINDOW || 200;
 
 const app = express();
 app.set('trust proxy', 1 /* number of proxies between user and server */);
 
 app.use(express.json());
-app.use(cors({ origin: CLIENT_URL, credentials: true }));
+app.use(cors({ credentials: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
@@ -37,7 +33,6 @@ app.use(
     },
   })
 );
-app.use(helmet());
 app.use(
   rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minutes
@@ -53,13 +48,15 @@ initializePassport(passport);
 
 app.use('/api', routes);
 
-app.get('/', (_, res) => {
-  res.send({
-    mode: NODE_ENV,
-    version: VERSION,
-    description: DESCRIPTION,
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.join(__dirname, 'client')));
+
+  const indexPath = path.join(__dirname, 'client', 'index.html');
+
+  app.get('*', (_, res) => {
+    res.sendFile(indexPath);
   });
-});
+}
 
 const start = async (): Promise<void> => {
   try {
