@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { ObjectId } from 'mongoose';
 
-import { Sushi } from '@/models/sushi.models';
+import { Sushi } from '@/models/sushi.model';
 import { User } from '@/models/user.model';
 import { CustomResponse } from '@/utils/helpers/customResponse';
 
