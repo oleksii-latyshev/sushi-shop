@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
+import LoadingBlock from '@/components/Loading/LoadingBlock';
 import SushiBlock from '@/components/Sushi/SushiBlock';
 import SushiBlockError from '@/components/Sushi/SushiBlockError';
-import SushiBlockLoading from '@/components/Sushi/SushiBlockLoading';
 import { useGetSushiByIdQuery } from '@/services/sushi.service';
 
 const Sushi: React.FC = () => {
@@ -18,7 +18,7 @@ const Sushi: React.FC = () => {
   });
 
   const errorBlock = isError && <SushiBlockError />;
-  const pending = isLoading && <SushiBlockLoading />;
+  const pending = isLoading && <LoadingBlock />;
   const succeeded = isSuccess && data && <SushiBlock {...data} variant={variant} />;
 
   return (

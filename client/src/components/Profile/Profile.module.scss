@@ -101,7 +101,8 @@
           width: 150px;
           height: 150px;
           background-color: white;
-          object-fit: contain;
+          object-fit: cover;
+          object-position: center;
         }
         .info {
           display: flex;

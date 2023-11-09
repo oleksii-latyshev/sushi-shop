@@ -17,7 +17,12 @@ const SushiReviewForm: FC<ISushiReviewFormProps> = ({ _id }) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ICreateSushiReview>();
+  } = useForm<ICreateSushiReview>({
+    defaultValues: {
+      rating: 10,
+      text: '',
+    },
+  });
 
   const [error, setError] = useState<string | null>(null);
 
@@ -45,7 +50,6 @@ const SushiReviewForm: FC<ISushiReviewFormProps> = ({ _id }) => {
             type='number'
             max={10}
             min={1}
-            defaultValue={10}
             {...register('rating', {
               required: 'рейтинг обовязкове поле',
               max: {

@@ -3,6 +3,7 @@ import '@/assets/styles/variables.css';
 import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import LoadingBlock from '@/components/Loading/LoadingBlock';
 import { useInitialization } from '@/hooks/useInitialization';
 import MainLayout from '@/layouts/MainLayout';
 import { Home } from '@/pages';
@@ -14,7 +15,7 @@ const Wishlist = React.lazy(
 const Profile = React.lazy(() => import(/* webpackChunkName: "Profile" */ '@/pages/Profile'));
 const NotFound = React.lazy(
   () => import(/* webpackChunkName: "NotFound" */ '@/pages/NotFound')
-); // ? одновременно полезно и бесполезно
+);
 const Sushi = React.lazy(() => import(/* webpackChunkName: "Sushi" */ '@/pages/Sushi'));
 const SignIn = React.lazy(() => import(/* webpackChunkName: "SignIn" */ '@/pages/SignIn'));
 const SignUp = React.lazy(() => import(/* webpackChunkName: "SignUp" */ '@/pages/SignUp'));
@@ -23,7 +24,7 @@ const App = () => {
   useInitialization();
 
   return (
-    <Suspense fallback={<div>загрузка</div>}>
+    <Suspense fallback={<LoadingBlock />}>
       <Routes>
         <Route path='/' element={<MainLayout />}>
           <Route index element={<Home />} />

@@ -1,5 +1,11 @@
 @import '../styles/libs/_normalize.scss';
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 :root {
   --duration: 0.15s;
   --active-color: #646cff;
@@ -20,7 +26,7 @@ html[data-theme='light'] {
   --background-active-color: var(--active-color);
 
   --background-skeleton-in-color: var(--background-content-color);
---background-skeleton-out-color: #404040;
+  --background-skeleton-out-color: #404040;
 
   --font-color: #242424;
   --font-active-color: var(--active-color);

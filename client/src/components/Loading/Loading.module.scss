@@ -1,0 +1,26 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.element {
+  i {
+    font-size: 5rem;
+    animation: spin 1s infinite linear;
+    color: var(--active-color);
+  }
+}
+
+.blockLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+
+  i {
+    font-size: 5rem;
+    animation: spin 1s infinite linear;
+    color: var(--active-color);
+  }
+}
